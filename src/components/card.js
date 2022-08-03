@@ -4,24 +4,22 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+
 
 
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import IconButton from "@mui/material/IconButton";
 import StarIcon from '@mui/icons-material/Star';
+import { FaRegHeart } from 'react-icons/fa';
+
 
 export default function MainCard() {
   return (
     <>
-      <Card sx={{ maxWidth: 280, borderRadius:2 }}  >
-        {/* <IconButton
-          aria-label="add to favorites"
-          style={{ position: "relative", left: 225, top: 50, zIndex: 10  }}
-          sx={{ "&:hover": { color: "red" },}}
-        >
-          <FavoriteBorderOutlinedIcon />
-        </IconButton> */}
+      <Card sx={{ maxWidth: 280, borderRadius:2,  }}  >
+        
 
         <CardMedia
           component="img"
@@ -29,13 +27,8 @@ export default function MainCard() {
           image="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
           alt="green iguana"
         />
-          <IconButton
-          aria-label="add to favorites"
-          style={{ position: "relative", left: 225, bottom: 250, zIndex: 10  }}
-          sx={{ "&:hover": { color: "red" },}}
-        >
-          <FavoriteBorderOutlinedIcon />
-        </IconButton>
+        
+        
 
         <CardContent>
           {/* <Stack direction={{ xs: "column", sm: "row" }}
@@ -47,7 +40,7 @@ export default function MainCard() {
             style={{ color: "black", fontWeight: "bold" }}
           >
             Nordland, Norway
-            <IconButton
+            <IconButton style={{ position: "static", right: 10, bottom: 0, zIndex: 10  }}
          
         >
           <StarIcon color="warning"/>

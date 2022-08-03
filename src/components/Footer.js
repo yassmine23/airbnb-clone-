@@ -47,7 +47,9 @@ const Footer = () => {
           sx={{
             ...flexBetweenCenter,
             width: "100%",
+
           }}
+          style={{position: "fixed", bottom: 0 , backgroundColor:'white'}}
         >
           <Stack>
             <Paper>

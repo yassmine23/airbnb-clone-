@@ -25,7 +25,10 @@ const OptionsTab = () => {
           alignItems: 'center',
           mt: 2,
           mb: 2,
+          
+          
         }}
+        // style={{backgroundColor:'white',position:'fixed',top:"75px", maxWidth:"100%"}}
       >
         <Tabs
           value={value}

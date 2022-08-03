@@ -23,10 +23,10 @@ const MobileFooter = () => {
           <Box sx={{ ...justifyCenter, mr: 1 }}>
             <BsGlobe size={24} />
           </Box>
-          English ( CA )
+          English ( US )
         </Button>
 
-        <Button> $ CAD </Button>
+        <Button> $ USD </Button>
       </Paper>
 
       <Stack sx={{ mt: 2 }}>

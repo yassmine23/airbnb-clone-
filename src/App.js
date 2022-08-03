@@ -10,22 +10,35 @@ import React from "react";
 import "./App.css";
 import Footer from "./components/Footer";
 import FooterMenu from "./components/FooterMenu";
-import { displayOnDesktop } from "./themes/commonStyles";
+// import { displayOnDesktop } from "./themes/commonStyles";
 import MobileFooter from "./components/MobileFooter";
 import MainCard from "./components/card";
 
+import HeaderDet from "./components/header/headerdet";
+import Home from "./components/home/home";
+import UnderHome from "./components/underHome/underHome";
+import UpperFooter from "./components/UperFooter/UperFooter";
+import FooterDet from "./components/footer/Footerdet";
+import LastFooter from "./components/lastFooter/lastFooter";
+
+import { BrowserRouter as Router, Switch, Route, Link, Routes } from "react-router-dom";
+
+
 function App() {
   return (
+   
+
+
     <React.Fragment>
       <CssBaseline />
-      <Box
+      <Box 
         sx={{
           display: "flex",
           flexDirection: "column",
           height: "100vh",
         }}
       >
-        <Box>
+        <Box style={{position: "sticky",top:'0' , backgroundColor:'white'}}>
           <Header />
           <OptionsTab />
         </Box>
@@ -34,11 +47,10 @@ function App() {
             display: "flex",
             flexDirection: "column",
             flexGrow: 1,
-            height: 100,
-            overflowY: "scroll",
+          
           }}
         >
-          <Container maxWidth="xl" sx={{ mb: 3 }}>
+          <Container maxWidth="xl" sx={{ mb: 3,  }}>
             {/* <LocationCards /> */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
@@ -72,7 +84,7 @@ function App() {
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <FooterMenu />
         </Box>
-        <Box sx={displayOnDesktop}>
+        <Box >
           <Footer />
         </Box>
       </Box>

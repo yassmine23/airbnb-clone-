@@ -19,7 +19,7 @@ const Logo = () => {
         }}
         component="h3"
       >
-        airBnB
+       airbnb
       </Typography>
     </Box>
   );
