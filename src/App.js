@@ -9,9 +9,7 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import "./App.css";
 import Footer from "./components/Footer";
-import FooterMenu from "./components/FooterMenu";
-// import { displayOnDesktop } from "./themes/commonStyles";
-import MobileFooter from "./components/MobileFooter";
+import { displayOnDesktop } from "./themes/commonStyles";
 import MainCard from "./components/card";
 
 import HeaderDet from "./components/header/headerdet";
@@ -51,7 +49,6 @@ function App() {
           }}
         >
           <Container maxWidth="xl" sx={{ mb: 3,  }}>
-            {/* <LocationCards /> */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -72,20 +69,12 @@ function App() {
               <MainCard />
             </Stack>
 
-            <Box
-              sx={{
-                display: { xs: "flex", md: "none" },
-              }}
-            >
-              <MobileFooter />
-            </Box>
+            
           </Container>
         </Box>
-        <Box sx={{ display: { xs: "flex", md: "none" } }}>
-          <FooterMenu />
-        </Box>
+        
         <Box >
-          <Footer />
+          <Footer sx={displayOnDesktop} />
         </Box>
       </Box>
     </React.Fragment>
