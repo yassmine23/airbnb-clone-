@@ -5,7 +5,6 @@ import OptionsTab from "./components/OptionsTab";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 
-// import LocationCards from "./components/LocationCards";
 import React from "react";
 import "./App.css";
 import Footer from "./components/Footer";
