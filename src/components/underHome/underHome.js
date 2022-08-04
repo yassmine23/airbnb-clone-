@@ -39,7 +39,7 @@ import TextField from '@mui/material/TextField';
 import StarIcon from '@mui/icons-material/Star';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
- 
+ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const UnderHome = () => {
@@ -130,9 +130,67 @@ return <>
                 </LocalizationProvider> */}
             </Box>
     </Grid>
-    <Grid item xs={5}>
-        <Box bgcolor='blue' p={2}>Item 2</Box>
+
+
+
+
+
+
+    <Grid item xs={5} style={{position:'relative', marginTop:'50px'}}>
+        <Box style={{height:'100hv' , boxShadow:'0px 1px 26px -6px rgba(0,0,0,0.59)',position:'sticky',top:'150px',bottom:'599px', marginLeft:'50px',  width:'50wv',borderRadius:'20px', border:'1px solid lightgray'}}   p={2}> 
+       
+          
+                <Grid container>
+                        <Grid item xs={6}>
+                            <Box  p={2}> 
+                             <p><span style={{fontWeight:'bold', fontSize: 22}}>$149</span>night</p>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Box p={2}>
+                            <p><StarIcon/>4.86.<span style={{textDecoration:'underLine'}}>14reviews</span></p>
+                            </Box>
+                        </Grid>
+                </Grid> 
+
+
+                <Grid container style={{border:'1px solid lightgray', borderRadius:'20px'}}>
+
+                <Grid container>
+                        <Grid item xs={6} s>
+                            <Box style={{borderBottom:'1px solid lightgray' }}  p={2}> 
+                             <p style={{fontWeight:'bold', fontSize: 12}}>CHECK-IN</p>
+                             <p style={{ fontSize: 15}}>Add date</p>
+                            </Box>
+                            <Box    p={2}> 
+                             <p style={{fontWeight:'bold', fontSize: 12}}>GUESTS</p>
+                             <p style={{ fontSize: 15}}> 1 guest</p>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={6} >
+                            <Box p={2} style={{borderBottom:'1px solid lightgray', borderLeft:'1px solid lightgray' }}>
+                            <p style={{fontWeight:'bold', fontSize: 12}}>CHECKOUT</p>
+                             <p style={{ fontSize: 15}}>Add date</p>
+                            </Box>
+                            <Box p={2}>
+                             <ExpandMoreIcon style={{fontSize:'30px',marginLeft:'135px', marginTop:'30px'}}/>
+                            </Box>
+                        </Grid>
+                </Grid> 
+
+                </Grid> 
+
+                <Button style={{borderRadius:'5px',marginLeft:'30px',marginTop:'15px',fontSize:'20px', paddingLeft:'55px', paddingRight:'55px',textAlign:'center', backgroundColor:'red', color:'white'}}>Check Availability</Button>
+
+        </Box>
     </Grid>
+
+
+
+
+
+
+
 </Grid>
 
 <Grid container style={{ borderBottom:'1px solid lightgray',borderTop:'1px solid lightgray'}}>

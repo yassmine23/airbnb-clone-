@@ -1,0 +1,27 @@
+.btnhost{
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%) !important;
+color: #FFFFFF !important;
+/* font-style: italic; */
+font-weight: bold !important;
+}
+.btnhost:hover{
+border: 0px solid transparent !important;
+}
+.btnhost:focus{
+border: 0px solid transparent !important;
+}
+.bgdark{
+background-color: #000;
+height: auto;
+}
+.angledown:hover{
+background-color: #717171; 
+border-radius: 100%; 
+padding: 0 4px;
+}
+.titles{
+font-size: 75px;
+}
+.images{
+width: 101%;
+}
