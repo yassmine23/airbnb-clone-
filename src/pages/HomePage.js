@@ -15,6 +15,10 @@ export default function HomePage() {
     // <div>HomePage</div>
     <React.Fragment>
       <CssBaseline />
+      <Box style={{position: "sticky",top:'0' , backgroundColor:'white'}}>
+          <Header />
+          <OptionsTab />
+        </Box>
       <Box 
         sx={{
           display: "flex",

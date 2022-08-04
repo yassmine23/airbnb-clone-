@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
@@ -19,6 +19,11 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { flexCenter } from '../themes/commonStyles';
 
+// import { Link } from "react-router-dom";
+import Link from "@mui/material/Link";
+
+
+
 const ProfileSettings = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,8 +37,8 @@ const ProfileSettings = () => {
   
   return (
     <Box sx={flexCenter}>
-      {/* <Link href="/"> Become A Host</Link> */}
-      <Button variant='text' component={Link} to="/BecomeAHost"> Become A Host</Button>
+      <Link href="/host"  underline="none"> Become A Host</Link>
+    
       <Stack>
         <Button>
           <BsGlobe size={24} />

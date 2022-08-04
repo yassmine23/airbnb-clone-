@@ -6,8 +6,17 @@ import { FaAirbnb } from 'react-icons/fa';
 import { flexCenter } from '../themes/commonStyles';
 import { pink } from '@mui/material/colors';
 
+// import { Link } from "react-router-dom";
+import Link from "@mui/material/Link";
+
+import "./style.css";
+
+
 const Logo = () => {
   return (
+    <div className='linkStyle'>
+    <Link href='/'             underline="none"
+>
     <Box sx={flexCenter} >
       <FaAirbnb size={40} color={pink[500]} />
       <Typography
@@ -22,6 +31,8 @@ const Logo = () => {
        airbnb
       </Typography>
     </Box>
+    </Link>
+    </div>
   );
 };
 

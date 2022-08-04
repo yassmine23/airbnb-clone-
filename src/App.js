@@ -29,10 +29,7 @@ function App() {
   return (
     <>
     <Router>
-    <Box style={{position: "sticky",top:'0' , backgroundColor:'white'}}>
-          <Header />
-          <OptionsTab />
-        </Box>
+    
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
