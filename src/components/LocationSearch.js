@@ -9,7 +9,9 @@ import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-
+import Drawer from "@mui/material/Drawer";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 // react icons
 import { IoSearchCircleSharp } from "react-icons/io5";
@@ -31,13 +33,9 @@ const choices = [
 ];
 
 const LocationSearch = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+ 
   const handleClose = () => {
   
       console.log("windowClicked")
@@ -56,12 +54,13 @@ const LocationSearch = () => {
         style={{
           height: isOpen ? 75 : 0,
           transition: "0.25s",
-          width: "100%",
+          width: "10%",
           // border: "1px solid red",
+          // position:'relative', top:20,
         }}
       ></div>
 
-      <Paper
+      <Paper 
         sx={{
           borderRadius: 20,
           ml: 15,
@@ -79,10 +78,10 @@ const LocationSearch = () => {
             return (
               <Button
                 key={choice.id}
-                style={{ paddingInline: isOpen ? 50 : 0, transition: "0.25s" }}
+                style={{ paddingInline: isOpen ? 50 : 0, transition: "0.25s",}}
                 onClick={(e) => {
                   e.stopPropagation()
-                  setIsDrawerOpen(true);
+                 
                   setIsOpen(true);
                 }}
               >
@@ -109,7 +108,9 @@ const LocationSearch = () => {
             );
           })}
         </Stack>{" "}
+
       </Paper>
+     
     </>
   );
 };
