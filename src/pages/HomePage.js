@@ -9,16 +9,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import { displayOnDesktop } from "../themes/commonStyles";
+import FooterMenu from '../components/FooterMenu';
+
 
 export default function HomePage() {
   return (
-    // <div>HomePage</div>
     <React.Fragment>
       <CssBaseline />
-      <Box style={{position: "sticky",top:'0' , backgroundColor:'white'}}>
-          <Header />
-          <OptionsTab />
-        </Box>
+      
       <Box 
         sx={{
           display: "flex",
@@ -56,12 +54,15 @@ export default function HomePage() {
               <MainCard />
             </Stack>
 
-            
+
           </Container>
         </Box>
-        
-        <Box >
-          <Footer sx={displayOnDesktop} />
+        <Box sx={{ display: { xs: 'flex', md: 'none' } }}
+             >
+          <FooterMenu />
+        </Box>
+        <Box sx={displayOnDesktop} >
+          <Footer  />
         </Box>
       </Box>
     </React.Fragment>
