@@ -25,3 +25,20 @@ font-size: 75px;
 .images{
 width: 101%;
 }
+.profits{
+    color: #717171;
+    font-size: 55px;
+}
+select {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+.optionss{
+    background-color: #000 !important;
+    color: #FFFFFF !important;
+padding: 5px 10px !important;
+}
+.anco{
+    color: #000 !important;
+    font-weight: bold !important;
+}

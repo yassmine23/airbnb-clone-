@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 import "./BecomeHostStyle.css";
 
 export default function BecomeAHost() {
   return (
     <>
-         <div className="container-fluid">
+      <div className="container-fluid">
         <div className="d-flex">
           <nav class="navbar fixed-top">
             <div className="container-fluid">
@@ -24,7 +24,7 @@ export default function BecomeAHost() {
               </a>
             </div>
           </nav>
-        </div> 
+        </div>
         <div className="row bgdark">
           <div className="col-6 d-flex flex-column align-items-center justify-content-center">
             <h1 className="text-white text-center my-5 titles p-2">
@@ -80,16 +80,19 @@ export default function BecomeAHost() {
             </a>
           </div>
           <div className="col-6">
-            <img src="images/headers.jpg" className="images" ></img>
+            <img src="images/headers.jpg" className="images"></img>
           </div>
         </div>
       </div>
       {/* section two */}
-      <div className="container-fluid"id="two">
+      <div className="container-fluid" id="two">
         <div className="row p-5">
-        <div className="d-flex flex-column align-items-center justify-content-evenly">
-          <h1 className="titles text-center">You can host <br/>anything, anywhere</h1>
-{/* 
+          <div className="d-flex flex-column align-items-center justify-content-evenly">
+            <h1 className="titles text-center">
+              You can host <br />
+              anything, anywhere
+            </h1>
+            {/* 
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div className="carousel-indicators d-none">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -153,11 +156,146 @@ export default function BecomeAHost() {
     <span className="visually-hidden">Next</span>
   </button>
 </div> */}
-
           </div>
         </div>
       </div>
-      
+      {/* three section */}
+      <div className="container">
+        <div className="row text-center p-5 my-5">
+          <h1 className="profits">
+            Host your
+            <select
+              className="text-decoration-underline border-0"
+              aria-label="Default select example"
+            >
+              <option
+                value={"enterplace"}
+                selected
+                className="text-decoration-underline optionss fs-1 "
+              >
+                enter place
+              </option>
+              <option
+                value={"privateroom"}
+                className="text-decoration-underline fs-1  optionss"
+              >
+                private room
+              </option>
+              <option
+                value={"sharedroom"}
+                className="text-decoration-underline fs-1  optionss"
+              >
+                shared room
+              </option>
+            </select>
+            for
+            <select
+              className="text-decoration-underline border-0"
+              aria-label="Default select example"
+            >
+              <option className="text-decoration-underline fs-1 px-5">
+                1 guests
+              </option>
+              <option
+                value="1"
+                className="text-decoration-underline  fs-1 mx-5"
+              >
+                2 guests
+              </option>
+              <option value="2" className="text-decoration-underline fs-1 mx-5">
+                3 guests
+              </option>
+              <option
+                value="3"
+                selected
+                className="text-decoration-underline fs-1 mx-5"
+              >
+                4 guests
+              </option>
+            </select>
+            in
+            <select
+              className="text-decoration-underline border-0"
+              aria-label="Default select example"
+            >
+              <option
+                selected
+                className="text-decoration-underline border-0 fs-1 "
+              >
+                Alexandria
+              </option>
+              <option
+                value="1"
+                className="text-decoration-underline border-0 fs-1 "
+              >
+                Alexandria
+              </option>
+              <option
+                value="2"
+                className="text-decoration-underline border-0 fs-1 "
+              >
+                Alexandria
+              </option>
+            </select>
+            and earn up to ${390}/month
+          </h1>
+
+
+{/* modal */}
+<div
+        className="modal fade"
+        id="exampleModalToggle2"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            
+            <div className="modal-body">
+            <h1>How we estimate your earning potential</h1>
+                  <p>
+                    We make a few simple assumptions and calculations to
+                    determine your earnings:
+                  </p>
+                  <ul>
+                    <li>
+                      If you have an entire place, we assume you can host four
+                      guests. If you’re listing a private room, we count that as
+                      two guests, and for a shared room, just one guest. You can
+                      change your selections in the drop-down menu any time.
+                    </li>
+                    <li>
+                      We take the median nightly price (before expenses, fees
+                      and taxes) based on booking data in your area from the
+                      last 12 months.
+                    </li>
+
+                    <li>
+                      We then multiply that price by the total number of
+                      occupied nights to get the monthly earnings estimate. To
+                      estimate the number of nights that you might host, we look
+                      at how often others in your area are hosting.
+                    </li>
+                  </ul>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+      <a
+        className="fs-5 my-4 text-dark"
+        data-bs-toggle="modal"
+        href="#exampleModalToggle"
+        role="button"
+      >
+        How we estimate your earnings potential
+      </a>
+         
+        </div>
+      </div>
+     
+ 
     </>
   );
 }
