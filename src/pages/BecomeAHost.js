@@ -6,7 +6,7 @@ export default function BecomeAHost() {
     <>
       <div className="container-fluid">
         <div className="d-flex">
-          <nav class="navbar fixed-top">
+          <nav className="navbar fixed-top">
             <div className="container-fluid">
               <a className="navbar-brand" href="#">
                 <svg
@@ -40,35 +40,35 @@ export default function BecomeAHost() {
             </button>
             {/* modal */}
             <div
-              class="modal fade"
+              className="modal fade"
               id="exampleModal"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
             >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      Modal title
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
+                      Modal titlkdlfkdlkfe
                     </h5>
                     <button
                       type="button"
-                      class="btn-close"
+                      className="btn-close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body">...</div>
-                  <div class="modal-footer">
+                  <div className="modal-body"></div>
+                  <div className="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       data-bs-dismiss="modal"
                     >
                       Close
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" className="btn btn-primary">
                       Save changes
                     </button>
                   </div>
@@ -93,9 +93,9 @@ export default function BecomeAHost() {
               anything, anywhere
             </h1>
             {/* 
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+<div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
     <div className="carousel-indicators d-none">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
@@ -239,21 +239,37 @@ export default function BecomeAHost() {
             </select>
             and earn up to ${390}/month
           </h1>
+          {/* modal */}
+          {/* <!-- Button trigger modal --> */}
+          <button
+            type="button"
+            className="anco btn btn-link my-5"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal2"
+          >
+            How we estimate your earnings potential{" "}
+          </button>
 
-
-{/* modal */}
-<div
-        className="modal fade"
-        id="exampleModalToggle2"
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            
-            <div className="modal-body">
-            <h1>How we estimate your earning potential</h1>
+          {/* <!-- Modal --> */}
+          <div
+            class="modal fade"
+            id="exampleModal2"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <h1>How we estimate your earning potential</h1>
                   <p>
                     We make a few simple assumptions and calculations to
                     determine your earnings:
@@ -278,24 +294,31 @@ export default function BecomeAHost() {
                       at how often others in your area are hosting.
                     </li>
                   </ul>
+                  <p>
+                    Keep in mind, these are just estimates. How much you
+                    actually earn depends on a number of other factors such as
+                    your availability, price, acceptance and cancellation rates,
+                    any legal restrictions, and demand in your area. Also, your
+                    ability to host may depend on the local laws in your area.{" "}
+                    <a href="anco">Learn more.</a>
+                  </p>
+                </div>
+              </div>
             </div>
-          
           </div>
         </div>
       </div>
-      <a
-        className="fs-5 my-4 text-dark"
-        data-bs-toggle="modal"
-        href="#exampleModalToggle"
-        role="button"
-      >
-        How we estimate your earnings potential
-      </a>
-         
+      {/* section four */}
+      <div className="container sectionfour rounded-4 p-5 mh-100">
+        <div className="row p-5 gy-5 rounded-4 text-white d-flex text-center align-items-center justify-content-evenly">
+          <h1 className="fontsizeh1">Help house 100,000 refugees fleeing Ukraine</h1>
+       <div>
+       <button type="button" class="btn btn-outline-secondary text-white fs-5  border-white">
+            Learn more
+          </button>
+       </div>
         </div>
       </div>
-     
- 
     </>
   );
 }
