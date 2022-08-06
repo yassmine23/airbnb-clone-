@@ -1,5 +1,8 @@
 import React from "react";
 import "./BecomeHostStyle.css";
+import { Container } from "@mui/material/Container";
+import UperFooter from "./../components/UperFooter/UperFooter";
+import Footerhostormore from "./footerhostormore";
 
 export default function BecomeAHost() {
   return (
@@ -309,16 +312,99 @@ export default function BecomeAHost() {
         </div>
       </div>
       {/* section four */}
-      <div className="container sectionfour rounded-4 p-5 mh-100">
+      <div className="container-fluid sectionfour rounded-4  py-5 col-11">
         <div className="row p-5 gy-5 rounded-4 text-white d-flex text-center align-items-center justify-content-evenly">
-          <h1 className="fontsizeh1">Help house 100,000 refugees fleeing Ukraine</h1>
-       <div>
-       <button type="button" class="btn btn-outline-secondary text-white fs-5  border-white">
-            Learn more
-          </button>
-       </div>
+          <h1 className="fontsizeh1">
+            Help house 100,000 refugees fleeing Ukraine
+          </h1>
+          <div>
+            <button
+              type="button"
+              class="btn btn-outline-secondary text-white fs-5  border-white"
+            >
+              Learn more
+            </button>
+          </div>
         </div>
       </div>
+      {/* section five */}
+      {/* <div> */}
+      <div className=" container-fluid position-relative py-5 mh-100 my-5 text-center col-11">
+        <img
+          src="images/sectionfive.jpg"
+          alt="sectionfive"
+          className="w-100 rounded-4"
+        />
+        <div className="position-absolute top-50 start-50 text-white text-center translate-middle">
+          <h1 className="h-1 my-5">
+            Questions about hosting? Ask a Superhost.
+          </h1>
+          <button type="button" className="btn btn-light my-5 px-5 fs-5">
+            Learn more
+          </button>
+        </div>
+      </div>
+      {/* </div> */}
+      {/* section six */}
+      <div
+        className="container-fluid  rounded-4  py-5 col-11"
+        style={{ backgroundColor: "#e6e6e6" }}
+      >
+        <div className="d-flex flex-wrap">
+          <div className="col-6 p-5">
+            <img src="images/sectionsix1.PNG" alt="" className="w-50" />
+            <div>
+              <p className="fs-2 pt-5 text-wrap lh-sm">
+                Top-to-bottom protection. Always included, always free. Only on
+                Airbnb.
+              </p>
+            </div>
+            <div>
+              <button
+                type="button"
+                className="btn btn-light my-5 px-3 py-2 fs-5 border border-dark text-center"
+              >
+                Learn more
+              </button>
+            </div>
+          </div>
+          <div className="col-6 align-self-end">
+            <img src="images/sectionsix2.PNG" alt="" className="w-100" />
+          </div>
+        </div>
+      </div>
+      {/* section siven */}
+      <div className="container-fluid py-5 col-12">
+        <div className="d-flex flex-wrap">
+          <div className="col-md-6 col-12">
+            <img
+              src="images/section7.PNG "
+              alt=""
+              className=""
+              style={{ width: "100%" }}
+            />
+          </div>
+          <div className="col-md-6 col-12 bgdark text-white text-center d-flex flex-column justify-content-center align-items-center">
+            <h1>
+              Try hosting on
+              <br /> Airbnb
+            </h1>
+            <p>
+              Join us. We’ll help you every <br />
+              step of the way.
+            </p>
+            <button
+              type="button"
+              className="btn btnhost my-5 px-4 py-2"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Let's go
+            </button>
+          </div>
+        </div>
+      </div>
+     <Footerhostormore></Footerhostormore>
     </>
   );
 }
