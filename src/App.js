@@ -18,19 +18,16 @@ function App() {
     <Router>
      
     <Box
-     style={{position: "sticky",top:'0' , backgroundColor:'white'}}
+     style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
      >
           <Header />
-          <OptionsTab />
+          {/* <OptionsTab /> */}
         </Box>
 
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
-
-
-        {/* <HomePage/> */}
 
 
         </Routes>

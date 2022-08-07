@@ -34,6 +34,13 @@ export default function HomePage() {
           }}
         >
           <Container maxWidth="xl" sx={{ mb: 3,  }}>
+          <Box
+     style={{position: "sticky",top:'91px' , backgroundColor:'white'}}
+     >
+          {/* <Header /> */}
+          <OptionsTab />
+        </Box>
+
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={{ xs: 1, sm: 2, md: 4 }}

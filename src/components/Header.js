@@ -2,9 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-
-
-// components
 import Logo from './Logo';
 import LocationSearch from './LocationSearch';
 import {
@@ -14,6 +11,7 @@ import {
 } from '../themes/commonStyles';
 import ProfileSettings from './ProfileSettings';
 import MobileSearch from './MobileSearch';
+import SearchDetails from './SearchDetails';
 
 const Header = () => {
 
@@ -50,6 +48,7 @@ const Header = () => {
           <Box sx={displayOnDesktop}  
           >
             <LocationSearch />
+            {/* <SearchDetails/> */}
           </Box>
           
           <Box sx={displayOnDesktop}>
