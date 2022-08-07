@@ -3,5 +3,17 @@
     "language": "اللغة",
     "welcome_message": "افتح الباب امام الاستضافه",
     "buttonone":"جرب الاستضافه",
-    "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو"
+    "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو",
+    "section5":"ساعدنا على إيواء 100 ألف لاجئ من أوكرانيا",
+    "buttonLearn":"معرفة المزيد",
+    "sectionthree":"هل لديك أسئلة عن الاستضافة؟    اسأل مضيفًا متميزًا",
+    "sectionfour":" . حماية كاملة.  تضاف تلقائيًاومجانًا.  فقط على Airbnb",
+    "image":"images/Capture2.PNG",
+    "sectionfive1":"جرب الاستضافة على Airbnb  ",
+    "sectionfive2":"انضم إلينا. وسنساعدك في كل شيء خطوة بخطوة",
+    "buttontwo":"هيا بنا ! "
+
+
+
+
   }

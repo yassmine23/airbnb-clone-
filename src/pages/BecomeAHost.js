@@ -26,9 +26,9 @@ export default function BecomeAHost() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  const releaseDate = new Date("2021-03-07");
-  const timeDifference = new Date() - releaseDate;
-  const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  // const releaseDate = new Date("2021-03-07");
+  // const timeDifference = new Date() - releaseDate;
+  // const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   useEffect(() => {
     console.log("Setting page stuff");
@@ -329,14 +329,16 @@ export default function BecomeAHost() {
         <div className="container-fluid sectionfour rounded-4  py-5 col-11">
           <div className="d-flex flex-column flex-wrap p-5 gy-5 rounded-4 text-white d-flex text-center align-items-center justify-content-evenly">
             <h1 className="fontsizeh1">
-              Help house 100,000 refugees fleeing Ukraine
+              {/* Help house 100,000 refugees fleeing Ukraine */}
+              {t("section5")}
             </h1>
             <div>
               <button
                 type="button"
                 className="btn btn-outline-secondary text-white fs-5  border-white"
               >
-                Learn more
+                {/* Learn more */}
+                {t("buttonLearn")}
               </button>
             </div>
           </div>
@@ -351,10 +353,10 @@ export default function BecomeAHost() {
           />
           <div className="position-absolute top-50 start-50 text-white text-center translate-middle">
             <h1 className="h-1 my-5">
-              Questions about hosting? Ask a Superhost.
+            {t("sectionthree")}
             </h1>
             <button type="button" className="btn btn-light my-5 px-5 fs-5">
-              Learn more
+            {t("buttonLearn")}
             </button>
           </div>
         </div>
@@ -365,11 +367,11 @@ export default function BecomeAHost() {
         >
           <div className="d-flex flex-wrap">
             <div className="col-6 p-5">
-              <img src="images/sectionsix1.PNG" alt="" className="w-50" />
+              <img src={t("image")} alt="" className="w-50" />
               <div>
                 <p className="fs-2 pt-5 text-wrap lh-sm">
-                  Top-to-bottom protection. Always included, always free. Only
-                  on Airbnb.
+                {t("sectionfour")}
+
                 </p>
               </div>
               <div>
@@ -377,7 +379,7 @@ export default function BecomeAHost() {
                   type="button"
                   className="btn btn-light my-5 px-3 py-2 fs-5 border border-dark text-center"
                 >
-                  Learn more
+            {t("buttonLearn")}
                 </button>
               </div>
             </div>
@@ -399,12 +401,11 @@ export default function BecomeAHost() {
             </div>
             <div className="col-md-6 col-12 bgdark text-white text-center d-flex flex-column justify-content-center align-items-center">
               <h1>
-                Try hosting on
-                <br /> Airbnb
+                {t("sectionfive1")}
+              
               </h1>
               <p>
-                Join us. We’ll help you every <br />
-                step of the way.
+                {t("sectionfive2")}
               </p>
               <button
                 type="button"
@@ -412,7 +413,7 @@ export default function BecomeAHost() {
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                Let's go
+                {t("buttontwo")}
               </button>
             </div>
           </div>

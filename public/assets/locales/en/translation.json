@@ -3,5 +3,13 @@
     "language": "Language",
     "welcome_message": "Open your door to hosting",
     "buttonone":"Try hosting",
-    "days_since_release": "it's been {{number_of_days}} days since this video was released"
-  }
+    "days_since_release": "it's been {{number_of_days}} days since this video was released",
+  "section5":"Help house 100,000 refugees fleeing Ukraine",
+  "buttonLearn":"Learn more",
+  "sectionthree":"Questions about hosting?  Ask a Superhost.",
+  "sectionfour":"Top-to-bottom protection. Always included, always free. Only on Airbnb.",
+  "image":"images/sectionsix1.PNG",
+  "sectionfive1":"Try hosting on Airebnb ",
+  "sectionfive2":"Join us. We’ll help you every step of the way.",
+  "buttontwo":"Let's go !"
+}
