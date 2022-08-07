@@ -42,7 +42,7 @@ export default function SectionOne() {
             <div
               className="modal fade"
               id="exampleModal"
-              tabindex="-1"
+              tabIndex={-1}
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
             >
@@ -50,7 +50,7 @@ export default function SectionOne() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLabel">
-                      Modal titlkdlfkdlkfe
+                      Log in or sign up
                     </h5>
                     <button
                       type="button"
@@ -59,17 +59,29 @@ export default function SectionOne() {
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div className="modal-body"></div>
+                  <div className="modal-body">
+                    <form>
+                      <select
+                        className="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example"
+                      >
+                        <option>Country</option>
+                        <option selected value="1">United States (+1)</option>
+                        <option value="2">Egypt(+20)</option>
+                      </select>
+                      <div className="mb-3">
+                        <input
+                          type="number"
+                          className="form-control"
+                          id="exampleInputPassword1"
+                          placeholder="phone Number"
+                        />
+                      </div>
+                    </form>
+                  </div>
                   <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                      Save changes
+                    <button type="button" className="btn btnhost">
+                      Continue
                     </button>
                   </div>
                 </div>

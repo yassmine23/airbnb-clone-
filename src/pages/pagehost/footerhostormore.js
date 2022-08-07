@@ -5,7 +5,7 @@ import { LanguageIcon } from "@material-ui/icons/Language";
 export default function Footerhostormore() {
   return (
     <>
-      <footer lassName="container-fluid py-5 col-12">
+      <footer className="container-fluid py-5 col-12">
         <div className=" flex-column">
           <div className="container d-flex flex-warp flex-md-row flex-column lh-lg">
             <div className="col-md-3 col-10">
@@ -69,9 +69,7 @@ export default function Footerhostormore() {
                 <a>$ USD</a>
               </div>
               <div className="fs-5 ">
-                {/* <i class="bi bi-facebook"></i>
-              <i class="bi bi-twitter"></i>
-              <i class="bi bi-instagram"></i> */}
+            
                 <i className="mx-3 fa fa-facebook-f"></i>
                 <i className=" mx-3 fa fa-twitter"></i>
                 <i className="mx-3 fa fa-instagram"></i>

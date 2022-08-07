@@ -15,12 +15,12 @@ export default function SectionThree() {
             >
               <option
                 value={"enterplace"}
-                selected
                 className="text-decoration-underline optionss fs-1 "
               >
                 enter place
               </option>
               <option
+              selected
                 value={"privateroom"}
                 className="text-decoration-underline fs-1  optionss"
               >
@@ -38,50 +38,51 @@ export default function SectionThree() {
               className="text-decoration-underline border-0"
               aria-label="Default select example"
             >
-              <option className="text-decoration-underline fs-1 px-5">
+              <option className="text-decoration-underline fs-1 px-5 optionss">
                 1 guests
               </option>
               <option
                 value="1"
-                className="text-decoration-underline  fs-1 mx-5"
+                className="text-decoration-underline  fs-1 mx-5 optionss"
               >
                 2 guests
               </option>
-              <option value="2" className="text-decoration-underline fs-1 mx-5">
+              <option value="2" className="text-decoration-underline fs-1 mx-5 optionss">
                 3 guests
               </option>
               <option
                 value="3"
                 selected
-                className="text-decoration-underline fs-1 mx-5"
+                        className="text-decoration-underline fs-1 mx-5 optionss"
               >
                 4 guests
               </option>
-            </select>
+            </select><br/>
             in
             <select
               className="text-decoration-underline border-0"
               aria-label="Default select example"
             >
               <option
-                selected
-                className="text-decoration-underline border-0 fs-1 "
+                
+                className="text-decoration-underline border-0 fs-1 optionss"
               >
                 Alexandria
               </option>
               <option
+              selected
                 value="1"
-                className="text-decoration-underline border-0 fs-1 "
+                className="text-decoration-underline border-0 fs-1 optionss "
               >
                 Alexandria
               </option>
               <option
                 value="2"
-                className="text-decoration-underline border-0 fs-1 "
+                className="text-decoration-underline border-0 fs-1 optionss"
               >
                 Alexandria
               </option>
-            </select>
+            </select><br/>
             and earn up to ${390}/month
           </h1>
           {/* modal */}
@@ -99,7 +100,7 @@ export default function SectionThree() {
           <div
             class="modal fade"
             id="exampleModal2"
-            tabindex="-1"
+            tabIndex={-1}
             aria-labelledby="exampleModalLabel2"
             aria-hidden="true"
           >

@@ -13,7 +13,7 @@ export default function SectionFour() {
           <div>
             <button
               type="button"
-              class="btn btn-outline-secondary text-white fs-5  border-white"
+              className="btn btn-outline-secondary text-white fs-5  border-white"
             >
               Learn more
             </button>
