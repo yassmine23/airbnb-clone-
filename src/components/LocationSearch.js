@@ -6,25 +6,13 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import Container from "@mui/material/Container";
-import ButtonGroup from "@mui/material/ButtonGroup";
 
-import Drawer from "@mui/material/Drawer";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 
 // react icons
 import { IoSearchCircleSharp } from "react-icons/io5";
 import { pink } from "@mui/material/colors";
 
-// components
-import Logo from "./Logo";
-import {
-  flexBetweenCenter,
-  dFlex,
-  displayOnDesktop,
-} from "../themes/commonStyles";
-import ProfileSettings from "./ProfileSettings";
+
 
 const choices = [
   { id: 1, text: "Anywhere", altText: "Stays" },
@@ -52,11 +40,10 @@ const LocationSearch = () => {
     <>
       <div
         style={{
-          height: isOpen ? 75 : 0,
+          height: isOpen ? 50 : 0,
           transition: "0.25s",
-          width: "10%",
-          // border: "1px solid red",
-          // position:'relative', top:20,
+          width: "1px",
+          // border: "1px solid green",
         }}
       ></div>
 
@@ -75,15 +62,16 @@ const LocationSearch = () => {
           divider={<Divider orientation="vertical" flexItem />}
         >
           {choices.map((choice) => {
-            return (
+            return ( <>
               <Button
                 key={choice.id}
-                style={{ paddingInline: isOpen ? 50 : 0, transition: "0.25s",}}
+                style={{ paddingInline: isOpen ? 40 : 0, transition: "0.25s",  }}
                 onClick={(e) => {
                   e.stopPropagation()
                  
                   setIsOpen(true);
                 }}
+               
               >
                 <Typography
                   sx={{
@@ -95,22 +83,36 @@ const LocationSearch = () => {
                 </Typography>
                 {choice.withIcon && (
                   <Box
+                  
                     sx={{
                       ml: 1,
                       mt: 1,
                       mr: 1,
                     }}
                   >
-                    <IoSearchCircleSharp color={pink[500]} size={32} />
+                    <IoSearchCircleSharp color={pink[500]} size={32} 
+                   />
                   </Box>
                 )}
               </Button>
-            );
+              
+           </> );
           })}
+          
         </Stack>{" "}
 
+        
+
       </Paper>
-     
+
+      <div
+        style={{
+          height: isOpen ? 50 : 0,
+          transition: "0.25s",
+          width: "0.5px",
+          // border: "0.5px solid green",
+        }}
+      ></div> 
     </>
   );
 };

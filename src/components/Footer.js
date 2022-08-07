@@ -49,7 +49,7 @@ const Footer = () => {
             width: "100%",
 
           }}
-          style={{position: "fixed", bottom: 0 , backgroundColor:'white'}}
+          style={{position: "fixed", bottom: 0 , backgroundColor:'#ffffff', borderTop:"1.2px solid lightgray"}}
         >
           <Stack>
             <Paper>
