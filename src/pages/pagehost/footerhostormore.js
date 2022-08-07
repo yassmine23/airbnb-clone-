@@ -5,6 +5,7 @@ import { LanguageIcon } from "@material-ui/icons/Language";
 export default function Footerhostormore() {
   return (
     <>
+
       <footer className="container-fluid py-5 col-12">
         <div className=" flex-column">
           <div className="container d-flex flex-warp flex-md-row flex-column lh-lg">
@@ -78,6 +79,7 @@ export default function Footerhostormore() {
           </div>
         </div>
       </footer>
+      
     </>
   );
 }

@@ -28,6 +28,8 @@ import BecomeAHost from './pages/BecomeAHost';
 function App() {
   return (
     <>
+    <BecomeAHost></BecomeAHost>
+{/* 
     <Router>
     
         <Routes>
@@ -36,11 +38,12 @@ function App() {
         <Route path="/details" exact element={<HostingDetails/>} />
 
 
-        {/* <HomePage/> */}
+       
 
 
         </Routes>
     </Router>
+    */}
     </>
    
 
