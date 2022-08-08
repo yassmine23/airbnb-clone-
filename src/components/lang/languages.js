@@ -1,5 +1,5 @@
 export const languages = [
-    {
+{
       code: "en",
       name: "English",
       country_code: "USD",
@@ -10,6 +10,7 @@ export const languages = [
       dir: "rtl",
       country_code: "EG",
     },
+
   ];
-  
+
   
