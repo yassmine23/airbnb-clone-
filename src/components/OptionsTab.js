@@ -23,6 +23,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Stack from "@mui/material/Stack";
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -30,14 +31,55 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 800,
   bgcolor: "background.paper",
-  // border: '2px solid #000',
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
   overflowY: "scroll",
   overflowX: "hidden",
   height: "75vh",
+ 
 };
+
+const data = [
+  { year: '2011', maxPrice: 100 },
+  { year: '2012', maxPrice: 160 },
+  { year: '2016', maxPrice: 100 },
+  { year: '2013', maxPrice: 90 },
+  { year: '2014', maxPrice: 100 },
+  { year: '2015', maxPrice: 130 },
+  { year: '2016', maxPrice: 100 },
+  { year: '2017', maxPrice: 150 },
+  { year: '2018', maxPrice: 190 },
+  { year: '2019', maxPrice: 220 },
+  { year: '2020', maxPrice: 250 },
+  { year: '2021', maxPrice: 320 },
+  { year: '2022', maxPrice: 300 },
+  
+];
+
+const buttonStyle={
+  backgroundColor: "white",
+                    color: "black",
+                    borderRadius: "45%",
+                      fontSize: "16px",
+
+                      "&:focus": {
+                        backgroundColor: "black",
+                        color: "white",
+
+                        },
+                        "&:hover": {
+                          border:'1px solid black',
+                          backgroundColor:'white',
+                          color:'black',
+  
+                          }
+
+}
+
+
+
+
 
 const OptionsTab = () => {
   const [value, setValue] = React.useState(0);
@@ -92,7 +134,7 @@ const OptionsTab = () => {
         >
           <FaFilter /> Filters
         </Button>
-        {/* modal */}
+                               {/* modal **********/}
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -103,7 +145,6 @@ const OptionsTab = () => {
           BackdropProps={{
             timeout: 500,
           }}
-          style={{ overflow: "scroll" }}
         >
           <Fade in={open}>
             <Box sx={style}>
@@ -219,67 +260,213 @@ const OptionsTab = () => {
 
               <Divider sx={{ py: 5 }} />
 
+              {/* rooms&beds *****/}
               <Box>
                 <Typography
                   id="transition-modal-title"
                   variant="h3"
                   component="h2"
-                  style={{ fontWeight: "bold", fontSize: 24,  }}
+                  style={{ fontWeight: "bold", fontSize: 24 }}
                 >
                   Rooms and beds
                 </Typography>
 
-                <Typography variant="h3"
+                <Typography
+                  variant="h3"
                   component="h2"
-                  style={{  fontSize: 16 , paddingTop:'20px'}}>Bedrooms </Typography>
+                  style={{ fontSize: 16, paddingTop: "20px" }}
+                >
+                  Bedrooms{" "}
+                </Typography>
                 <Stack spacing={2} direction="row">
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'black',fontSize:'16px'}}>Any</Button>
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>1</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>2</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>3</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>4</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>5</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>6</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>7</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>8+</Button>
-
-
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                    
+                  >
+                    Any
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                    
+                  >
+                    1
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    2
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    3
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    4
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    5
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    6
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    7
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    8+
+                  </Button>
                 </Stack>
 
-                <Typography variant="h3"
+                <Typography
+                  variant="h3"
                   component="h2"
-                  style={{  fontSize: 16,paddingTop:'20px' }}>Beds </Typography>
+                  style={{ fontSize: 16, paddingTop: "20px" }}
+                >
+                  Beds{" "}
+                </Typography>
                 <Stack spacing={2} direction="row">
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'black',fontSize:'16px'}}>Any</Button>
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>1</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>2</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>3</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>4</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>5</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>6</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>7</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>8+</Button>
-
-
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    Any
+                  </Button>
+                  <Button
+                    variant="contained"
+                    
+                    sx={buttonStyle}
+                  >
+                    1
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    2
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    3
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    4
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    5
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    6
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    7
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    8+
+                  </Button>
                 </Stack>
 
-                <Typography variant="h3"
+                <Typography
+                  variant="h3"
                   component="h2"
-                  style={{  fontSize: 16,paddingTop:'20px' }}>Bathrooms </Typography>
+                  style={{ fontSize: 16, paddingTop: "20px" }}
+                >
+                  Bathrooms{" "}
+                </Typography>
                 <Stack spacing={2} direction="row">
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'black',fontSize:'16px'}}>Any</Button>
-                <Button variant="contained" style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>1</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>2</Button>
-                <Button variant="contained"style={{borderRadius:"45%",  backgroundColor:'white', color:'black',fontSize:'16px'}}>3</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>4</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>5</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>6</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>7</Button>
-                <Button variant="contained"style={{borderRadius:"45%", backgroundColor:'white', color:'black',fontSize:'16px'}}>8+</Button>
-
-
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    Any
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    1
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    2
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    3
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    4
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    5
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    6
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    7
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                  >
+                    8+
+                  </Button>
                 </Stack>
-              </Box>
+    </Box>
+              
             </Box>
           </Fade>
         </Modal>
