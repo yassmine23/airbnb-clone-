@@ -1,8 +1,20 @@
-import React from "react";
+// import React from "react";
 import "../BecomeHostStyle.css";
 import { LanguageIcon } from "@material-ui/icons/Language";
+import React, { useEffect } from "react";
+// import "./BecomeHostStyle.css";
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
+import cookies from "js-cookie";
+import { languages } from './../BecomeAHost';
 export default function Footerhostormore() {
+  const currentLanguageCode = cookies.get("i18next") || "en";
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  const { t } = useTranslation();
+
   return (
     <>
 
@@ -63,8 +75,39 @@ export default function Footerhostormore() {
             </div>
             <div className="col-5 d-flex justify-content-end">
               <div className="me-3">
-                <i className="fa fa-light fa-globe fs-5"></i>
-                <a> Language(Us) </a>
+             
+                <div className="dropdown">
+              <button
+                className="border-0 bg-transparent  dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+               <i className="fa fa-light fa-globe fs-5"></i>
+               <a> Language(Us) </a>
+                {/* Dropdown button */}
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+               
+                {languages.map(({ code, name, country_code }) => (
+                  <li key={country_code}>
+                    <a
+                  href={""}
+                      className={classNames("dropdown-item", {
+                        disabled: currentLanguageCode === code,
+                      })}
+                      onClick={() => {
+                        i18next.changeLanguage(code);
+                      }}
+                    >
+                     
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
               </div>
               <div className="me-5">
                 <a>$ USD</a>
@@ -79,7 +122,43 @@ export default function Footerhostormore() {
           </div>
         </div>
       </footer>
-      
+      {/* <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <span className="dropdown-item-text">{t("language")}</span>
+                </li>
+                {languages.map(({ code, name, country_code }) => (
+                  <li key={country_code}>
+                    <a
+                      href="#"
+                      className={classNames("dropdown-item", {
+                        disabled: currentLanguageCode === code,
+                      })}
+                      onClick={() => {
+                        i18next.changeLanguage(code);
+                      }}
+                    >
+                      <span
+                        className={`flag-icon flag-icon-${country_code} mx-2`}
+                        style={{
+                          opacity: currentLanguageCode === code ? 0.5 : 1,
+                        }}
+                      ></span>
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div> */}
     </>
   );
 }

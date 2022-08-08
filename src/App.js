@@ -28,8 +28,8 @@ import BecomeAHost from './pages/BecomeAHost';
 function App() {
   return (
     <>
-    <BecomeAHost></BecomeAHost>
-{/* 
+    {/* <BecomeAHost></BecomeAHost> */}
+
     <Router>
     
         <Routes>
@@ -43,7 +43,7 @@ function App() {
 
         </Routes>
     </Router>
-    */}
+   
     </>
    
 

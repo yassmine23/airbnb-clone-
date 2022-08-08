@@ -7,17 +7,17 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from './pagehost/footerhostormore';
 
-const languages = [
+export const languages = [
   {
     code: "en",
     name: "English",
-    country_code: "gb",
+    country_code: "USD",
   },
   {
     code: "ar",
     name: "العربية",
     dir: "rtl",
-    country_code: "sa",
+    country_code: "EG",
   },
 ];
 
@@ -62,43 +62,7 @@ export default function BecomeAHost() {
 
         <div className="row bgdark">
           <div className="col-lg-6 col-12 d-flex flex-column align-items-center justify-content-center">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown button
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <span className="dropdown-item-text">{t("language")}</span>
-                </li>
-                {languages.map(({ code, name, country_code }) => (
-                  <li key={country_code}>
-                    <a
-                      href="#"
-                      className={classNames("dropdown-item", {
-                        disabled: currentLanguageCode === code,
-                      })}
-                      onClick={() => {
-                        i18next.changeLanguage(code);
-                      }}
-                    >
-                      <span
-                        className={`flag-icon flag-icon-${country_code} mx-2`}
-                        style={{
-                          opacity: currentLanguageCode === code ? 0.5 : 1,
-                        }}
-                      ></span>
-                      {name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          
             <h1 className="text-white text-center my-5 titles p-2">
               {/* Open your door to hosting */}
               {t("welcome_message")}
