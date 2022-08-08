@@ -1,0 +1,23 @@
+{
+    "app_title": "hosting",
+    "language": "Language",
+    "welcome_message": "Open your door to hosting",
+    "buttonone":"Try hosting",
+    "sectionthree2":"Host your  {{private_room }}   for    {{guests}} in  {{Alexandria}}  and earn up to $390/month",
+   "how":"How we estimate your earnings potential",
+   "modal_sub_title":" We make a few simple assumptions and calculations to determine your earnings:",
+   "model_body1":"If you have an entire place, we assume you can host four guests. If you’re listing a private room, we count that as two guests, and for a shared room, just one guest.You can change your selections in the drop-down menu any time.",
+   "model_body2":"We take the median nightly price (before expenses, fees and taxes) based on booking data in your area from the last 12 months.",
+   "model_body3":"We then multiply that price by the total number of occupied nights to get the monthly earnings estimate. To estimate the number of nights that you might host, we look at how often others in your area are hosting.",
+   "model_body4":"Keep in mind, these are just estimates. How much you actually earn depends on a number of other factors such as your availability, price, acceptance and cancellation rates, any legal restrictions, and demand in your area.", "model_body5":"Also, your ability to host may depend on the local laws in your area.",
+
+"days_since_release": "it's been {{number_of_days}} days since this video was released",
+  "section5":"Help house 100,000 refugees fleeing Ukraine",
+  "buttonLearn":"Learn more",
+  "sectionthree":"Questions about hosting?  Ask a Superhost.",
+  "sectionfour":"Top-to-bottom protection. Always included, always free. Only on Airbnb.",
+  "image":"assets/images/sectionsix1.PNG",
+  "sectionfive1":"Try hosting on Airebnb ",
+  "sectionfive2":"Join us. We’ll help you every step of the way.",
+  "buttontwo":"Let's go !"
+}

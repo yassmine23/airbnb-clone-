@@ -15,6 +15,8 @@ import BecomeAHost from './pages/BecomeAHost';
 function App() {
   return (
     <>
+    {/* <BecomeAHost></BecomeAHost> */}
+
     <Router>
      
     <Box
@@ -30,8 +32,15 @@ function App() {
         <Route path="/details" exact element={<HostingDetails/>} />
 
 
+<<<<<<< HEAD
+=======
+       
+
+
+>>>>>>> amira
         </Routes>
     </Router>
+   
     </>
    
 
