@@ -12,14 +12,12 @@ import { BarSeries } from '@devexpress/dx-react-chart';
 
 
 const data = [
-    { year: '2011', maxPrice: 100 },
-    { year: '2012', maxPrice: 160 },
+  { year: '2011', maxPrice: 100 },
+  { year: '2012', maxPrice: 160 },
   { year: '2016', maxPrice: 100 },
-
   { year: '2013', maxPrice: 90 },
   { year: '2014', maxPrice: 100 },
   { year: '2015', maxPrice: 130 },
-
   { year: '2016', maxPrice: 100 },
   { year: '2017', maxPrice: 150 },
   { year: '2018', maxPrice: 190 },

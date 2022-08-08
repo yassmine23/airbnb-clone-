@@ -7,12 +7,13 @@ import FooterDet from "../components/footer/Footerdet";
 import LastFooter from "../components/lastFooter/lastFooter";
 
 import Container from "@mui/material/Container";
+import Header from "../components/Header";
 
 
 export default function HostingDetails() {
   return (
     <>
-      {/* <HeaderDet /> */}
+      <Header />
       <Container>
         <Home />
         <UnderHome />
