@@ -83,7 +83,7 @@ export default function Footerhostormore() {
                 aria-expanded="false"
               >
                <i className="fa fa-light fa-globe fs-5"></i>
-               <a> Language(Us) </a>
+               <a>  {currentLanguage.name}{currentLanguage.country_code} </a>
                 {/* Dropdown button */}
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">

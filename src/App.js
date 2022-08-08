@@ -48,7 +48,7 @@ function App() {
     <Box
      style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
      >
-          <Header />
+          {/* <Header /> */}
           {/* <OptionsTab /> */}
         </Box>
 
