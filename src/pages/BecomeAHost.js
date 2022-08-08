@@ -6,27 +6,9 @@ import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
+import { languages } from './../components/lang/languages';
 
-export const languages = [
-  {
-    code: "en",
-    name: "English",
-    country_code: "USD",
-  },
-  {
-    code: "ar",
-    name: "العربية",
-    dir: "rtl",
-    country_code: "EG",
-  },
-];
-const private_room = [
-  {
-    accountNumber: "private_room",
-    2: "entire place",
-    3: "shared room",
-  },
-];
+
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
