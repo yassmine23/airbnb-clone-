@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import classNames from "classnames";
-import Footerhostormore from './pagehost/footerhostormore';
+import Footerhostormore from "./pagehost/footerhostormore";
 
 export const languages = [
   {
@@ -20,11 +20,19 @@ export const languages = [
     country_code: "EG",
   },
 ];
-
+const private_room = [
+  {
+    accountNumber: "private_room",
+    2: "entire place",
+    3: "shared room",
+  },
+];
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
+
+  const [value, setValue] = React.useState({});
 
   // const releaseDate = new Date("2021-03-07");
   // const timeDifference = new Date() - releaseDate;
@@ -62,7 +70,6 @@ export default function BecomeAHost() {
 
         <div className="row bgdark">
           <div className="col-lg-6 col-12 d-flex flex-column align-items-center justify-content-center">
-          
             <h1 className="text-white text-center my-5 titles p-2">
               {/* Open your door to hosting */}
               {t("welcome_message")}
@@ -87,9 +94,6 @@ export default function BecomeAHost() {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    {/* <h5 className="modal-title" id="exampleModalLabel">
-                      Log in or sign up
-                    </h5> */}
                     <button
                       type="button"
                       className="btn-close"
@@ -131,15 +135,16 @@ export default function BecomeAHost() {
           </div>
 
           <div className="col-lg-6 col-12">
-            <img src="images/headers.jpg" className="images"></img>
+            <img src="assets/images/headers.jpg" className="images"></img>
           </div>
         </div>
         {/* section two */}
         {/* section three */}
         {/* three section */}
         <div className="container">
-          <div className="row text-center p-5 my-5">
-            <h1 className="profits">
+          <div className="row  p-5 my-5">
+            
+            <h1 className="profits text-center">
               Host your
               <select
                 className="text-decoration-underline border-0"
@@ -227,61 +232,55 @@ export default function BecomeAHost() {
               data-bs-toggle="modal"
               data-bs-target="#exampleModal2"
             >
-              How we estimate your earnings potential{" "}
+              {t("how")}
             </button>
 
             {/* <!-- Modal --> */}
             <div
-              class="modal fade"
+              className="modal fade"
               id="exampleModal2"
               tabIndex={-1}
               aria-labelledby="exampleModalLabel2"
               aria-hidden="true"
             >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
                     <button
                       type="button"
-                      class="btn-close"
+                      className="btn-close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body">
-                    <h1>How we estimate your earning potential</h1>
+                  <div className="modal-body">
+                    <h1> {t("how")}</h1>
                     <p>
-                      We make a few simple assumptions and calculations to
-                      determine your earnings:
+                     {t("modal_sub_title")}
                     </p>
+                    
                     <ul>
+                    
                       <li>
-                        If you have an entire place, we assume you can host four
-                        guests. If you’re listing a private room, we count that
-                        as two guests, and for a shared room, just one guest.
-                        You can change your selections in the drop-down menu any
-                        time.
+                    {t("model_body1")}
+                     
                       </li>
                       <li>
-                        We take the median nightly price (before expenses, fees
-                        and taxes) based on booking data in your area from the
-                        last 12 months.
+                      {t("model_body2")}
+
                       </li>
 
                       <li>
-                        We then multiply that price by the total number of
-                        occupied nights to get the monthly earnings estimate. To
-                        estimate the number of nights that you might host, we
-                        look at how often others in your area are hosting.
+                      {t("model_body3")}
+
                       </li>
                     </ul>
+                    <p>                    {t("model_body4")}
+</p>
                     <p>
-                      Keep in mind, these are just estimates. How much you
-                      actually earn depends on a number of other factors such as
-                      your availability, price, acceptance and cancellation
-                      rates, any legal restrictions, and demand in your area.
-                      Also, your ability to host may depend on the local laws in
-                      your area. <a href="anco">Learn more.</a>
+                    {t("model_body5")}
+
+                      <a href="anco">{t("buttonLearn")}</a>
                     </p>
                   </div>
                 </div>
@@ -311,16 +310,14 @@ export default function BecomeAHost() {
         {/* <div> */}
         <div className=" container-fluid position-relative py-5 mh-100 my-5 text-center col-11">
           <img
-            src="images/sectionfive.jpg"
+            src="assets/images/sectionfive.jpg"
             alt="sectionfive"
             className="w-100 rounded-4"
           />
           <div className="position-absolute top-50 start-50 text-white text-center translate-middle">
-            <h1 className="h-1 my-5">
-            {t("sectionthree")}
-            </h1>
+            <h1 className="h-1 my-5">{t("sectionthree")}</h1>
             <button type="button" className="btn btn-light my-5 px-5 fs-5">
-            {t("buttonLearn")}
+              {t("buttonLearn")}
             </button>
           </div>
         </div>
@@ -333,22 +330,23 @@ export default function BecomeAHost() {
             <div className="col-6 p-5">
               <img src={t("image")} alt="" className="w-50" />
               <div>
-                <p className="fs-2 pt-5 text-wrap lh-sm">
-                {t("sectionfour")}
-
-                </p>
+                <p className="fs-2 pt-5 text-wrap lh-sm">{t("sectionfour")}</p>
               </div>
               <div>
                 <button
                   type="button"
                   className="btn btn-light my-5 px-3 py-2 fs-5 border border-dark text-center"
                 >
-            {t("buttonLearn")}
+                  {t("buttonLearn")}
                 </button>
               </div>
             </div>
             <div className="col-6 align-self-end">
-              <img src="images/sectionsix2.PNG" alt="" className="w-100" />
+              <img
+                src="assets/images/sectionsix2.PNG"
+                alt=""
+                className="w-100"
+              />
             </div>
           </div>
         </div>
@@ -357,20 +355,15 @@ export default function BecomeAHost() {
           <div className="d-flex flex-wrap">
             <div className="col-md-6 col-12">
               <img
-                src="images/section7.PNG "
+                src="assets/images/section7.PNG "
                 alt=""
                 className=""
                 style={{ width: "100%" }}
               />
             </div>
             <div className="col-md-6 col-12 bgdark text-white text-center d-flex flex-column justify-content-center align-items-center">
-              <h1>
-                {t("sectionfive1")}
-              
-              </h1>
-              <p>
-                {t("sectionfive2")}
-              </p>
+              <h1>{t("sectionfive1")}</h1>
+              <p>{t("sectionfive2")}</p>
               <button
                 type="button"
                 className="btn btnhost my-5 px-4 py-2"
