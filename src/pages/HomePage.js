@@ -14,6 +14,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FaSearch, FaRegHeart, FaRegUserCircle } from 'react-icons/fa';
 
+import Fab from '@mui/material/Fab';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import { Link } from "react-router-dom";
+
+
 //footerMenu
 const footerMenu = [
   { id: 1, text: 'Explore', icon: <FaSearch size={18} /> },
@@ -45,8 +50,16 @@ export default function HomePage() {
         >
           <Container maxWidth="xl" sx={{ mb: 3,  }}>
           <Box
-     style={{position: "sticky",top:'0' , backgroundColor:'white'}}
-     >
+
+          sx={{
+            position: "sticky",
+            top: "0",
+            backgroundColor: "white",
+            zIndex: 90,
+          }}
+          style={{position: "sticky",top:'0' , backgroundColor:'white'}}
+        >
+
           <Header />
           <OptionsTab />
         </Box>
@@ -70,8 +83,15 @@ export default function HomePage() {
               <MainCard />
               <MainCard />
             </Stack>
-
-
+ 
+            <Box  sx={{   m: 1,  }}
+            >
+              <Link to={"/map"}>
+            <Fab variant="extended" style={{backgroundColor:'#222222', color:'white', zIndex:50, position:'fixed', bottom:'20%', right:'48%'}}>
+        <MapOutlinedIcon sx={{ mr: 1  }} />
+        show map
+      </Fab>  </Link>
+              </Box>          
           </Container>
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}

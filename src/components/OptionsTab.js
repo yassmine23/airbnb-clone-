@@ -25,6 +25,14 @@ import Stack from "@mui/material/Stack";
 import { useTranslation } from "react-i18next";
 
 
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import ApartmentOutlinedIcon from "@mui/icons-material/ApartmentOutlined";
+import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
+import LocationCityOutlinedIcon from "@mui/icons-material/LocationCityOutlined";
+
+import Switch from '@mui/material/Switch';
+import FormHelperText from '@mui/material/FormHelperText';
+
 
 const style = {
   position: "absolute",
@@ -39,49 +47,24 @@ const style = {
   overflowY: "scroll",
   overflowX: "hidden",
   height: "75vh",
- 
 };
 
-const data = [
-  { year: '2011', maxPrice: 100 },
-  { year: '2012', maxPrice: 160 },
-  { year: '2016', maxPrice: 100 },
-  { year: '2013', maxPrice: 90 },
-  { year: '2014', maxPrice: 100 },
-  { year: '2015', maxPrice: 130 },
-  { year: '2016', maxPrice: 100 },
-  { year: '2017', maxPrice: 150 },
-  { year: '2018', maxPrice: 190 },
-  { year: '2019', maxPrice: 220 },
-  { year: '2020', maxPrice: 250 },
-  { year: '2021', maxPrice: 320 },
-  { year: '2022', maxPrice: 300 },
-  
-];
-
-const buttonStyle={
+const buttonStyle = {
   backgroundColor: "white",
-                    color: "black",
-                    borderRadius: "45%",
-                      fontSize: "16px",
+  color: "black",
+  borderRadius: "45%",
+  fontSize: "16px",
 
-                      "&:focus": {
-                        backgroundColor: "black",
-                        color: "white",
-
-                        },
-                        "&:hover": {
-                          border:'1px solid black',
-                          backgroundColor:'white',
-                          color:'black',
-  
-                          }
-
-}
-
-
-
-
+  "&:focus": {
+    backgroundColor: "black",
+    color: "white",
+  },
+  "&:hover": {
+    border: "1px solid black",
+    backgroundColor: "white",
+    color: "black",
+  },
+};
 
 const OptionsTab = () => {
   const { t } = useTranslation();
@@ -139,6 +122,7 @@ const OptionsTab = () => {
           <FaFilter /> 
           {t("filter")}
         </Button>
+        
           {/* modal **********/}
         <Modal
           aria-labelledby="transition-modal-title"
@@ -284,60 +268,31 @@ const OptionsTab = () => {
                   Bedrooms{" "}
                 </Typography>
                 <Stack spacing={2} direction="row">
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                    
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     Any
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                    
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     1
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     2
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     3
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     4
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     5
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     6
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     7
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     8+
                   </Button>
                 </Stack>
@@ -350,59 +305,31 @@ const OptionsTab = () => {
                   Beds{" "}
                 </Typography>
                 <Stack spacing={2} direction="row">
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     Any
                   </Button>
-                  <Button
-                    variant="contained"
-                    
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     1
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     2
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     3
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     4
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     5
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     6
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     7
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     8+
                   </Button>
                 </Stack>
@@ -415,63 +342,292 @@ const OptionsTab = () => {
                   Bathrooms{" "}
                 </Typography>
                 <Stack spacing={2} direction="row">
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     Any
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     1
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     2
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     3
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     4
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     5
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     6
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     7
                   </Button>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                  >
+                  <Button variant="contained" sx={buttonStyle}>
                     8+
                   </Button>
                 </Stack>
-    </Box>
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              {/* property type */}
+              <Box>
+                <Typography
+                  id="transition-modal-title"
+                  variant="h3"
+                  component="h2"
+                  style={{ fontWeight: "bold", fontSize: 24 }}
+                  sx={{ py: 2 }}
+                >
+                  Property Type
+                </Typography>
+                <div className="container d-flex justify-content-around">
+                  <div className="row ">
+                    <button
+                      className="col-md-4 p-3 text-center m-2"
+                      style={{
+                        width: "150px",
+                        border: "1px solid gray",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <HomeOutlinedIcon fontSize="large" />
+                      <Typography>House </Typography>
+                    </button>
+
+                    <button
+                      className="col-md-4 p-3 text-center m-2"
+                      style={{
+                        width: "150px",
+                        border: "1px solid gray",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <ApartmentOutlinedIcon fontSize="large" />
+                      <Typography>Apartment </Typography>
+                    </button>
+
+                    <button
+                      className="col-md-4 p-3 text-center m-2"
+                      style={{
+                        width: "150px",
+                        border: "1px solid gray",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <MapsHomeWorkOutlinedIcon fontSize="large" />
+                      <Typography>Guesthouse </Typography>
+                    </button>
+
+                    <button
+                      className="col-md-4 p-3 text-center m-2"
+                      style={{
+                        width: "150px",
+                        border: "1px solid gray",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <LocationCityOutlinedIcon fontSize="large" />
+                      <Typography>Hotel </Typography>
+                    </button>
+                  </div>
+                </div>
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 24 }}
+                sx={{ py: 3 }}
+              >
+                Amenities
+              </Typography>
+
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 18 }}
+              >
+                Essentials
+              </Typography>
+              <Box sx={{ display: 'flex', justifyContent:'space-around' }}>
+              <FormGroup>
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Wifi"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Washer"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Air conditioning"
+                />
+              </FormGroup>
+              <FormGroup>
+              <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Kitchen"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Dryer"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Heating"
+                />
+              </FormGroup>
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              <Box>
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 24 }}
+                sx={{ py: 3 }}
+              >
+                Booking options
+              </Typography>
+
+              <FormGroup>
+                 <FormControlLabel control={<Switch  />} label="Instant Book" />
+                 <FormHelperText  style={{position: 'relative', left:'55px',bottom:'10px' ,paddingBottom:'10px'}}>Listings you can book without waiting for Host approval</FormHelperText>
               
+                <FormControlLabel control={<Switch  />} label="Self check-in" />
+                <FormHelperText style={{position: 'relative', left:'55px',bottom:'10px'}}>Easy access to the property once you arrive</FormHelperText>
+                </FormGroup>
+
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              <Box>
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 24 }}
+              >
+             Accessibility features
+              </Typography>
+              <Typography
+                id="transition-modal-title"
+                variant="body2"
+                component="p"
+                style={{  fontSize: 16, color:'gray' }}
+                sx={{ py: 1 }}
+              >
+                 This info was provided by the Host and reviewed by Airbnb.
+              </Typography>
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 18 }}
+              >
+                Guest entrance and parking
+              </Typography>
+              <Box sx={{ display: 'flex', justifyContent:'space-around' }}>
+              <FormGroup>
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Step-free guest entrance"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Accessible parking spot"
+                />
+               
+              </FormGroup>
+              <FormGroup>
+              <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Guest entrance wider than 32 inches"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Step-free path to the guest entrance"
+                />
+                
+              </FormGroup>
+              </Box>
+
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              <Box>
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 24 }}
+                sx={{ py: 3 }}
+              >
+               Top tier stays
+              </Typography>
+
+              <FormGroup>
+                 <FormControlLabel control={<Switch  />} label="Superhost" />
+                 <FormHelperText  style={{position: 'relative', left:'55px',bottom:'10px' ,paddingBottom:'10px'}}>Stay with recognized Hosts</FormHelperText>
+              
+                <FormControlLabel control={<Switch  />} label="Airbnb Plus" />
+                <FormHelperText style={{position: 'relative', left:'55px',bottom:'10px'}}>A selection of places to stay verified for quality and design</FormHelperText>
+                </FormGroup>
+              </Box>
+
+              <Divider sx={{ py: 5 }} />
+
+              <Box>
+              <Typography
+                id="transition-modal-title"
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 24 }}
+              >
+             Host language
+              </Typography>
+              
+              <Box sx={{ display: 'flex', justifyContent:'space-around',py:3 }}>
+              <FormGroup>
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="English"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="German"
+                />
+               
+              </FormGroup>
+              <FormGroup>
+              <FormControlLabel
+                  control={<Checkbox  />}
+                  label="French"
+                />
+                <FormControlLabel
+                  control={<Checkbox  />}
+                  label="Arabic"
+                />
+                
+              </FormGroup>
+              </Box>
+
+              </Box>
+
             </Box>
           </Fade>
         </Modal>

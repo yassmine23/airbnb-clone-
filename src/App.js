@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import OptionsTab from "./components/OptionsTab";
 
 
+
 import HeaderDet from "./components/header/headerdet";
 import Home from "./components/home/home";
 import UnderHome from "./components/underHome/underHome";
@@ -21,6 +22,8 @@ import { BrowserRouter as Router, Switch, Route, Link, Routes } from "react-rout
 import HomePage from './pages/HomePage';
 import HostingDetails from './pages/HostingDetails';
 import BecomeAHost from './pages/BecomeAHost';
+import MapPage from "./pages/MapPage";
+
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
@@ -56,6 +59,8 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
+        <Route path="/map" exact element={<MapPage />} />
+
 
 
         </Routes>
