@@ -61,9 +61,7 @@ function Slider() {
       console.log(i);
     }
   }
-  // function handleChange3(){
-
-  // }
+ 
   return (
     <Row className="mainContainer m-0 p-0">
       <Col lg={12} className="p-0">
