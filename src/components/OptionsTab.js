@@ -22,6 +22,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Stack from "@mui/material/Stack";
+import { useTranslation } from "react-i18next";
+
 
 
 const style = {
@@ -82,6 +84,8 @@ const buttonStyle={
 
 
 const OptionsTab = () => {
+  const { t } = useTranslation();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -132,9 +136,10 @@ const OptionsTab = () => {
           }}
           onClick={handleOpen}
         >
-          <FaFilter /> Filters
+          <FaFilter /> 
+          {t("filter")}
         </Button>
-                               {/* modal **********/}
+          {/* modal **********/}
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"

@@ -8,6 +8,7 @@ import LastFooter from "../components/lastFooter/lastFooter";
 
 import Container from "@mui/material/Container";
 import Header from "../components/Header";
+import Footerhostormore from './pagehost/footerhostormore';
 
 
 export default function HostingDetails() {
@@ -18,9 +19,12 @@ export default function HostingDetails() {
         <Home />
         <UnderHome />
         <UpperFooter />
-        <FooterDet />
+        {/* <FooterDet /> */}
       </Container>
-      <LastFooter />
+      <Footerhostormore/>
+
+      {/* <LastFooter /> */}
+     
     </>
   );
 }

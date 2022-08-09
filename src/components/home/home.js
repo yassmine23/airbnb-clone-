@@ -5,6 +5,7 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { positions } from '@mui/system';
 import { spacing } from '@mui/system';
+import { useTranslation } from "react-i18next";
 
 
 function Item(props:BoxProps ) {
@@ -30,13 +31,14 @@ function Item(props:BoxProps ) {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
 <>   
 <div className='container' style={{position: 'relative',}}>
 <h1>Nature Observatory om Secluded Island</h1>
-  <Box style={{ textDecoration:'underLine'}} sx={{ mb: 2 }}> <StarIcon/>4.71.43reviews . Badachor,Scotland,UnitedKingdom</Box>
- <span style={{position: 'absolute',top: 65, right: '7%',textDecoration:'underLine'}}> <IosShareIcon/>share </span>
-<span style={{position: 'absolute',top: 65, right: '0%',textDecoration:'underLine'}}> <FavoriteBorderIcon/> save </span>
+  <Box style={{ textDecoration:'underLine'}} sx={{ mb: 2 }}> <StarIcon/>4.71.43{t("reviews")} . Badachor,Scotland,UnitedKingdom</Box>
+ <span style={{position: 'absolute',top: 65, right: '7%',textDecoration:'underLine'}}> <IosShareIcon/>{t("share")} </span>
+<span style={{position: 'absolute',top: 65, right: '0%',textDecoration:'underLine'}}> <FavoriteBorderIcon/> {t("save")} </span>
 </div>
 
         <div style={{ width: '100%' }}>

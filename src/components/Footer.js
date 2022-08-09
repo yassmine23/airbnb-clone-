@@ -24,7 +24,9 @@ import {
   justifyCenter,
   fullWidthFlex,
 } from "../themes/commonStyles";
-
+import Langs from "./lang/languages";
+import { useTranslation } from "react-i18next";
+import Footerhostormore from './../pages/pagehost/footerhostormore';
 const footerLinks = [
   { id: 1, text: "Privacy", url: "#" },
   { id: 2, text: "Terms", url: "#" },
@@ -33,6 +35,7 @@ const footerLinks = [
 ];
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
@@ -68,9 +71,9 @@ const Footer = () => {
             <Paper sx={justifyCenter}>
               <Button>
                 <Box sx={{ ...justifyCenter, mr: 1 }}>
-                  <BsGlobe size={24} />
+                  {/* <BsGlobe size={24} /> */}
                 </Box>
-                English (US)
+              <Langs/>
               </Button>
               <Button> $USD </Button>
               <Button onClick={() => setIsDrawerOpen(true)}>
@@ -97,16 +100,16 @@ const Footer = () => {
                       style={{ color: "black", fontWeight: "bold" }}
                     >
                       {" "}
-                      Support
+                      {t("support")}
                     </Typography>
                     {[
-                      "Help Centre",
+                      t("helpc"),
                       "Air Cover",
-                      "Safety Information",
-                      "Supporting people with disabilities",
-                      "Cancellation options",
-                      "Our covid-19 Response",
-                      "Report a neighbourhood concern",
+                      t("Safetyinformation"),
+                      t("supporting"),
+                      t("cancellation"),
+                      t("our"),
+                      t("report"),
                     ].map((text, index) => (
                       <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -124,14 +127,13 @@ const Footer = () => {
                       
                       style={{ color: "black", fontWeight: "bold" }}
                     >
-                      {" "}
-                      Community
+                      {t("community")}
                     </Typography>
                     {[
-                      "Airbnb.org: disaster relief housing",
-                      "Support Afghan refugees",
-                      "Combating discrimination",
-                      "Combating discrimination",
+                      t("disaster"),
+                      t("refugees"),
+                      t("Combating"),
+                      
                     ].map((text, index) => (
                       <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -148,15 +150,14 @@ const Footer = () => {
                       component="h4"
                       style={{ color: "black", fontWeight: "bold" }}
                     >
-                      {" "}
-                      Hosting
-                    </Typography>
+                   {t("app_title") }
+                   </Typography>
                     {[
-                      "Try hosting",
-                      "AirCover for Hosts",
-                      "Explore hosting resourses",
-                      "Visit our community foroum",
-                      "How to host responsibly",
+                      t("buttonone"),
+                      t("AirCover"),
+                      t("Explore"),
+                      t("Visit"),
+                      t("responsibly"),
                     ].map((text, index) => (
                       <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -178,12 +179,12 @@ const Footer = () => {
                     </Typography>
                     {[ 
                       
-                      "Newsroom",
-                      "Learn about new features",
-                      "Letter from our founders",
-                      "Careers",
-                      "Investors",
-                      "Gift cards",
+                      t("Newsroom"),
+                      t("Learn"),
+                      t("Letter"),
+                      t("Careers"),
+                      t("Investors"),
+                      t("Giftcards"),
                     ].map((text, index) => (
                       
                       <ListItem key={text} disablePadding>

@@ -36,14 +36,21 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import { FaSearch } from 'react-icons/fa';
 import { VscSettings } from 'react-icons/vsc';
-const choices = [
-  { id: 1, text: "Anywhere", altText: "Stays" },
-  { id: 2, text: "Any week", altText: "Experiences" },
-  { id: 3, text: "Add guest", withIcon: true, altText: "Online Experiences" },
-];
+import { useTranslation } from "react-i18next";
+import { LangIcone } from './lang/languages';
+
+
 
 const Header = () => {
-
+const { t } = useTranslation();
+let where=t("anywhere");
+let week=t("anyweek");
+let addg=t("addguest");
+const choices = [
+  { id: 1, text: where, altText: "Stays" },
+  { id: 2, text: week, altText: "Experiences" },
+  { id: 3, text: addg, withIcon: true, altText: "Online Experiences" },
+];
   // serch
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -196,11 +203,12 @@ const Header = () => {
           <Box sx={displayOnDesktop}>
 
             <Box sx={flexCenter}>
-      <Link to={"/host"}  style={{textDecoration:'none', color:'black', fontWeight:'bold', fontSize:'14px'}}> Become A Host</Link>
+      <Link to={"/host"}  style={{textDecoration:'none', color:'black', fontWeight:'bold', fontSize:'14px'}}>{t("BecomeAHost")}</Link>
     
       <Stack>
+        {/* change lang */}
         <Button>
-          <BsGlobe size={24} />
+          <LangIcone/>
         </Button>
         <Button
           sx={{
@@ -255,23 +263,22 @@ const Header = () => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-         Sign up
+        {t("singup")}
         </MenuItem>
         <MenuItem>
-           Log in
+        {t("login")}
         </MenuItem>
         <Divider />
         <MenuItem>
-          
-          Host your home
+        {t("hostyourhome")}
         </MenuItem>
         <MenuItem>
           
-          Host an experience
+        {t("experience")}
         </MenuItem>
         <MenuItem>
           
-          Help
+        {t("help")}
         </MenuItem>
       </Menu>
       </Stack>

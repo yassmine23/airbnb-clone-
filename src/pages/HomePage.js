@@ -45,7 +45,7 @@ export default function HomePage() {
         >
           <Container maxWidth="xl" sx={{ mb: 3,  }}>
           <Box
-     style={{position: "sticky",top:'0px' , backgroundColor:'white'}}
+     style={{position: "sticky",top:'0' , backgroundColor:'white'}}
      >
           <Header />
           <OptionsTab />

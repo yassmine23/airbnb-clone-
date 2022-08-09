@@ -9,9 +9,12 @@ import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from '@mui/icons-material/Star';
 import { FaRegHeart } from 'react-icons/fa';
+import { useTranslation } from "react-i18next";
 
 
 export default function MainCard() {
+  const { t } = useTranslation();
+
   return (
     <>
     
@@ -57,7 +60,7 @@ export default function MainCard() {
           
             style={{ color: "black", fontWeight: "bold" }}
           >
-            $ 1,350 total
+            $ 1,350 {t("total")}
           </Typography>
 
           
