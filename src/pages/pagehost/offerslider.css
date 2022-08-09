@@ -1,0 +1,50 @@
+.mainContainer {
+  width: auto;
+  margin-left: 0% !important;
+  margin-right: 0% !important;
+  background-color: #ffffff !important;
+}
+.thirdRow {
+  margin-left: 25%;
+}
+.imgBadge {
+  position: relative;
+}
+.Badge {
+  position: absolute;
+  top: 5%;
+}
+.instanceCard {
+  border-style: solid;
+  border-color: #367ac800 !important;
+  border-radius: 33px;
+}
+.textcolor {
+  color: #666666;
+  font-size: 80% !important;
+  font-weight: bold !important;
+  white-space: wrap;
+}
+.textprice {
+  color: blue;
+  font-size: small !important;
+  margin-left: 4%;
+  white-space: nowrap;
+}
+.textpricebefore {
+  font-size: small !important;
+  white-space: nowrap;
+}
+.corona {
+  width: 4% !important;
+  height: 60% !important;
+}
+.firstRowText {
+  font-size: larger;
+  font-weight: bolder;
+  color: #666666;
+}
+.secoundRowText {
+  font-size: small !important;
+  color: #6f7072;
+}

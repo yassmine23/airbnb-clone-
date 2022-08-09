@@ -7,6 +7,7 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
+import Slider from './pagehost/slider';
 
 
 export default function BecomeAHost() {
@@ -121,6 +122,7 @@ export default function BecomeAHost() {
           </div>
         </div>
         {/* section two */}
+        <Slider/>
         {/* section three */}
         {/* three section */}
         <div className="container">
