@@ -48,7 +48,7 @@ function Requestsuser() {
         <div className=" col-lg-6   mb-3">
           <h4>{t("trap")}</h4>
           <div>
-            <div>
+            <div className="my-4 ">
               <h5>{t("dates")}</h5>
               <h5 className="text-end">{t("edit")}</h5>
               <span>{"Oct 31 – Nov 29"}</span>
