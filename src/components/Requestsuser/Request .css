@@ -1,0 +1,22 @@
+a:link,h3 {
+    text-decoration: none;
+    color: #FF385C;
+  }
+  
+a:visited,h3:visited {
+    text-decoration: none;
+    color: #FF385C;
+
+  }
+  
+a:hover,h3:hover {
+    text-decoration: none;
+    color: #FF385C;
+
+  }
+  
+a:active,h3:active {
+    text-decoration: none;
+    color: #FF385C;
+
+  }

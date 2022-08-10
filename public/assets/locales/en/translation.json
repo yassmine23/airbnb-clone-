@@ -85,12 +85,23 @@
 "Wheresleep":"Where you'll sleep",
 "offers":"What this place offers",
 "GUESTS":"GUESTS",
+"GUEST":"GUEST",
+
 "CHECKOUT":"CHECKOUT",
 "CHECKIN":"CHECK-IN",
 "reviews":"reviews",
 "check":"Reserve",
 "servicefee":" Service fee ",
 "hargedyet":"You won't be charged yet",
-"Totalbeforetaxes":"Total before taxes"
+"Totalbeforetaxes":"Total before taxes",
 
+
+
+"paytitle":"Confirm and pay",
+"notetitle":"Good price.",
+"note":"Your dates are $24 less than the avg. nightly rate over the last 3 months.",
+"trap":"Your trip",
+"dates":"Dates",
+"edit":"Edit",
+"":""
 }
