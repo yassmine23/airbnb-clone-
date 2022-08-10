@@ -18,13 +18,13 @@ export default function MainCard() {
   return (
     <>
     
-      <Card sx={{ maxWidth: 280, borderRadius:2,  }}  >
+      <Card sx={{ maxWidth: 280, borderRadius:2, }}  >
         
       <Link to={"/details"}  >
 
         <CardMedia
           component="img"
-          height="270"
+          // height="270"
           image="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
           alt="green iguana"
         />
@@ -43,9 +43,7 @@ export default function MainCard() {
             style={{ color: "black", fontWeight: "bold" }}
           >
             Nordland, Norway
-            <IconButton style={{ position: "static", right: 10, bottom: 0, zIndex: 10  }}
-         
-        >
+            <IconButton style={{ position: "static", right: 10, bottom: 0, zIndex: 10  }}>
           <StarIcon color="warning"/>
         </IconButton> 
           </Typography>

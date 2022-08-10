@@ -6,9 +6,7 @@ import Footer from "../components/Footer";
 
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import { displayOnDesktop } from "../themes/commonStyles";
+
 
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -19,24 +17,37 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 import { Link } from "react-router-dom";
 
 
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup,useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import {Icon} from 'leaflet';
 
+import { useState} from "react";
 
+function LocationMarker() {
+  const [position, setPosition] = useState(null)
+  const map = useMapEvents({
+      click() {
+          map.locate()
+      },
+      locationfound(e) {
+          setPosition(e.latlng)
+          map.flyTo(e.latlng, map.getZoom())
+      },
+  })
 
-
-//footerMenu
-const footerMenu = [
-  { id: 1, text: 'Explore', icon: <FaSearch size={18} /> },
-  { id: 2, text: 'Wishlist', icon: <FaRegHeart size={18} /> },
-  { id: 3, text: 'Login', icon: <FaRegUserCircle size={18} /> },
-];
-
-//map
+  return position === null ? null : (
+      <Marker position={position} removable editable icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+          <Popup>You are here</Popup>
+      </Marker>
+  )
+}
 
 
 export default function MapPage() {
-  return (
+  
+ return (
+    
     <React.Fragment>
       <CssBaseline />
 
@@ -63,20 +74,36 @@ export default function MapPage() {
         
          
           <Box sx={{display:'flex', justifyContent:'center', width:'100%', zIndex:1}}>
-        <MapContainer center={[30.044420, 31.235712]} zoom={7} scrollWheelZoom={false}>
+        <MapContainer center={[52.520008, 13.404954]} zoom={3} scrollWheelZoom={false}>
            <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-           {/* <Marker position={[51.505, -0.09]}>
+           <Marker position={[52.520008, 13.404954]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+               <MainCard  sx={{ height:'50px' }}/>
                </Popup>
-           </Marker> */}
+           </Marker>
+
+           <Marker position={[48.856613, -2.352222]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+               <Popup>
+               <MainCard  sx={{ height:'50px' }}/>
+               </Popup>
+           </Marker>
+
+           <Marker position={[41.902782, 12.496365]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+               <Popup>
+               <MainCard  sx={{ height:'50px' }}/>
+               </Popup>
+           </Marker>
+
+           
+           <LocationMarker />
+
        </MapContainer>
        </Box>
             <Box  sx={{   m: 1,  }}
             >
-          <Link to={"/"}>  <Fab variant="extended" style={{backgroundColor:'#222222', color:'white', zIndex:50, position:'fixed', bottom:'10%', right:'48%',}}>
+          <Link to={"/"}>  <Fab variant="extended" style={{backgroundColor:'#222222', color:'white', zIndex:50, position:'fixed', bottom:'20%', right:'48%',}}>
         <FormatListBulletedOutlinedIcon sx={{ mr: 1  }} />
         show lists
       </Fab> </Link>
