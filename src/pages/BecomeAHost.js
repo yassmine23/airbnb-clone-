@@ -122,7 +122,14 @@ export default function BecomeAHost() {
           </div>
         </div>
         {/* section two */}
+        <div className="my-5 d-flex justify-content-center flex-column align-items-center">
+          <div className=" ms-5 ps-5 " style={{}}>
+        </div>
+        <h1 className="pt-5 mt-5 text-center" style={{fontSize:"4.4em",width:"10em"}}>{t("youcanhost")}</h1> 
+
         <Slider/>
+        </div>
+     
         {/* section three */}
         {/* three section */}
         <div className="container">

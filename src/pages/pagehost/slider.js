@@ -5,17 +5,13 @@ import { useState } from "react";
 import Badge from "react-bootstrap/Badge";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import "./offerslider.css";
+import { useTranslation } from "react-i18next";
+
 function Slider() {
+  const { t } = useTranslation();
+
   const names = [
-    "",
-    "Hosting my studio changed my life and gifted me with memorable experiences and people.",
-    "Hosting my home allowed me to become an entrepreneur and laid down a path to financial freedom.",
-    "We’re able to keep our culture alive by hosting our pasta-making experience.",
-    "Airbnb has allowed me to create my own job doing what I love — taking care of guests in our home",
-    "I love hosting my eco-home so people can connect with nature and their loved ones.",
-    "Hosting my bedouin tent has introduced me to people around the world",
-    "",
+    "",t("reke1"),t("darrel1"),t("nerina1"),t("clair1"),t("moh1"),t("marko1"),"",
   ];
   const images = [
     "",
@@ -38,14 +34,7 @@ function Slider() {
     " ",
   ];
   const pirceBefore = [
-    "",
-    "Host in Milan",
-    "Host in Atlanta",
-    "Host in Palombara Sabina",
-    "Host in Chiang Mai",
-    "Host in Paraty",
-    "Host in Wadi Rum",
-    " ",
+    "",t("reke2"),t("darrel12"),t("nerina2"),t("clair2"),t("moh2"),t("marko2"),"",
   ];
 
   const [i, setI] = useState(0);
@@ -61,65 +50,79 @@ function Slider() {
       console.log(i);
     }
   }
-  // function handleChange3(){
 
-  // }
   return (
-    <Row className="mainContainer m-0 p-0">
-      <Col lg={12} className="p-0">
-        <Row className="thirdRow m-0 p-0  ">
-          <Row className="p-0 m-0 d-flex justify-content-center  d-flex align-items-center ">
-            <div
-              className="p-0 me-2"
-              style={{ width: "3%", hight: "3%", fontSize: ".1rem" }}
-            >
-            
-            </div>
-            <Card className="p-0 me-3 instanceCard" style={{ width: "17%" }}>
-              <Card.Img variant="top" src={images[i]} className="imgBadge" />
-              <Card.Body>
-                <span className="textpricebefore text-decoration-line-through "></span>
-              </Card.Body>
-            </Card>
+    <>
 
-            <Card className="p-0 me-3 instanceCard" style={{ width: "17%" }}>
-              <Card.Img
-                variant="top"
-                src={images[i + 1]}
-                className="imgBadge"
-              />
-              <Card.Body>
-                <Card.Title className="textcolor text-center">
-                  {names[i + 1]}
-                </Card.Title>
+      <Row className=" m-0 p-0">
+        <Col lg={12} className="p-0">
+          <Row className=" m-0 p-0  flex-nowrap">
+            <Row className="p-0 m-5 d-flex align-items-center flex-nowrap ">
+            {/* 1 */}
+              <Card className="p-0 me-3 border border-0" style={{width:'30%'}}>
+                <Card.Img
+                  variant="top"
+                  src={images[i]}
+                  className=" w-100 shadow "
+                />
               
-                <Card.Img variant="top" src={pirce[i + 1]} className="imgBadge w-50" />
-                <button onClick={handleChange2} className="btn btn-light rounded-5">
-                    <ArrowBackIosNewIcon sx={{ height: 11, width: 11 }} />
-                  </button>
-                  <button onClick={handleChange1} className="btn btn-light rounded-5">
-                    <ArrowForwardIosIcon sx={{ height: 11, width: 11 }} />
-                  </button>
-            
-                <span className="textpricebefore text-decoration-line-through ">
-                  {pirceBefore[i + 1]}
-                </span>
-              </Card.Body>
-            </Card>
+              </Card>
+              {/* 2 */}
+              <Card className="p-0 me-3 border border-0 "style={{width:'30%'}} >
+                <Card.Img
+                  variant="top"
+                  src={images[i + 1]}
+                  className="shadow"
+                />
+                <Card.Body>
+                  <Card.Title className=" text-start">
+                    {names[i + 1]}
+                  </Card.Title>
 
-            <Card className="p-0 me-3 instanceCard " style={{ width: "17%" }}>
-              <Card.Img
-                variant="top"
-                src={images[i + 2]}
-                className="imgBadge"
-              />
-            </Card>
+                  <Card.Img
+                    variant="top"
+                    src={pirce[i + 1]}
+                    className=" w-50  "
+                  />
+                  <button
+                    onClick={handleChange2}
+                    className="btn btn-light rounded-5"
+                  >
+                    <ArrowBackIosNewIcon sx={{ height: 15, width: 15 }} />
+                  </button>
+                  <button
+                    onClick={handleChange1}
+                    className="btn btn-light rounded-5"
+                  >
+                    <ArrowForwardIosIcon sx={{ height: 15, width: 15 }} />
+                  </button><br/>
 
-         
+                  <span className="text-start">
+                    {pirceBefore[i + 1]}
+                  </span>
+                </Card.Body>
+              
+              </Card>
+              {/* 3 */}
+              <Card className="p-0 me-3 border border-0 " style={{width:'30%'}} >
+                <Card.Img
+                  variant="top"
+                  src={images[i + 2]}
+                  className="w-100 shadow"
+                />
+              </Card>
+              <Card className="p-0 me-3 border border-0 "  style={{width:'30%'}}>
+                <Card.Img
+                  variant="top"
+                  src={images[i + 3]}
+                  className="w-100 shadow"
+                />
+              </Card>
+            </Row>
           </Row>
-        </Row>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </>
   );
 }
 

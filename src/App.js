@@ -29,6 +29,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import { languages } from './components/lang/languages';
+import Requestsuser from './components/Requestsuser/Requestsuser ';
 
 
 function App() {
@@ -44,28 +45,28 @@ function App() {
 
   return (
     <>
-    {/* <BecomeAHost></BecomeAHost> */}
-
+  
     <Router>
      
     <Box
      style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
      >
-          {/* <Header /> */}
-          {/* <OptionsTab /> */}
+          
         </Box>
 
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
+
         <Route path="/map" exact element={<MapPage />} />
 
+        <Route path="/details/book" exact element={<Requestsuser/>} />
 
 
         </Routes>
     </Router>
-   
+    
     </>
    
 

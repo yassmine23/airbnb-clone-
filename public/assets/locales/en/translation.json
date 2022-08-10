@@ -3,6 +3,19 @@
     "language": "Language",
     "welcome_message": "Open your door to hosting",
     "buttonone":"Try hosting",
+    "youcanhost":"You can host anything, anywhere",
+    "reke1":"Hosting my studio changed my life and gifted me with memorable experiences and people.",
+    "reke2":"Host in Milan    ",
+    "darrel1":"Hosting my home allowed me to become an entrepreneur and laid down a path to financial freedom. ",
+"darrel12":"Host in Atlanta",
+"nerina1":"We’re able to keep our culture alive by hosting our pasta-making experience.",
+"nerina2":"Host in Palombara Sabina",
+"clair1":"Airbnb has allowed me to create my own job doing what I love — taking care of guests in our home."  ,
+"clair2":"Host in Chiang Mai",
+"moh1":"Hosting my bedouin tent has introduced me to people around the world.",
+"moh2":"Host in Wadi Rum",
+"marko1":"I love hosting my eco-home so people can connect with nature and their loved ones.",
+"marko2":"Host in Paraty",
     "sectionthree2":"Host your  {{private_room }}   for    {{guests}} in  {{Alexandria}}  and earn up to $390/month",
    "how":"How we estimate your earnings potential",
    "modal_sub_title":" We make a few simple assumptions and calculations to determine your earnings:",
@@ -72,12 +85,23 @@
 "Wheresleep":"Where you'll sleep",
 "offers":"What this place offers",
 "GUESTS":"GUESTS",
+"GUEST":"GUEST",
+
 "CHECKOUT":"CHECKOUT",
 "CHECKIN":"CHECK-IN",
 "reviews":"reviews",
 "check":"Reserve",
 "servicefee":" Service fee ",
 "hargedyet":"You won't be charged yet",
-"Totalbeforetaxes":"Total before taxes"
+"Totalbeforetaxes":"Total before taxes",
 
+
+
+"paytitle":"Confirm and pay",
+"notetitle":"Good price.",
+"note":"Your dates are $24 less than the avg. nightly rate over the last 3 months.",
+"trap":"Your trip",
+"dates":"Dates",
+"edit":"Edit",
+"":""
 }
