@@ -42,9 +42,7 @@ function App() {
 
   return (
     <>
-    <Requestsuser/>
-    {/* <BecomeAHost></BecomeAHost> */}
-{/* 
+  
     <Router>
      
     <Box
@@ -57,11 +55,12 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
+        <Route path="/details/book" exact element={<Requestsuser/>} />
 
 
         </Routes>
     </Router>
-    */}
+    
     </>
    
 
