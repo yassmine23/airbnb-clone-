@@ -50,7 +50,13 @@ function Requestsuser() {
           <div>
             <div>
               <h5>{t("dates")}</h5>
-              <p>{"Oct 31 – Nov 29"}</p>
+              <h5 className="text-end">{t("edit")}</h5>
+              <span>{"Oct 31 – Nov 29"}</span>
+            </div>
+            <div>
+              <h5>{t("Guests")}</h5>
+              <h5 className="text-end">{t("edit")}</h5>
+              <span>{1}{t("Guest")}</span>
             </div>
           </div>
         </div>
