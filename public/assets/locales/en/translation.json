@@ -97,10 +97,15 @@
 
 
 
-"paytitle":"Confirm and pay",
+"paytitle":"Request to book",
 "notetitle":"Good price.",
 "note":"Your dates are $24 less than the avg. nightly rate over the last 3 months.",
 "trap":"Your trip",
 "dates":"Dates",
-"edit":"Edit"
+"edit":"Edit",
+"choose":"Choose how to pay",
+"pricedetails":"Price details",
+"protected":"Your booking is protected by",
+"taxes":"Occupancy taxes and fees",
+"totalp":"Total"
 }
