@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React,{ useEffect ,useState} from "react";
 import {
     PayPalScriptProvider,
     PayPalButtons,
@@ -6,9 +6,9 @@ import {
 } from "@paypal/react-paypal-js";
 
 // This values are the props in the UI
-const amount = "2";
- const currency = "USD";
-const style = {"layout":"vertical"};
+const amount = "100";
+const currency = "USD";
+const style = {"color":"white"};
 
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -61,9 +61,12 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
     );
 }
 
-export default function PaypalC() {
-	return (
-		<div style={{ maxWidth: "750px", minHeight: "200px" }}>
+export default function PayPalC() {
+    const [checkout, setCheckOut] = useState(false);
+
+	return <>
+        {checkout ? (
+            <div style={{ maxWidth: "615px", minHeight: "200px" }}>
             <PayPalScriptProvider
                 options={{
                     "client-id": "test",
@@ -73,9 +76,76 @@ export default function PaypalC() {
             >
 				<ButtonWrapper
                     currency={currency}
-                    showSpinner={false}
+                    showSpinner={true}
                 />
 			</PayPalScriptProvider>
-		</div>
-	);
+		</div>          ) : (
+            <button
+              onClick={() => {
+                setCheckOut(true);
+              }}
+            >
+              Checkout
+            </button>
+          )}
+		</>
+
 }
+
+// test
+// import React, { useEffect ,useRef,useState} from "react";
+
+//  function Paypalcheckout (){
+//     const paypal = useRef();
+
+//     useEffect(() => {
+//       window.paypal
+//         .Buttons({
+//           createOrder: (data, actions, err) => {
+//             return actions.order.create({
+//               intent: "CAPTURE",
+//               purchase_units: [
+//                 {
+//                   description: "Cool looking table",
+//                   amount: {
+//                     currency_code: "USD",
+//                     value: 6500,
+//                   },
+//                 },
+//               ],
+//             });
+//           },
+//           onApprove: async (data, actions) => {
+//             const order = await actions.order.capture();
+//             console.log(order);
+//           },
+//           onError: (err) => {
+//             console.log(err);
+//           },
+//         })
+//         .render(paypal.current);
+//     }, []);
+  
+//     return (
+//       <div>
+//         <div ref={paypal}></div>
+//       </div>
+//     );
+// }
+
+// export default function PayPalC () {
+//     const [checkout, setCheckOut] = useState(false);
+//     return <>
+//       {checkout ? (
+//         <Paypalcheckout />
+//       ) : (
+//         <button
+//           onClick={() => {
+//             setCheckOut(true);
+//           }}
+//         >
+//           Checkout
+//         </button>
+//       )}
+//     </>
+// }
