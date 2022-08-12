@@ -17,6 +17,9 @@ import { FaSearch, FaRegHeart, FaRegUserCircle } from 'react-icons/fa';
 import Fab from '@mui/material/Fab';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Link } from "react-router-dom";
+import SearchDetails from '../components/SearchDetails';
+import { useState, useEffect } from "react";
+
 
 
 
@@ -27,8 +30,24 @@ const footerMenu = [
   { id: 3, text: 'Login', icon: <FaRegUserCircle size={18} /> },
 ];
 
+//show&hide header
+
 
 export default function HomePage() {
+  const [isOpen, setIsOpen] = useState(false);
+const [anchorEl, setAnchorEl] = React.useState(null);
+
+const handleClose = () => {
+
+    console.log("windowClicked")
+    setAnchorEl(null);
+    setIsOpen(false);
+  
+};
+useEffect(() => {
+  
+  document.addEventListener("click", handleClose);
+}, []);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -58,9 +77,8 @@ export default function HomePage() {
             backgroundColor: "white",
             zIndex: 90,
           }}
-          style={{position: "sticky",top:'0' , backgroundColor:'white'}}
+          style={{position: "sticky",top:'0' , backgroundColor:'white', }}
         >
-
           <Header />
           <OptionsTab />
         </Box>
