@@ -17,7 +17,6 @@ import { FaSearch, FaRegHeart, FaRegUserCircle } from 'react-icons/fa';
 import Fab from '@mui/material/Fab';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Link } from "react-router-dom";
-import SearchDetails from '../components/SearchDetails';
 import { useState, useEffect } from "react";
 
 
