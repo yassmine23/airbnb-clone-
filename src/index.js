@@ -10,6 +10,8 @@ import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import HttpApi from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 i18next
   .use(HttpApi)
   .use(LanguageDetector)
@@ -40,7 +42,9 @@ root.render(
   <Suspense fallback={loadingMarkup}>
 
   <AppThemeProvider>
+  <Provider store={store}>
     <App />
+  </Provider>
   </AppThemeProvider>
   </Suspense>
 );
