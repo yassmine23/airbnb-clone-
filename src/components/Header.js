@@ -1,36 +1,29 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { FaAirbnb } from 'react-icons/fa';
 import { flexCenter } from '../themes/commonStyles';
 import { pink } from '@mui/material/colors';
-
-import { Link } from "react-router-dom";
-import {
-  flexBetweenCenter,
-  dFlex,
-  displayOnDesktop,
-} from '../themes/commonStyles';
-
-import { useState, useEffect } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { flexBetweenCenter , dFlex , displayOnDesktop} from '../themes/commonStyles';
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
-
 import { IoSearchCircleSharp } from "react-icons/io5";
-
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
 import { BsGlobe } from 'react-icons/bs';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import { FaSearch } from 'react-icons/fa';
+import { VscSettings } from 'react-icons/vsc';
 import { useTranslation } from "react-i18next";
 import { LangIcone } from './lang/languages';
-
 import Nav from "react-bootstrap/Nav";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Popover from "@mui/material/Popover";
@@ -39,11 +32,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
 import TextField from '@mui/material/TextField';
-
-
 // + & -
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import { useSelector } from 'react-redux';
 
 
 
@@ -179,6 +171,21 @@ const choices = [
     const openCheckIn = Boolean(anchorCheckIn);
     const idCheckIn = openCheckIn ? 'simple-popover' : undefined;
 
+    //////
+  const sing = useSelector((state)=>state.userData.info)
+  const isEmpety = Object.keys(sing).length ===0
+
+  const navigate = useNavigate()
+  const profile =()=>{
+    navigate('/user')
+
+  }
+  const log =()=>{
+    navigate('/logIn')
+  }
+  const signUp =()=>{
+    navigate('/signUp')
+  }
   
   return (
     <Box
@@ -369,12 +376,15 @@ const choices = [
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
+        {(isEmpety)?<Box><MenuItem onClick={signUp}>
         {t("singup")}
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={log}>
         {t("login")}
-        </MenuItem>
+        </MenuItem></Box>
+        :<MenuItem onClick={profile}>
+        {t("Profile")}
+        </MenuItem>}
         <Divider />
         <MenuItem>
         {t("hostyourhome")}
