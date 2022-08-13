@@ -28,10 +28,6 @@ import { BsGlobe } from 'react-icons/bs';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import { FaSearch } from 'react-icons/fa';
-import { VscSettings } from 'react-icons/vsc';
 import { useTranslation } from "react-i18next";
 import { LangIcone } from './lang/languages';
 
@@ -68,7 +64,6 @@ const choices = [
  
   const handleClose = () => {
   
-      console.log("windowClicked")
       setAnchorEl(null);
       setIsOpen(false);
     
@@ -227,8 +222,9 @@ const choices = [
          
             {/* LocationSearch */}
 
-          <Box sx={displayOnDesktop}   style={{ display: isOpen ? 'none': 'flex' }}
-          >
+          <Box 
+             style={{ display: isOpen ? 'none' :  'block'  }}
+           >
 
       <Paper 
         sx={{
@@ -293,7 +289,7 @@ const choices = [
           </Box>
           
           {/* Navs */}
-          <Box style={{ display: isOpen ? 'flex': 'none', }}>
+          <Box  style={{ display: isOpen ? 'flex': 'none' }}>
             
               <Nav >
                 <Nav.Item>
@@ -395,31 +391,7 @@ const choices = [
       </Stack>
     </Box>
           </Box>
-          
-          {/* MobileSearch  */}
-
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <Paper
-      component="form"
-      sx={{
-        p: '2px 4px',
-        display: 'flex',
-        alignItems: 'center',
-        width: 400,
-        border: '1px solid #ccc',
-        borderRadius: 20,
-      }}
-    >
-      <IconButton sx={{ p: '10px' }}>
-        <FaSearch />
-      </IconButton>
-      <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Where to?" />
-      <IconButton type="submit" sx={{ p: '10px' }}>
-        <VscSettings />
-      </IconButton>
-    </Paper>
-          </Box> 
-
+        
         </Box>
 
         {/* navbar */}

@@ -19,6 +19,13 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+// import { FaSearch } from 'react-icons/fa';
+import { VscSettings } from 'react-icons/vsc';
+import Paper from "@mui/material/Paper";
+
+
 
 
 
@@ -38,7 +45,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
 const handleClose = () => {
 
-    console.log("windowClicked")
+    // console.log("windowClicked")
     setAnchorEl(null);
     setIsOpen(false);
   
@@ -75,12 +82,47 @@ useEffect(() => {
             top: "0",
             backgroundColor: "white",
             zIndex: 90,
+            display: { xs: 'none', md: 'block' }
           }}
-          style={{position: "sticky",top:'0' , backgroundColor:'white', }}
         >
           <Header />
           <OptionsTab />
         </Box>
+
+        {/* MobileSearch  */}
+        <Container maxWidth="xl" sx={{ mb: 3,  }}>
+          <Box
+
+          sx={{
+            position: "fixed",
+            top: "0",
+            zIndex: 90,
+            my:2,
+            display: { xs: 'block', md: 'none' }
+          }}
+        >
+            <Paper
+      component="form"
+      sx={{
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent:'center',
+        width: 400,
+        border: '1px solid #ccc',
+        borderRadius: 20,
+      }}
+    >
+      <IconButton sx={{ p: '10px' }}>
+        <FaSearch />
+      </IconButton>
+      <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Where to?" />
+      <IconButton type="submit" sx={{ p: '10px' }}>
+        <VscSettings />
+      </IconButton>
+            </Paper>
+          </Box>
+          </Container>
 
             <div className='container d-flex'> 
             <div className='row '>
