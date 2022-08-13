@@ -22,6 +22,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebaseConfig';
 import UsersAccounts, { HosterAccounts,RequstsData } from './Redux/Actions/AllActions';
+import LogIn from './components/Forms/logIn';
+import SignUp from './components/Forms/signUp';
+import UserProfile from './components/Profiles/user profile/user-Profile';
+import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
 
 
 function App() {
@@ -90,6 +94,10 @@ function App() {
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
         <Route path="/map" exact element={<MapPage />} />
+        <Route path="/logIn" exact element={<LogIn />} />
+        <Route path="/signUp" exact element={<SignUp />} />
+        <Route path="/user" exact element={<UserProfile />} />
+        <Route path="/hoster" exact element={<HosterProfile />} />
 
 
 
