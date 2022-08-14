@@ -8,9 +8,12 @@ import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from '@mui/icons-material/Star';
-import { FaRegHeart } from 'react-icons/fa';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import { FaRegHeart } from 'react-icons/fa';
 import { useTranslation } from "react-i18next";
 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 export default function MainCard() {
   const { t } = useTranslation();
@@ -18,35 +21,49 @@ export default function MainCard() {
   return (
     <>
     
-      <Card sx={{ maxWidth: 280, borderRadius:2, }}  >
-        
-      <Link to={"/details"}  >
-
-        <CardMedia
-          component="img"
-          // height="270"
-          image="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
-          alt="green iguana"
-        />
-              </Link>
-
-        <Box sx={{position:'relative', bottom:'250px', left:'230px'}}>
-        <FaRegHeart size={24} color="#fff" />
-      </Box>
+      <Card sx={{ maxWidth: 280, borderRadius:2}}  >
       
+  
+  <div > <IconButton sx={{ color:'#fff', position:'relative', top:'60px',left:'200px',zIndex:'5' }}>
+          <FavoriteBorderIcon /> 
+        </IconButton>
+            <Carousel infiniteLoop useKeyboardArrows >
+              
+                <div>
+                    <img src="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I" />
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+                </div>
+                
+                <div>
+                    <img src="https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1432958576632-8a39f6b97dc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80" />
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1503424886307-b090341d25d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" />
+                </div>
+            </Carousel>
+            
+        </div>
+              
+      <Link to={"/details"}  >
         <CardContent>
           
-          <Typography
+        <Box sx={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>  <Typography
             gutterBottom
             variant="h4"
             component="h4"
             style={{ color: "black", fontWeight: "bold" }}
           >
             Nordland, Norway
-            <IconButton style={{ position: "static", right: 10, bottom: 0, zIndex: 10  }}>
-          <StarIcon color="warning"/>
-        </IconButton> 
           </Typography>
+          <IconButton sx={{fontSize:'16px', color:'#222222'}}>
+          <StarIcon /> 4.17
+        </IconButton>
+        </Box>
           
           <Typography variant="body2" color="text.secondary">
             Individual Host
@@ -63,6 +80,7 @@ export default function MainCard() {
 
           
         </CardContent>
+        </Link>
       </Card>
     </>
   );

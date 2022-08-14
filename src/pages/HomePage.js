@@ -17,6 +17,16 @@ import { FaSearch, FaRegHeart, FaRegUserCircle } from 'react-icons/fa';
 import Fab from '@mui/material/Fab';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+// import { FaSearch } from 'react-icons/fa';
+import { VscSettings } from 'react-icons/vsc';
+import Paper from "@mui/material/Paper";
+
+
+
 
 
 //footerMenu
@@ -26,8 +36,24 @@ const footerMenu = [
   { id: 3, text: 'Login', icon: <FaRegUserCircle size={18} /> },
 ];
 
+//show&hide header
+
 
 export default function HomePage() {
+  const [isOpen, setIsOpen] = useState(false);
+const [anchorEl, setAnchorEl] = React.useState(null);
+
+const handleClose = () => {
+
+    // console.log("windowClicked")
+    setAnchorEl(null);
+    setIsOpen(false);
+  
+};
+useEffect(() => {
+  
+  document.addEventListener("click", handleClose);
+}, []);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -56,33 +82,67 @@ export default function HomePage() {
             top: "0",
             backgroundColor: "white",
             zIndex: 90,
+            display: { xs: 'none', md: 'block' }
           }}
-          style={{position: "sticky",top:'0' , backgroundColor:'white'}}
         >
-
           <Header />
           <OptionsTab />
         </Box>
 
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 1, sm: 2, md: 4 }}
-            >
-              <MainCard />
-              <MainCard />
-              <MainCard />
-              <MainCard />
-            </Stack>
+        {/* MobileSearch  */}
+        <Container maxWidth="xl" sx={{ mb: 3,  }}>
+          <Box
 
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 1, sm: 2, md: 4 }}
-            >
-              <MainCard />
-              <MainCard />
-              <MainCard />
-              <MainCard />
-            </Stack>
+          sx={{
+            position: "fixed",
+            top: "0",
+            zIndex: 90,
+            my:2,
+            display: { xs: 'block', md: 'none' }
+          }}
+        >
+            <Paper
+      component="form"
+      sx={{
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent:'center',
+        width: 400,
+        border: '1px solid #ccc',
+        borderRadius: 20,
+      }}
+    >
+      <IconButton sx={{ p: '10px' }}>
+        <FaSearch />
+      </IconButton>
+      <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Where to?" />
+      <IconButton type="submit" sx={{ p: '10px' }}>
+        <VscSettings />
+      </IconButton>
+            </Paper>
+          </Box>
+          </Container>
+
+            <div className='container d-flex'> 
+            <div className='row '>
+
+              <MainCard className='col-md-3 col-sm-1 '/>
+              <MainCard className='col-md-3  col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3  col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard  className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3  col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              <MainCard className='col-md-3 col-sm-1'/>
+              </div>
+            </div>
+
+            
  
             <Box  sx={{   m: 1,  }}
             >

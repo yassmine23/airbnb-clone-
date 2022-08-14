@@ -74,7 +74,7 @@ export default function MapPage() {
         
          
           <Box sx={{display:'flex', justifyContent:'center', width:'100%', zIndex:1}}>
-        <MapContainer center={[52.520008, 13.404954]} zoom={3} scrollWheelZoom={false}>
+        <MapContainer center={[52.520008, 13.404954]} zoom={4} scrollWheelZoom={false}>
            <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>

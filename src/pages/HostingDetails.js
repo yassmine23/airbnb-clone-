@@ -9,9 +9,11 @@ import LastFooter from "../components/lastFooter/lastFooter";
 import Container from "@mui/material/Container";
 import Header from "../components/Header";
 import Footerhostormore from './pagehost/footerhostormore';
+import { useSelector } from 'react-redux';
 
 
 export default function HostingDetails() {
+  console.log(useSelector((state)=>state.allHosters.hosters));
   return (
     <>
       <Header />
