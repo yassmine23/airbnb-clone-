@@ -8,7 +8,7 @@ import Link from '@mui/material/Link';
 import { positions } from '@mui/system';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import GppGoodIcon from '@mui/icons-material/GppGood';
-import EventBusyIcon from '@mui/icons-material/EventBusy';
+ import EventBusyIcon from '@mui/icons-material/EventBusy';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import WifiOutlinedIcon from '@mui/icons-material/WifiOutlined';
 import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
@@ -19,7 +19,11 @@ import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOu
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
  
- 
+
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { format } from 'date-fns';
+import { DateRangePicker } from 'react-date-range';
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
@@ -48,6 +52,8 @@ import {
         // import Button from "@material-ui/core/Button";
         // import Tooltip from "@material-ui/core/Tooltip";
         // import "./index.css";
+// import { ResetIcon } from './../../node_modules/@docsearch/react/dist/esm/icons/ResetIcon';
+// import { rippleEffect } from './../../node_modules/@syncfusion/ej2-base/src/animation';
 
  //check availbility
 
@@ -84,9 +90,78 @@ import {
       margin: theme.spacing(1),
     },
   }));
-
+  
 
 const UnderHome = () => {
+
+    //date and pickers
+    
+    const [ startDate, setStartDate]=useState(new Date());
+         const [ endDate, setEndDate]=useState(new Date());
+    
+    
+        
+         function handelSelect(ranges){
+            
+          var x1=  setStartDate(ranges.selection.startDate);
+          var x2= setEndDate(ranges.selection.endDate);
+          document.getElementById('fixedP').innerText= ''
+          document.getElementById('selecteddates').innerText=`start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`
+          document.getElementById('reddit-input1').value=`${ranges.selection.startDate.toDateString()}`
+          document.getElementById('reddit-input2').value=`${ranges.selection.endDate.toDateString()}`
+// reserve
+        //    var x=parseInt(ranges.selection.endDate.toDateString()-ranges.selection.startDate.toDateString())
+        //    console.log(x)
+
+        
+        var date1 = new Date(ranges.selection.startDate);
+        var date2 = new Date(ranges.selection.endDate);
+        // To calculate the time difference of two dates
+       var Difference_In_Time = date2.getTime() - date1.getTime();
+
+      // To calculate the no. of days between two dates
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+    //   console.log(Difference_In_Days)
+          document.getElementById('NightsNo').innerText=`$149 x ${Difference_In_Days} nights`
+          document.getElementById('ServiceFee').innerText=`Service Fee`
+           document.getElementById('NightsPrice').innerText=`$ ${eval(149*Difference_In_Days)}`
+        
+          let y=parseInt(eval(149*Difference_In_Days));
+          document.getElementById('FeePrice').innerText=`$ ${eval(0.14*y).toFixed(0)}`
+          let z=parseInt(eval(0.14*y).toFixed(0));
+          document.getElementById('totalPrice').innerText=`Total before taxes`
+          let x=(y+z) 
+        //   document.getElementById('actualPrice').innerText=`$ ${y+z}`
+          document.getElementById('actualPrice').innerText=`$ ${x}`
+
+
+            
+         };
+        
+
+         const SelectionRange={
+            startDate: startDate,
+            endDate: endDate,
+            key:'selection',
+         }
+
+  const clear= () => {
+    setStartDate('');
+            setEndDate('');
+            document.getElementById('selecteddates').innerText=''
+            document.getElementById('fixedP').innerText= 'Add your travel dates for exact pricing'
+            document.getElementById('reddit-input1').value= "add date"
+          document.getElementById('reddit-input2').value= "add date"
+// reserve 
+          document.getElementById('NightsNo').innerText=''
+          document.getElementById('ServiceFee').innerText=''
+          document.getElementById('NightsPrice').innerText=''
+          document.getElementById('FeePrice').innerText=''
+          document.getElementById('totalPrice').innerText=''
+          document.getElementById('actualPrice').innerText=''
+  }
+
 
   // + & - 1
   const [count1, setCount1] = useState(0);
@@ -94,8 +169,10 @@ const UnderHome = () => {
     setCount1(count1 + 1);
   };
   const DecNum1 = () => {
-    if (count1 > 0) setCount1(count1 - 1);
-    else {
+    if (count1 > 0) {
+    setCount1(count1 - 1);
+    
+    }else {
       setCount1(0);
       alert("min limit reached");
     }
@@ -104,10 +181,13 @@ const UnderHome = () => {
   const [count2, setCount2] = useState(0);
   const IncNum2 = () => {
     setCount2(count2 + 1);
+    
   };
   const DecNum2 = () => {
-    if (count2 > 0) setCount2(count2 - 1);
-    else {
+    if (count2 > 0){ 
+        setCount2(count2 - 1);
+        document.getElementById('GuestsNo').innerText= `${count2} Adults`
+    }else {
       setCount2(0);
       alert("min limit reached");
     }
@@ -118,8 +198,10 @@ const UnderHome = () => {
     setCount3(count3 + 1);
   };
   const DecNum3 = () => {
-    if (count3 > 0) setCount3(count3 - 1);
-    else {
+    if (count3 > 0){ 
+        setCount3(count3 - 1);
+         
+    }else {
       setCount3(0);
       alert("min limit reached");
     }
@@ -130,34 +212,32 @@ const UnderHome = () => {
     setCount4(count4 + 1);
   };
   const DecNum4 = () => {
-    if (count4 > 0) setCount4(count4 - 1);
-    else {
+    if (count4 > 0){
+         setCount4(count4 - 1);
+     
+    }else {
       setCount4(0);
       alert("min limit reached");
     }
   };
 
-
-
-   function clear(){
-        //   Value.reset();
-        
-                        //     if(newValue){
-                        //         setValue(newValue);
-                        //     }else{
-                        //         setValue(null);
-                        //     }
-                        // }
+  const addGuests =(ev)=>{
+ 
+    if(count1 !==0 || count2 !==0 || count3 !==0 || count4 !==0){
+        document.getElementById('GuestsNo').innerText= `${count1} Adults, ${count2} children, ${count3} Infants, ${count4} pets `
     }
+//    ev.target.Popover('hiden')
+   
+  }
 
 //check availability
     const classes = useStyles();
 
 //calender
-    const [value, setValue] = React.useState([null, null]);
+    const [value , setValue] = React.useState([null, null]);
     
-
-
+    
+/////////////////////////////////
     const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 5,
   borderRadius: 5,
@@ -243,6 +323,9 @@ return <>
                         onChange={(newValue) => {
                         setValue(newValue);
                         }}
+                    //     minDate={new Date()}
+                    //     ranges={[SelectionRange]}
+                    //   onChange={handelSelect}
                         renderInput={(startProps, endProps) => (
                         <React.Fragment>
                             <TextField {...startProps} />
@@ -261,7 +344,7 @@ return <>
 
 
     <Grid item xs={5} style={{position:'relative', marginTop:'50px'}}>
-        <Box style={{height:'100hv' , boxShadow:'0px 1px 26px -6px rgba(0,0,0,0.59)',position:'sticky',top:'150px',bottom:'599px', marginLeft:'50px',  width:'50wv',borderRadius:'20px', border:'1px solid lightgray'}}   p={2}> 
+        <Box style={{height:'100hv' , boxShadow:'0px 1px 26px -6px rgba(0,0,0,0.59)',position:'sticky',top:'55px',bottom:'599px', marginLeft:'50px',  width:'50wv',borderRadius:'20px', border:'1px solid lightgray'}}   p={2}> 
        
           
                 <Grid container>
@@ -289,14 +372,15 @@ return <>
                                         className={classes.margin}
                                         defaultValue="Add date"
                                         variant="filled"
-                                        id="reddit-input"
+                                        id="reddit-input1"
                                     />
                             </form>
                               
                             </Box>
                             <Box    p={2}> 
                              <p style={{fontWeight:'bold', fontSize: 12}}>GUESTS</p>
-                             <p style={{ fontSize: 15}}> 1 guest</p>
+                             <p style={{ fontSize: 15}} id='GuestsNo'></p>
+                             
                             </Box>
                         </Grid>
                         <Grid item xs={6} >
@@ -307,11 +391,11 @@ return <>
                                         className={classes.margin}
                                         defaultValue="Add date"
                                         variant="filled"
-                                        id="reddit-input"
+                                        id="reddit-input2"
                                     />
                             </form>
                             </Box>
-                            <Box p={2}>
+                            <Box p={2} style={{position:'relative'}}>
 
 
 
@@ -319,9 +403,9 @@ return <>
 
                             <PopupState variant="popover" popupId="demo-popup-popover" style={{position:'relative'}}>
                             {(popupState) => (
-                                <div style={{position:'absolute', top:'62%',right:'7%', color:'black'}}>
+                                <div style={{position:'absolute', top:'44%',right:'7%', color:'black'}}>
                                 <Button variant="contained" {...bindTrigger(popupState)}>
-                                {/* <ExpandMoreIcon/> */}
+                             
                                     <ExpandMoreIcon />
                                 </Button>
                                 <Popover
@@ -340,7 +424,7 @@ return <>
                                        
                                     <Grid container>
                                         <Grid item xs={7} s>
-                                            <Box  > 
+                                            <Box > 
                                                  <h4>Adults</h4>
                                                  <p>Age 13+</p>
                                                  <h4>Children</h4>
@@ -446,6 +530,11 @@ return <>
                                             </Box>
                                         </Grid>
                                     </Grid>
+                                     
+                      <button type='Submit' value='Submit' style={{color:'white', backgroundColor:'blue',borderRadius:'10px',position:'absolute', right:'7%'}} onClick={addGuests(Event)}>ok</button>
+                      {/* <button class="btn btn-primary OK">OK</button> */}
+                      
+                      
                                     {/* <Grid  container>
                                         <Grid item xs={6} >
                                             <Box> 
@@ -466,26 +555,7 @@ return <>
 
 
 
-
-
-
-
-
-
-
-
-
                              {/* <ExpandMoreIcon style={{fontSize:'30px',marginLeft:'135px', marginTop:'30px'}}/> */}
-
-
-
-
-
-
-
-
-
-
 
                             </Box>
                         </Grid>
@@ -512,22 +582,25 @@ return <>
                                     }} 
                                 > 
             <Typography sx={{ p: 2 }}>
-                          {/* popOver */}
+                          
 
                 <Grid container>
                         <Grid item xs={5} s>
                             <Box p={2}> 
                              <h3>Select dates</h3>
-                             <p>Add your travel dates for exact pricing</p>
+                             <p id='selecteddates'></p>
+                             <p id='fixedP'>Add your travel dates for exact pricing</p>
                             </Box>  
                         </Grid>
-                        <Grid item xs={7} >
+                        {/* <Grid item xs={7} >
                             <Box p={2} >
                             <form className={classes.root} noValidate>
                                     <RedditTextField
                                         label="CHECK-IN"
                                         className={classes.margin}
                                         defaultValue="MM/DD/YYYY"
+                                        // value={startDate}
+                                        value={value}
                                         variant="filled"
                                         id="reddit-input"
                                     />
@@ -537,16 +610,24 @@ return <>
                                         label="CHECKOUT"
                                         className={classes.margin}
                                         defaultValue="MM/DD/YYYY"
+                                        // value={endDate}
+                                        value={value}
                                         variant="filled"
-                                        id="reddit-input"
+                                        id="reddit-input1"
                                     />
                             </form>
                             </Box>
-                        </Grid>
+                        </Grid> */}
                 </Grid> 
                        
-                  {/* calender in popover */}
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <div>
+        <DateRangePicker
+           ranges={[SelectionRange]}
+           onChange={handelSelect}
+        />
+     </div>
+     <Button onClick={clear} style={{position:'absolute', right:'30px', color:'black', textDecoration:'underLine', }}>CLEAR DATES</Button>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <StaticDateRangePicker
                     style={{position:'relative'}}
                         displayStaticWrapperAs="desktop"
@@ -554,13 +635,6 @@ return <>
                         onChange={(newValue) => {
                         setValue(newValue);
                         }}
-                        // onChange={(newValue) => {
-                        //     if(newValue){
-                        //         setValue(newValue);
-                        //     }else{
-                        //         setValue(null);
-                        //     }
-                        // }}
                         renderInput={(startProps, endProps) => (
                         <React.Fragment>
                             <TextField {...startProps} />
@@ -569,24 +643,70 @@ return <>
                         </React.Fragment>
                         )}
                     />
-                            <Button onClick={()=>clear()} style={{position:'absolute', right:'110px', color:'black', textDecoration:'underLine', }}>CLEAR DATES</Button>
+                            <Button onClick={clear} style={{position:'absolute', right:'110px', color:'black', textDecoration:'underLine', }}>CLEAR DATES</Button>
                             <Button style={{position:'absolute', right:'20px',borderRadius:'10px',marginBottom:'80px', backgroundColor:'black', color:'white'}}>closE</Button>
-                            </LocalizationProvider>
-                  {/* popOver */}
+                            </LocalizationProvider> */}
+               
           </Typography>
       </Popover>
                                 </div>
                             )}
                         </PopupState>
+
+{/* under check availability */}
+                        <Grid container style={{borderBottom:'1px solid lightgray'}}>
+                        <Grid item xs={9} s>
+                            <Box p={2}> 
+                             {/* <h3>Select dates</h3> */}
+                             <p id='NightsNo'> </p>
+                             <p id='ServiceFee'> </p>
+                            </Box>  
+                        </Grid>
+                        <Grid item xs={3} s>
+                            <Box p={2}> 
+                             {/* <h3>Select dates</h3> */}
+                             <p id='NightsPrice'> </p>
+                             <p id='FeePrice'> </p>
+                            </Box>  
+                        </Grid>
+                    </Grid>
+
+                    <Grid container >
+                        <Grid item xs={9} s>
+                            <Box p={2}> 
+                             <p id='totalPrice' style={{fontWeight:'bold', fontSize:'20px'}}></p>
+                            </Box>  
+                        </Grid>
+                        <Grid item xs={3} s>
+                            <Box p={2}> 
+                             <p id='actualPrice' style={{fontWeight:'bold', fontSize:'20px'}}> </p>
+                              
+                            </Box>  
+                        </Grid>
+                        </Grid>
+                    <Button style={{borderRadius:'5px',marginLeft:'95px' ,marginTop:'15px',fontSize:'20px', paddingLeft:'75px', paddingRight:'75px',textAlign:'center', backgroundColor:'gray', color:'white'}} >
+                                    Reserve  
+                                </Button>
+{/* <Link to={`/details/${m.id}`}><a  className="btn btn-primary">show details</a></Link> */}
+
+
+
                    </Box> 
                 {/* <Button onClick={()=>SimpleModal()} style={{borderRadius:'5px',marginLeft:'30px',marginTop:'15px',fontSize:'20px', paddingLeft:'55px', paddingRight:'55px',textAlign:'center', backgroundColor:'red', color:'white'}}>Check Availability</Button> */}
 
         </Box>
-    </Grid>
+
+                 
+
+
+
+
+
+    </Grid>             
 </Grid>
 
 
-{/* <Link to={`/details/${m.id}`}><a  className="btn btn-primary">show details</a></Link> */}
+
 
 
 
