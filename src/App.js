@@ -1,18 +1,8 @@
 import React, { useEffect,useState } from "react";
 import Box from "@mui/material/Box";
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/amira
-
 import "./App.css";
-
-
-<<<<<<< HEAD
 import { BrowserRouter as Router, Switch, Route, Link, Routes } from "react-router-dom";
-=======
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
->>>>>>> origin/amira
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import HostingDetails from './pages/HostingDetails';
 import BecomeAHost from './pages/BecomeAHost';
