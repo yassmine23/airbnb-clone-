@@ -1,87 +1,77 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-// import Link from "@mui/material/Link";
+
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
-import StarIcon from '@mui/icons-material/Star';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import StarIcon from "@mui/icons-material/Star";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 // import { FaRegHeart } from 'react-icons/fa';
 import { useTranslation } from "react-i18next";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+
+//bootstrap
+import { useState } from "react";
+import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 
 export default function MainCard() {
   const { t } = useTranslation();
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
 
   return (
     <>
-    
-      <Card sx={{ maxWidth: 280, borderRadius:2}}  >
-      
-  
-  <div > <IconButton sx={{ color:'#fff', position:'relative', top:'60px',left:'200px',zIndex:'5' }}>
-          <FavoriteBorderIcon /> 
-        </IconButton>
-            <Carousel infiniteLoop useKeyboardArrows >
-              
-                <div>
-                    <img src="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I" />
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
-                </div>
-                
-                <div>
-                    <img src="https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1432958576632-8a39f6b97dc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80" />
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1503424886307-b090341d25d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" />
-                </div>
-            </Carousel>
-            
-        </div>
-              
-      <Link to={"/details"}  >
-        <CardContent>
-          
-        <Box sx={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>  <Typography
-            gutterBottom
-            variant="h4"
-            component="h4"
-            style={{ color: "black", fontWeight: "bold" }}
-          >
-            Nordland, Norway
-          </Typography>
-          <IconButton sx={{fontSize:'16px', color:'#222222'}}>
-          <StarIcon /> 4.17
-        </IconButton>
-        </Box>
-          
-          <Typography variant="body2" color="text.secondary">
-            Individual Host
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            6-11 may
-          </Typography>
-          <Typography
-          
-            style={{ color: "black", fontWeight: "bold" }}
-          >
-            $ 1,350 {t("total")}
-          </Typography>
+   
+      <div className="container d-flex">
+        <div className="row ">
 
-          
-        </CardContent>
-        </Link>
-      </Card>
+          <Card className="col-md-3  col-sm-1 border-0 "   >
+          <IconButton  aria-label="add an alarm" size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
+  <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
+</IconButton>
+            <Carousel
+              activeIndex={index}
+              onSelect={handleSelect}
+              interval={50000}
+
+            >
+              
+              <Carousel.Item >
+                <img  
+                  className="d-block w-100  rounded " 
+                  src="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 rounded"
+                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  alt="Second slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 rounded"
+                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  alt="third slide"
+                />
+              </Carousel.Item>
+            </Carousel>
+
+            <Card.Body className="text-muted">
+              <Card.Title className="text-black">Rome, Italy</Card.Title>
+              <div >3.200 kilometers away</div>
+              <div >Aug 29-sep 3</div>
+              <div >$270 night</div>
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
     </>
   );
 }
