@@ -107,5 +107,16 @@
 "pricedetails":"Price details",
 "protected":"Your booking is protected by",
 "taxes":"Occupancy taxes and fees",
-"totalp":"Total"
+"totalp":"Total",
+"required":"Required for your trip",
+"message":"Message the Host",
+"let":"Let the Host know why you're traveling and when you'll check in.",
+"cancellationpolicy":"Cancellation policy",
+"freeancellation":"Free cancellation for 48 hours.",
+"cancel":" Cancel before {{time-cancel}} for a partial refund.",
+"cancel_by":"Cancel by",
+"accepts":" Your reservation won’t be confirmed until the Host accepts your request (within 24 hours).",
+"charged":"You won’t be charged until then.",
+"joined":" Joined in "
+
 }
