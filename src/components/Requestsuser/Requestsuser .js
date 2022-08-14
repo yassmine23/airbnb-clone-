@@ -2,10 +2,10 @@ import React from "react";
 import "./Request .css";
 import { useTranslation } from "react-i18next";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import { Link } from "react-router-dom";
 import FooterChangeLang from "./footerchangelang";
-import PaypalC from './paypal';
+import PaypalC from "./paypal";
 
 function Requestsuser() {
   const { t } = useTranslation();
@@ -48,12 +48,11 @@ function Requestsuser() {
             </div>
             <h2>{t("paytitle")}</h2>
           </div>
-          {/* not error */}
           <div className="row col-12 justify-content-between mt-5">
-            <div className="border border-1 rounded-4 col-lg-6 p-4 mt-5 mb-3">
+            {/* <div className="border border-1 rounded-4 col-lg-6 p-4 mt-5 mb-3">
               <h5>{t("notetitle")}</h5>
               <p>{t("note")}</p>
-            </div>
+            </div> */}
 
             <div className=" col-md-6 mb-3 me-5">
               <h4>{t("trap")}</h4>
@@ -72,16 +71,109 @@ function Requestsuser() {
               </div>
               <div>
                 <h4>{t("Pay with")}</h4>
-                <PaypalC/>
+                <PaypalC />
+                <hr />
               </div>
-              <div>
-                <button type="btn button" className="btn btnhost my-5 px-4 py-2">{t("paytitle")}</button>
-             
-              </div>
-            </div>
-            {/* not reeoe */}
+              <form className="row g-3">
+                <div>
+                  <h4>{t("required")}</h4>
+                  <h6>{t("message")}</h6>
+                  <p>{t("let")}</p>
+                </div>
+                <div className="">
+                  <label for="validationDefault05" className="form-label">
+                    <div className="row g-0">
+                      <div className="col-1 me-3">
+                        <img
+                          src="/assets/images/slid1.jpg"
+                          className="img-fluid rounded-circle"
+                          alt="..."
+                        />
+                      </div>
+                      <div className="col-10">
+                        <div className="card-body">
+                          <h5 className="card-title">The Arctic Hideaway</h5>
+                          <small className="card-text">{t("joined")}2020</small>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                  <textarea
+                    rows="4"
+                    cols="5"
+                    className="form-control"
+                    id="validationDefault05"
+                    required
+                  ></textarea>
+                </div>
+                <hr />
+                <div>
+                  <h4>{t("cancellationpolicy")}</h4>
+                  <h6>{t("freeancellation")}</h6>
+                  <small>{t("cancel")}</small>
+                  <small
+                    className="h6 text-decoration-underline "
+                    data-bs-toggle="modal"
+                    data-bs-target="#cancellationpolicy"
+                  >
+                    {t("buttonLearn")}
+                  </small>
+                  <hr/>
+                </div>
+                {/* <!-- Modal --> */}
+                <div
+                  className="modal fade"
+                  id="cancellationpolicy"
+                  tabIndex="-1"
+                  aria-labelledby="cancellationpolicyLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-body">
+                        <button
+                          type="button"
+                          className="btn-close mb-3"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
 
-            <div className="col-md-5 ms-4">
+                        <h4
+                          className="modal-title mb-5"
+                          id="cancellationpolicyLabel"
+                        >
+                          {t("cancellationpolicy")}
+                        </h4>
+                        <h5>{t("cancel_by")}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-1">
+                  <PendingActionsIcon style={{color:"#FF385C",fontSize:"30"}}/>
+                  </div>
+                  <div className="col-11">
+                    <p className="h6">
+                      {t("accepts")}
+                    </p>
+                  <p>{t("charged")}</p>
+                  </div>
+                  <hr/>
+                </div>
+                <div className="col-12">
+                  <button
+                    type="btn button"
+                    className="btn btnhost my-5 px-4 py-2"
+                  >
+                    {t("paytitle")}
+                  </button>
+                </div>
+              </form>
+              <div></div>
+            </div>
+            <div className="col-md-5 ms-4 my-5">
               <div className=" border position-sticky top-0 rounded-4 d-flex  flex-column p-4">
 
                 <div className="card mb-3 border-0" style={{ maxWidth: "140" }}>
@@ -113,10 +205,15 @@ function Requestsuser() {
                   <hr />
                 </div>
 
-                 <div>
-                  <p>{t("protected")}<b><span style={{ color: "#FF385C" }}> Air</span>Cover</b></p>
+                <div>
+                  <p>
+                    {t("protected")}
+                    <b>
+                      <span style={{ color: "#FF385C" }}> Air</span>Cover
+                    </b>
+                  </p>
                   <hr />
-                </div> 
+                </div>
 
                 <h5>{t("pricedetails")}</h5>
                 <div className="row">
@@ -130,9 +227,9 @@ function Requestsuser() {
                     <p>$156.03</p>
                     <p>$132.62</p>
                   </div>
-                </div> 
+                </div>
 
-                 <hr />
+                <hr />
                 <div className="row">
                   <div className="col-9">
                     <h6>{t("totalp")} (USD)</h6>
@@ -141,13 +238,13 @@ function Requestsuser() {
                     <p>$1,393.85</p>
                   </div>
                 </div>
-                 
               </div>
             </div>
           </div>
         </div>
       </div>
-      <FooterChangeLang/>
+
+      <FooterChangeLang />
     </>
   );
 }
