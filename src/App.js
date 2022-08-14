@@ -18,9 +18,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import { languages } from './components/lang/languages';
-<<<<<<< HEAD
 import Requestsuser from './components/Requestsuser/Requestsuser ';
-=======
 import { useDispatch, useSelector } from "react-redux";
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebaseConfig';
@@ -29,7 +27,6 @@ import LogIn from './components/Forms/logIn';
 import SignUp from './components/Forms/signUp';
 import UserProfile from './components/Profiles/user profile/user-Profile';
 import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
->>>>>>> 9a5cb7a3050abd4e8657f4abee8ce60e74d0354b
 
 
 function App() {
@@ -37,7 +34,6 @@ function App() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  //
   const dispatch = useDispatch()
   const allUser = useSelector((state)=>state.allUsers.users)
   const[use,setUsers]= useState(allUser)
@@ -52,13 +48,12 @@ function App() {
   const[requests,setRequests]= useState(allRequests)
   const requestCollect = collection(db, "Requests")
 
-  //
+  
   useEffect(() => {
    
     document.body.dir = currentLanguage.dir || "ltr";
     document.title = t("app_title");
 
-    //
     const getUsers = async()=>{
       const data = await getDocs(userCollect);
      setUsers(data.docs.map( (doc) => ( {...doc.data(), id: doc.id} ) ))
@@ -74,7 +69,7 @@ function App() {
    getUsers()
    getHosters()
    getRequests()
-   //
+   
   }, [currentLanguage, t]);
   dispatch(UsersAccounts(use))
    dispatch(HosterAccounts(hosters))
