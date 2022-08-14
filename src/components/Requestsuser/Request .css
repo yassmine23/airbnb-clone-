@@ -20,3 +20,8 @@ a:active,h3:active {
     color: #FF385C;
 
   }
+.btnhost{
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%) !important;
+color: #FFFFFF !important;
+font-weight: bold !important;
+}

@@ -1,11 +1,7 @@
 import React from "react";
 import "../BecomeHostStyle.css";
 // import { LanguageIcon } from "@material-ui/icons/Language";
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
-import classNames from "classnames";
-import cookies from "js-cookie";
 import Langs, { languages } from "./../../components/lang/languages";
 
 export default function Footerhostormore() {
