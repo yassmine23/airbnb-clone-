@@ -85,7 +85,7 @@ function App() {
         <Route path="/details" exact element={<HostingDetails/>} />
 
         <Route path="/map" exact element={<MapPage />} />
-        <Route path="/logIn" exact element={<LogIn />} />
+        <Route path="/logIn" exact element={<LogIn/>} />
         <Route path="/signUp" exact element={<SignUp />} />
         <Route path="/user" exact element={<UserProfile />} />
         <Route path="/hoster" exact element={<HosterProfile />} />
