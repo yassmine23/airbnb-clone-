@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
+import { useSelector } from 'react-redux';
 
 export default function MainCard() {
   const { t } = useTranslation();
@@ -23,13 +24,15 @@ export default function MainCard() {
     setIndex(selectedIndex);
   };
 
+  const data = useSelector((state)=>state.allRequests.requests)
+
   return (
     <>
    
       <div className="container d-flex">
         <div className="row ">
 
-          <Card className="col-md-3  col-sm-1 border-0 "   >
+{data.map((dat,ky)=><Card className="col-md-3  col-sm-1 border-0 "  key={ky} >
           <IconButton  aria-label="add an alarm" size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
 </IconButton>
@@ -43,7 +46,7 @@ export default function MainCard() {
               <Carousel.Item >
                 <img  
                   className="d-block w-100  rounded " 
-                  src="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
+                  src={dat.Url}
                   alt="First slide"
                 />
               </Carousel.Item>
@@ -64,12 +67,15 @@ export default function MainCard() {
             </Carousel>
 
             <Card.Body className="text-muted">
-              <Card.Title className="text-black">Rome, Italy</Card.Title>
+              <Card.Title className="text-black">{dat.address}</Card.Title>
               <div >3.200 kilometers away</div>
               <div >Aug 29-sep 3</div>
               <div >$270 night</div>
             </Card.Body>
           </Card>
+
+)}
+          
         </div>
       </div>
     </>
