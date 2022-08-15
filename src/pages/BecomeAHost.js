@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import "./BecomeHostStyle.css";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -7,8 +7,15 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
+<<<<<<< HEAD
 import Slider from './pagehost/slider';
 
+=======
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { db } from './../firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+>>>>>>> 9df80f695df12a149d3694a38d5be8c3eea5f841
 
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -16,7 +23,64 @@ export default function BecomeAHost() {
   const { t } = useTranslation();
 
   const [value, setValue] = React.useState({});
+  const [email,setEmail]=useState("")
+  const [pass,setPass]=useState("")
+  const inputChanges=(e)=>{
+      if(e.target.name === "email"){
+        setEmail(e.target.value)
+      }else if(e.target.name === "password"){
+          setPass(e.target.value)
+      
+      }
+    }
+    const [avalible,setAvalible] = useState(false)
+  const [mail,setMail]= useState("")
+const [name,setName]= useState("")
+const [addresss,setAddress]= useState("")
+const [photo,setPhoto]= useState("")
+const [secPhoto,setSecPhoto]= useState("")
+const [third,setThird]= useState("")
+const [fourth,setFourth]= useState("")
+const [fifth,setFifth]= useState("")
+const [desc,setDesc]= useState("")
+const [title,setTitle]= useState("")
+const [price,setPrice]= useState("")
 
+
+    const changes=(e)=>{
+      if(e.target.name === "mail"){
+        setMail(e.target.value)
+      }else if(e.target.name === "name"){
+        setName(e.target.value)
+      
+      }else if(e.target.name === "address"){
+        setAddress(e.target.value)
+      }
+      else if(e.target.name === "photo1"){
+        setPhoto(e.target.value)
+      }
+      else if(e.target.name === "photo2"){
+        setSecPhoto(e.target.value)
+      }
+      else if(e.target.name === "photo3"){
+        setThird(e.target.value)
+      }
+      else if(e.target.name === "photo4"){
+        setFourth(e.target.value)
+      }
+      else if(e.target.name === "photo5"){
+        setFifth(e.target.value)
+      }
+      else if(e.target.name === "description"){
+        setDesc(e.target.value)
+      }
+      else if(e.target.name === "title"){
+        setTitle(e.target.value)
+      }
+      else if(e.target.name === "price"){
+        setPrice(e.target.value)
+      }
+    }
   // const releaseDate = new Date("2021-03-07");
   // const timeDifference = new Date() - releaseDate;
   // const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -27,6 +91,22 @@ export default function BecomeAHost() {
     document.title = t("app_title");
   }, [currentLanguage, t]);
 
+  const all = useSelector((state)=>state.allUsers.users)
+    const navigate=useNavigate()
+    const checkLog =()=>{
+      if(all.some((ch)=>ch.email=== email)){
+        setAvalible(true)
+
+      }
+      else{
+        navigate("/signUp")
+      }
+    }
+    const requestCollection = collection(db, "Requests")
+const createRequest = async()=>{
+  await addDoc(requestCollection,{name:name, email:mail,title:title, address:addresss, Url:photo,Url2:secPhoto,Url3:third,Url4:fourth,Url5:fifth,price:price, description:desc, display:true})
+
+}
   return (
     <>
       <div className="container-fluid">
@@ -85,24 +165,60 @@ export default function BecomeAHost() {
                     ></button>
                   </div>
                   <div className="modal-body">
-                    <form>
-                      {/* <select
-                        className="form-select form-select-lg mb-3"
-                        aria-label=".form-select-lg example"
-                      >
-                        <option>Country</option>
-                        <option selected value="1">United States (+1)</option>
-                        <option value="2">Egypt(+20)</option>
-                      </select>
-                      <div className="mb-3">
-                        <input
-                          type="number"
-                          className="form-control"
-                          id="exampleInputPassword1"
-                          placeholder="phone Number"
-                        /> */}
-                      {/* </div> */}
-                    </form>
+                    {(avalible)?
+                    <div className='container'>
+                    <div >
+                      <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                      <input type="email" className="form-control" name='mail' value={email} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
+                      <input type="text" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">place Title</label>
+                      <input type="text" className="form-control" name='title' value={title} onChange={(e)=>changes(e)} id="title" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">place address</label>
+                      <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label"> 5 photos</label>
+                      <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo2' value={secPhoto} onChange={(e)=>changes(e)} id="link2" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo3' value={third} onChange={(e)=>changes(e)} id="link3" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo4' value={fourth} onChange={(e)=>changes(e)} id="link4" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/>
+                    </div>
+            
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">descriptions</label>
+                      <input type="text" className="form-control" name='description' value={desc} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">Price Per Night</label>
+                      <input type="text" className="form-control" name='price' value={price} onChange={(e)=>changes(e)} id="price" aria-describedby="emailHelp"/>
+                    </div>
+            
+            
+                    <button className="btn btn-primary" onClick={createRequest} >Submit</button>
+                  </div>:
+                    <div className='container'>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                        <input type="email" className="form-control" name='email' value={email} onChange={(e)=>inputChanges(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">Password</label>
+                        <input type="email" className="form-control" name='password' value={pass} onChange={(e)=>inputChanges(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+                
+                    <button className="btn btn-primary" onClick={checkLog}>Log In</button>
+                
+                  </div>}
+                  
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btnhost">

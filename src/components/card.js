@@ -14,14 +14,17 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
-
+import { useSelector } from 'react-redux';
+import "../components/cardStyle.css"
 export default function MainCard() {
   const { t } = useTranslation();
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  // };
+
+  const data = useSelector((state)=>state.allRequests.requests)
 
   return (
     <>
@@ -29,47 +32,68 @@ export default function MainCard() {
       <div className="container d-flex">
         <div className="row ">
 
-          <Card className="col-md-3  col-sm-1 border-0 "   >
-          <IconButton  aria-label="add an alarm" size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
+{data.map((dat,ky)=><Card className="col-md-3  col-sm-1 border-0 "  key={ky} >
+          <IconButton   size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
 </IconButton>
             <Carousel
-              activeIndex={index}
-              onSelect={handleSelect}
+              // activeIndex={index}
+              // onSelect={handleSelect}
               interval={50000}
-
             >
               
-              <Carousel.Item >
+              <Carousel.Item>
                 <img  
-                  className="d-block w-100  rounded " 
-                  src="https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I"
+                  className="d-block rounded img-fluid" 
+                  src={dat.Url}
                   alt="First slide"
+                  width={640}
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 rounded"
-                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  className="d-block  rounded img-fluid"
+                  src={dat.Url2}
                   alt="Second slide"
+                  width={640} 
+
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 rounded"
-                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  className="d-block rounded img-fluid"
+                  src={dat.Url3}
                   alt="third slide"
+                  width={640} 
+
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block rounded img-fluid"
+                  src={dat.Url4}
+                  alt="forth slide"
+                  width={640} 
+
                 />
               </Carousel.Item>
             </Carousel>
-
+          
+          <Link to={'/details'} style={{textDecoration:'none'}}>
             <Card.Body className="text-muted">
-              <Card.Title className="text-black">Rome, Italy</Card.Title>
+             <div className='d-flex flex-row justify-content-between text-black'>
+               <Card.Title >{dat.address}</Card.Title>
+               <div> <StarIcon fontSize="inherit"/> 5.0</div>
+               </div>
               <div >3.200 kilometers away</div>
               <div >Aug 29-sep 3</div>
-              <div >$270 night</div>
+              <div >${dat.price} night</div>
             </Card.Body>
+            </Link>
           </Card>
+
+)}
+          
         </div>
       </div>
     </>
