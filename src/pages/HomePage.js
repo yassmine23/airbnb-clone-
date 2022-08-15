@@ -124,11 +124,12 @@ useEffect(() => {
           </Box>
           </Container>
 
-            <div className='container d-flex'> 
-            <div className='row '>
+            {/* <div className='container d-flex'> 
+            <div className='row '> */}
 
-              <MainCard className='col-md-3 col-sm-1 '/>
-              <MainCard className='col-md-3  col-sm-1'/>
+              <MainCard />
+
+              {/* <MainCard className='col-md-3  col-sm-1'/>
               <MainCard className='col-md-3 col-sm-1'/>
               <MainCard className='col-md-3 col-sm-1'/>
               <MainCard className='col-md-3 col-sm-1'/>
@@ -138,9 +139,9 @@ useEffect(() => {
               <MainCard  className='col-md-3 col-sm-1'/>
               <MainCard className='col-md-3  col-sm-1'/>
               <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              </div>
-            </div>
+              <MainCard className='col-md-3 col-sm-1'/> */}
+              {/* </div>
+            </div> */}
 
             
  
