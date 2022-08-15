@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 import { db } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 
-
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
@@ -34,7 +33,13 @@ export default function BecomeAHost() {
 const [name,setName]= useState("")
 const [addresss,setAddress]= useState("")
 const [photo,setPhoto]= useState("")
+const [secPhoto,setSecPhoto]= useState("")
+const [third,setThird]= useState("")
+const [fourth,setFourth]= useState("")
+const [fifth,setFifth]= useState("")
 const [desc,setDesc]= useState("")
+const [title,setTitle]= useState("")
+const [price,setPrice]= useState("")
 
 
     const changes=(e)=>{
@@ -49,8 +54,26 @@ const [desc,setDesc]= useState("")
       else if(e.target.name === "photo1"){
         setPhoto(e.target.value)
       }
+      else if(e.target.name === "photo2"){
+        setSecPhoto(e.target.value)
+      }
+      else if(e.target.name === "photo3"){
+        setThird(e.target.value)
+      }
+      else if(e.target.name === "photo4"){
+        setFourth(e.target.value)
+      }
+      else if(e.target.name === "photo5"){
+        setFifth(e.target.value)
+      }
       else if(e.target.name === "description"){
         setDesc(e.target.value)
+      }
+      else if(e.target.name === "title"){
+        setTitle(e.target.value)
+      }
+      else if(e.target.name === "price"){
+        setPrice(e.target.value)
       }
     }
   // const releaseDate = new Date("2021-03-07");
@@ -76,7 +99,7 @@ const [desc,setDesc]= useState("")
     }
     const requestCollection = collection(db, "Requests")
 const createRequest = async()=>{
-  await addDoc(requestCollection,{name:name, email:mail, address:addresss, Url:photo, description:desc, display:true})
+  await addDoc(requestCollection,{name:name, email:mail,title:title, address:addresss, Url:photo,Url2:secPhoto,Url3:third,Url4:fourth,Url5:fifth,price:price, description:desc, display:true})
 
 }
   return (
@@ -148,17 +171,30 @@ const createRequest = async()=>{
                       <input type="text" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">place Title</label>
+                      <input type="text" className="form-control" name='title' value={title} onChange={(e)=>changes(e)} id="title" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">place address</label>
                       <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">photo1</label>
-                      <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                      <label htmlFor="exampleInputEmail1" className="form-label"> 5 photos</label>
+                      <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo2' value={secPhoto} onChange={(e)=>changes(e)} id="link2" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo3' value={third} onChange={(e)=>changes(e)} id="link3" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo4' value={fourth} onChange={(e)=>changes(e)} id="link4" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/>
                     </div>
             
                     <div class="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">descriptions</label>
                       <input type="text" className="form-control" name='description' value={desc} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    </div>
+
+                    <div class="mb-1">
+                      <label htmlFor="exampleInputEmail1" className="form-label">Price Per Night</label>
+                      <input type="text" className="form-control" name='price' value={price} onChange={(e)=>changes(e)} id="price" aria-describedby="emailHelp"/>
                     </div>
             
             

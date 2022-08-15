@@ -15,14 +15,14 @@ import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import { useSelector } from 'react-redux';
-
+import "../components/cardStyle.css"
 export default function MainCard() {
   const { t } = useTranslation();
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  // };
 
   const data = useSelector((state)=>state.allRequests.requests)
 
@@ -37,40 +37,47 @@ export default function MainCard() {
   <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
 </IconButton>
             <Carousel
-              activeIndex={index}
-              onSelect={handleSelect}
-              interval={50000}
-
+              // activeIndex={index}
+              // onSelect={handleSelect}
+              // interval={50000}
+              // className="w-100"
             >
               
-              <Carousel.Item >
+              <Carousel.Item>
                 <img  
-                  className="d-block w-100  rounded " 
+                  className="d-block rounded wdth" 
                   src={dat.Url}
                   alt="First slide"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 rounded"
-                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  className="d-block  rounded wdth"
+                  src={dat.Url2}
                   alt="Second slide"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 rounded"
-                  src="https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                  className="d-block rounded wdth"
+                  src={dat.Url3}
+                  alt="third slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block rounded wdth"
+                  src={dat.Url4}
                   alt="third slide"
                 />
               </Carousel.Item>
             </Carousel>
 
             <Card.Body className="text-muted">
-              <Card.Title className="text-black">{dat.address}</Card.Title>
+              <Card.Title className="text-black ">{dat.address}</Card.Title>
               <div >3.200 kilometers away</div>
               <div >Aug 29-sep 3</div>
-              <div >$270 night</div>
+              <div >${dat.price} night</div>
             </Card.Body>
           </Card>
 
