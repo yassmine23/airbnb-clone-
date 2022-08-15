@@ -23,6 +23,7 @@ import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
 
 
 function App() {
+  
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();

@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import { positions } from '@mui/system';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import GppGoodIcon from '@mui/icons-material/GppGood';
@@ -49,14 +48,10 @@ import {
         import { useState } from "react";
         import AddIcon from "@material-ui/icons/Add";
         import RemoveIcon from "@material-ui/icons/Remove";
-        // import Button from "@material-ui/core/Button";
-        // import Tooltip from "@material-ui/core/Tooltip";
-        // import "./index.css";
-// import { ResetIcon } from './../../node_modules/@docsearch/react/dist/esm/icons/ResetIcon';
-// import { rippleEffect } from './../../node_modules/@syncfusion/ej2-base/src/animation';
-
- //check availbility
-
+import { Link } from 'react-router-dom';
+ import {useDispatch } from 'react-redux';
+import { changeLanguage } from '../../Redux/Actions/AllActions';
+import { changeGuests } from './../../Redux/Actions/AllActions';
  const useStylesReddit = makeStyles((theme) => ({
     root: {
       border: '1px solid #e2e2e1',
@@ -93,23 +88,25 @@ import {
   
 
 const UnderHome = () => {
-
-    //date and pickers
-    
+    // const language=  useSelector((state)=>state.language.lang);
+   
     const [ startDate, setStartDate]=useState(new Date());
-         const [ endDate, setEndDate]=useState(new Date());
+    const [ endDate, setEndDate]=useState(new Date());
     
-    
-        
-         function handelSelect(ranges){
+    // const dispatch = useDispatch();
+    // dispatch(changeLanguage(date1));
+    //   console.log(date1);
+
+    function handelSelect(ranges){
             
-          var x1=  setStartDate(ranges.selection.startDate);
-          var x2= setEndDate(ranges.selection.endDate);
-          document.getElementById('fixedP').innerText= ''
-          document.getElementById('selecteddates').innerText=`start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`
-          document.getElementById('reddit-input1').value=`${ranges.selection.startDate.toDateString()}`
-          document.getElementById('reddit-input2').value=`${ranges.selection.endDate.toDateString()}`
-// reserve
+    var x1=  setStartDate(ranges.selection.startDate);
+    var x2= setEndDate(ranges.selection.endDate);
+    document.getElementById('fixedP').innerText= ''
+    document.getElementById('selecteddates').innerText=`start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`
+    document.getElementById('reddit-input1').value=`${ranges.selection.startDate.toDateString()}`
+    document.getElementById('reddit-input2').value=`${ranges.selection.endDate.toDateString()}`
+
+          // reserve
         //    var x=parseInt(ranges.selection.endDate.toDateString()-ranges.selection.startDate.toDateString())
         //    console.log(x)
 
@@ -118,11 +115,9 @@ const UnderHome = () => {
         var date2 = new Date(ranges.selection.endDate);
         // To calculate the time difference of two dates
        var Difference_In_Time = date2.getTime() - date1.getTime();
-
       // To calculate the no. of days between two dates
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-    //   console.log(Difference_In_Days)
+  
           document.getElementById('NightsNo').innerText=`$149 x ${Difference_In_Days} nights`
           document.getElementById('ServiceFee').innerText=`Service Fee`
            document.getElementById('NightsPrice').innerText=`$ ${eval(149*Difference_In_Days)}`
@@ -229,6 +224,13 @@ const UnderHome = () => {
 //    ev.target.Popover('hiden')
    
   }
+  
+const xn=[count1,count2,count3,count4,startDate,endDate];
+const dispatchg = useDispatch()
+dispatchg(changeGuests(xn))
+console.log(xn);
+
+    
 
 //check availability
     const classes = useStyles();
@@ -270,11 +272,11 @@ return <>
         <Box   style={{ borderBottom:'1px solid lightgray'}} p={2}>
           <img  width='150wv' height='40hv'  alt='ss' src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg'/>
           <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
-          <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</Link>
+          {/* <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</Link> */}
         </Box>
         <Box   style={{ borderBottom:'1px solid lightgray'}} p={2}>
           <p>Head north in Norway and experience our tiny-hotel on a remote island. The Arctic Hideaway is an architecturally playful and stunning collection of 11 individual buildings, where fours are sleeping cabins. The shared areas are the iconic Tower House, kitchen house, studio building, bathhouse, crab trap and sauna. In limited periods, we will offer single cabins for rent on Airbnb. Included in the stay is all food (se details for concept) and daily use of the sauna...</p>
-          <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</Link>
+          {/* <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</Link> */}
         </Box>
         <Box   style={{ borderBottom:'1px solid lightgray'}} p={2}>
            <h2>Where you'll sleep</h2>
@@ -684,9 +686,11 @@ return <>
                             </Box>  
                         </Grid>
                         </Grid>
+                        <Link to={"/details/book"}>
                     <Button style={{borderRadius:'5px',marginLeft:'95px' ,marginTop:'15px',fontSize:'20px', paddingLeft:'75px', paddingRight:'75px',textAlign:'center', backgroundColor:'gray', color:'white'}} >
-                                    Reserve  
-                                </Button>
+                       Reserve  
+                        </Button>
+                         </Link>
 {/* <Link to={`/details/${m.id}`}><a  className="btn btn-primary">show details</a></Link> */}
 
 

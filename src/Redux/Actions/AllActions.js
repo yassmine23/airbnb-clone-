@@ -28,3 +28,13 @@ export function RequestInfo(data){
         payload:data
     }
 }
+
+
+
+export function changeGuests(data){
+    return{
+        type:"SET_GUESTS",
+        data,
+    }
+
+}

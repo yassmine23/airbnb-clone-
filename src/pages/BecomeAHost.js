@@ -7,15 +7,12 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
-<<<<<<< HEAD
 import Slider from './pagehost/slider';
-
-=======
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { db } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
->>>>>>> 9df80f695df12a149d3694a38d5be8c3eea5f841
+
 
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";

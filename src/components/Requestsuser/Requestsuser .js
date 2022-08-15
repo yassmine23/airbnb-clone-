@@ -6,13 +6,19 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import { Link } from "react-router-dom";
 import FooterChangeLang from "./footerchangelang";
 import PaypalC from "./paypal";
+// import UnderHome from './../underHome/underHome';
+import { useSelector } from 'react-redux';
 
 function Requestsuser() {
+  // const enddate= useSelector((state)=>state.language.lang);
+  // const startDate=  useSelector((state)=>state.language.slang);
+  const guest=  useSelector((state)=>state.guests.guests);
+// console.log(startDate)
   const { t } = useTranslation();
-
+  // const { test } =UnderHome()
   return (
     <>
-      {/* navbar */}
+      {/* <h1>{enddate.toLocaleDateString()}</h1> */}
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link to={"/"}>
@@ -60,12 +66,14 @@ function Requestsuser() {
                 <div className="my-4 ">
                   <h5 className="text-start">{t("dates")}</h5>
                   <h5 className="">{t("Edit")}</h5>
-                  <span className="text-start">{"Oct 31 – Nov 29"}</span>
+                  <span className="text-start">start date : {guest[4].toLocaleDateString()}  end date : {guest[5].toLocaleDateString()} </span>
+                  {/* <span className="text-start">ED : {enddate.toLocaleDateString()}</span> */}
+
                 </div>
                 <div>
                   <h5 className="text-start">{t("GUESTS")}</h5>
                   <h5 className="">{t("Edit")}</h5>
-                  <span className="text-start">1{t("GUEST")}</span>
+                  <span className="text-start">{guest[0]}{t("GUEST")},{guest[1]} children {guest[2]}Infants,{guest[3]}</span>
                 </div>
                 <hr />
               </div>
@@ -81,7 +89,7 @@ function Requestsuser() {
                   <p>{t("let")}</p>
                 </div>
                 <div className="">
-                  <label for="validationDefault05" className="form-label">
+                  <label htmlFor="validationDefault05" className="form-label">
                     <div className="row g-0">
                       <div className="col-1 me-3">
                         <img

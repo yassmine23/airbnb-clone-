@@ -1,5 +1,5 @@
 export const INITIAL_STATETWO = {
-    guests:[1],
+    guests:[],
   
   };
   
