@@ -1,29 +1,19 @@
 import * as React from "react";
-
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-// import { FaRegHeart } from 'react-icons/fa';
 import { useTranslation } from "react-i18next";
 
-
 //bootstrap
-import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import { useSelector } from 'react-redux';
 import "../components/cardStyle.css"
+
 export default function MainCard() {
   const { t } = useTranslation();
-  // const [index, setIndex] = useState(0);
-
-  // const handleSelect = (selectedIndex, e) => {
-  //   setIndex(selectedIndex);
-  // };
-
+ 
   const data = useSelector((state)=>state.allRequests.requests)
 
   return (
@@ -37,46 +27,46 @@ export default function MainCard() {
   <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
 </IconButton>
             <Carousel
-              // activeIndex={index}
-              // onSelect={handleSelect}
               interval={50000}
+
             >
               
               <Carousel.Item>
                 <img  
-                  className="d-block rounded img-fluid" 
+                  className="d-block rounded wdth " 
                   src={dat.Url}
                   alt="First slide"
-                  width={640}
+                  // width={640} 
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block  rounded img-fluid"
+                  className="d-block  rounded wdth"
                   src={dat.Url2}
                   alt="Second slide"
-                  width={640} 
+                  // width={640} 
 
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block rounded img-fluid"
+                  className="d-block rounded wdth "
                   src={dat.Url3}
                   alt="third slide"
-                  width={640} 
+                  // width={640}  
 
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block rounded img-fluid"
+                  className="d-block rounded wdth"
                   src={dat.Url4}
                   alt="forth slide"
-                  width={640} 
+                  // width={640} 
 
                 />
               </Carousel.Item>
+              
             </Carousel>
           
           <Link to={'/details'} style={{textDecoration:'none'}}>
