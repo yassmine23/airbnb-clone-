@@ -6,8 +6,8 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import { Link } from "react-router-dom";
 import FooterChangeLang from "./footerchangelang";
 import PaypalC from "./paypal";
-// import UnderHome from './../underHome/underHome';
 import { useSelector } from 'react-redux';
+import LogInPaypal from "./loginpaypal";
 
 function Requestsuser() {
   // const enddate= useSelector((state)=>state.language.lang);
@@ -66,7 +66,7 @@ function Requestsuser() {
                 <div className="my-4 ">
                   <h5 className="text-start">{t("dates")}</h5>
                   <h5 className="">{t("Edit")}</h5>
-                  <span className="text-start">start date : {guest[4].toLocaleDateString()}  end date : {guest[5].toLocaleDateString()} </span>
+                  <span className="text-start" >{guest[4].toLocaleDateString()} _ {guest[5].toLocaleDateString()} </span>
                   {/* <span className="text-start">ED : {enddate.toLocaleDateString()}</span> */}
 
                 </div>
@@ -79,7 +79,8 @@ function Requestsuser() {
               </div>
               <div>
                 <h4>{t("Pay with")}</h4>
-                <PaypalC />
+                {/* <PaypalC /> */}
+                <LogInPaypal/>
                 <hr />
               </div>
               <form className="row g-3">
