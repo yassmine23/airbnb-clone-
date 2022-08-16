@@ -251,7 +251,6 @@ const choices = [
             return ( <>
               <Button
                 key={choice.id}
-                // style={{ paddingInline: isOpen ? 40 : 0, transition: "0.25s", }}
                 onClick={(e) => {
                   e.stopPropagation()
                  
@@ -330,8 +329,6 @@ const choices = [
             border: '1px solid #ddd',
           }}
           onClick={handleClick2}
-          // size="small"
-          // sx={{ ml: 2 }}
           aria-controls={open ? 'account-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
@@ -404,7 +401,7 @@ const choices = [
         
         </Box>
 
-        {/* navbar */}
+        {/*search navbar */}
       <Box sx={displayOnDesktop} style={{ display: isOpen ? 'flex': 'none'}}>
 
 <Paper 
@@ -429,10 +426,14 @@ const choices = [
     }}
     divider={<Divider orientation="vertical" flexItem />}
   >
-    <Button style={{fontWeight:'bold', width:'250px'}}onClick={handleClickWhere} >Where</Button>
-    <Button style={{fontWeight:'bold', }} onClick={handleClickCheckIn}>Check In</Button>
-    <Button style={{fontWeight:'bold', }} onClick={handleClickCheckIn}>Check Out</Button>
-    <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >Who 
+    <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
+     {/* <input className='p-2 border-0 rounded' placeholder='search destinations'></input> */}
+     <TextField id="search" label="where" variant="outlined" placeholder='search destination'/>
+
+     </Button>
+    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check In <div className='text-muted '>add dates</div></Button>
+    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check Out <div className='text-muted '>add dates</div></Button>
+    <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >Who  
       <Button variant="contained" color='secondary' onClick={handleClickWho}
      style={{borderRadius:20, marginInline:'10px', padding:'10px',fontWeight:'bold' }} endIcon={< SearchOutlinedIcon /> }>
        search
@@ -456,6 +457,11 @@ const choices = [
             anchorOrigin={{
               vertical: "bottom",
               horizontal: "left",
+            }}
+            onClick={(e) => {
+              e.stopPropagation()
+             
+              setIsOpen(true);
             }}
           >
             <Typography sx={{ p: 2 }}>
@@ -613,6 +619,11 @@ const choices = [
           vertical: 'bottom',
           horizontal: 'left',
         }}
+        onClick={(e) => {
+          e.stopPropagation()
+         
+          setIsOpen(true);
+        }}
       >
         <div className="round p-5" style={{width:'480px'}}>
             <h4 >Search by region</h4>
@@ -657,7 +668,12 @@ const choices = [
         onClose={handleCloseCheckIn}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left'}}>
+          horizontal: 'left'}}
+          onClick={(e) => {
+            e.stopPropagation()
+           
+            setIsOpen(true);
+          }}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StaticDateRangePicker
         displayStaticWrapperAs="desktop"

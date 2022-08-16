@@ -45,7 +45,6 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
 const handleClose = () => {
 
-    // console.log("windowClicked")
     setAnchorEl(null);
     setIsOpen(false);
   

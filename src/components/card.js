@@ -22,7 +22,7 @@ export default function MainCard() {
       <div className="container d-flex">
         <div className="row ">
 
-{data.map((dat,ky)=><Card className="col-md-3  col-sm-1 border-0 "  key={ky} >
+{data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
           <IconButton   size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
 </IconButton>

@@ -26,6 +26,7 @@ import LogIn from './components/Forms/logIn';
 import SignUp from './components/Forms/signUp';
 import UserProfile from './components/Profiles/user profile/user-Profile';
 import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
+import SearchPage from './pages/SearchPage';
 
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
         <Route path="/signUp" exact element={<SignUp />} />
         <Route path="/user" exact element={<UserProfile />} />
         <Route path="/hoster" exact element={<HosterProfile />} />
+        <Route path="/search" exact element={<SearchPage/>} />
 
 
 
