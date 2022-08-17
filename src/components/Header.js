@@ -65,6 +65,8 @@ const choices = [
     document.addEventListener("click", handleClose);
   }, []);
 
+
+
   //profileSetting
   const [anchorE2, setAnchorE2] = React.useState(null);
   const open = Boolean(anchorE2);
@@ -427,17 +429,17 @@ const choices = [
     divider={<Divider orientation="vertical" flexItem />}
   >
     <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
-     {/* <input className='p-2 border-0 rounded' placeholder='search destinations'></input> */}
      <TextField id="search" label="where" variant="outlined" placeholder='search destination'/>
 
      </Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check In <div className='text-muted '>add dates</div></Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check Out <div className='text-muted '>add dates</div></Button>
     <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >Who  
-      <Button variant="contained" color='secondary' onClick={handleClickWho}
+     <Link to={'/search'}> <Button variant="contained" color='secondary' 
      style={{borderRadius:20, marginInline:'10px', padding:'10px',fontWeight:'bold' }} endIcon={< SearchOutlinedIcon /> }>
        search
-      </Button></Button>
+      </Button> </Link>
+      </Button>
 
 
     
@@ -626,33 +628,47 @@ const choices = [
         }}
       >
         <div className="round p-5" style={{width:'480px'}}>
-            <h4 >Search by region</h4>
+            <h5 >Search by region</h5>
             <div className="container d-flex ">
                 <div className='row'>
-                    <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg"></img>
-                    <h6 className="py-2">I'm flexible</h6>
+
+                  <div className='col-4 p-1'> 
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='All'>
+                      <img className=' border border-dark rounded'  width="122px" height="122px"   src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg"/>
+                     <span className="py-2">I'm flexible</span></button>
                     </div>
+
                     <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/im/pictures/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2.jpg?im_w=320"></img>
-                    <h6 className="py-2">Europe</h6>
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Europe'>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2.jpg?im_w=320"/>
+                     <span className="py-2">Europe</span></button>
                     </div>
+
                     <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/im/pictures/97d76097-22b3-4d87-9459-ad1b90b18d2f.jpg?im_w=320"></img>
-                    <h6 className="py-2">Turkey</h6>
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Turkey'>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/97d76097-22b3-4d87-9459-ad1b90b18d2f.jpg?im_w=320"/>
+                     <span className="py-2">Turkey</span></button>
                     </div>
+
                     <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320"></img>
-                    <h6 className="py-2">United States</h6>
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent'value='United states'>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320"/>
+                     <span className="py-2">United States</span></button>
                     </div>
+
                     <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320"></img>
-                    <h6 className="py-2">Italy</h6>
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Italy'>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320"/>
+                     <span className="py-2">Italy</span></button>
                     </div>
+
                     <div className='col-4 p-1'> 
-                    <img className=' border border-dark rounded' width="122px" height="122px" src="https://a0.muscache.com/im/pictures/7e9673a5-4164-4708-a047-8d281b5980e7.jpg?im_w=320"></img>
-                    <h6 className="py-2">Africa</h6>
+                    <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Africa'>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7e9673a5-4164-4708-a047-8d281b5980e7.jpg?im_w=320"/>
+                     <span className="py-2">Africa</span></button>
                     </div>
+
+                    
                     
 
                 </div>
