@@ -19,15 +19,16 @@ import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import { languages } from './components/lang/languages';
 import { useDispatch, useSelector } from "react-redux";
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from './firebaseConfig';
+import { collection, doc, getDocs, where } from 'firebase/firestore';
+import { db, storage } from './firebaseConfig';
 import UsersAccounts, { HosterAccounts,RequstsData } from './Redux/Actions/AllActions';
 import LogIn from './components/Forms/logIn';
 import SignUp from './components/Forms/signUp';
 import UserProfile from './components/Profiles/user profile/user-Profile';
 import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
 import SearchPage from './pages/SearchPage';
-
+import WishList from "./components/WishList/wishList";
+import { listAll, ref } from "firebase/storage";
 
 function App() {
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -39,11 +40,7 @@ function App() {
   const allUser = useSelector((state)=>state.allUsers.users)
   const[use,setUsers]= useState(allUser)
   const userCollect = collection(db, "users")
-
-  const allHosters = useSelector((state)=>state.allHosters.hosters)
-  const[hosters,setHosters]= useState(allHosters)
-  const hosterCollect = collection(db, "presenter")
-
+  
 
   const allRequests = useSelector((state)=>state.allRequests.requests)
   const[requests,setRequests]= useState(allRequests)
@@ -56,25 +53,24 @@ function App() {
     document.title = t("app_title");
 
     //
+
+    
+
     const getUsers = async()=>{
       const data = await getDocs(userCollect);
      setUsers(data.docs.map( (doc) => ( {...doc.data(), id: doc.id} ) ))
    };
-    const getHosters = async()=>{
-      const data = await getDocs(hosterCollect);
-      setHosters(data.docs.map( (doc) => ( {...doc.data(), id: doc.id} ) ))
-   };
+    
+    
     const getRequests = async()=>{
       const data = await getDocs(requestCollect);
       setRequests(data.docs.map( (doc) => ( {...doc.data(), id: doc.id} ) ))
    };
    getUsers()
-   getHosters()
    getRequests()
    //
   }, [currentLanguage, t]);
   dispatch(UsersAccounts(use))
-   dispatch(HosterAccounts(hosters))
    dispatch(RequstsData(requests))
 
   return (
@@ -100,6 +96,7 @@ function App() {
         <Route path="/user" exact element={<UserProfile />} />
         <Route path="/hoster" exact element={<HosterProfile />} />
         <Route path="/search" exact element={<SearchPage/>} />
+        <Route path="/wish-list" exact element={<WishList/>} />
 
 
 

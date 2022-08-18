@@ -8,10 +8,12 @@ import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { db } from './../firebaseConfig';
+import { useSelector, useDispatch } from 'react-redux';
+import { db, storage } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 import { Link } from "react-router-dom";
+import { ref, uploadBytes } from "firebase/storage";
+import { SingleData } from "../Redux/Actions/AllActions";
 
 
 export default function BecomeAHost() {
@@ -31,42 +33,19 @@ export default function BecomeAHost() {
       }
     }
     const [avalible,setAvalible] = useState(false)
-  const [mail,setMail]= useState("")
 const [name,setName]= useState("")
 const [addresss,setAddress]= useState("")
-const [photo,setPhoto]= useState("")
-const [secPhoto,setSecPhoto]= useState("")
-const [third,setThird]= useState("")
-const [fourth,setFourth]= useState("")
-const [fifth,setFifth]= useState("")
 const [desc,setDesc]= useState("")
 const [title,setTitle]= useState("")
 const [price,setPrice]= useState("")
 
 
     const changes=(e)=>{
-      if(e.target.name === "mail"){
-        setMail(e.target.value)
-      }else if(e.target.name === "name"){
+      if(e.target.name === "name"){
         setName(e.target.value)
       
       }else if(e.target.name === "address"){
         setAddress(e.target.value)
-      }
-      else if(e.target.name === "photo1"){
-        setPhoto(e.target.value)
-      }
-      else if(e.target.name === "photo2"){
-        setSecPhoto(e.target.value)
-      }
-      else if(e.target.name === "photo3"){
-        setThird(e.target.value)
-      }
-      else if(e.target.name === "photo4"){
-        setFourth(e.target.value)
-      }
-      else if(e.target.name === "photo5"){
-        setFifth(e.target.value)
       }
       else if(e.target.name === "description"){
         setDesc(e.target.value)
@@ -90,20 +69,36 @@ const [price,setPrice]= useState("")
 
   const all = useSelector((state)=>state.allUsers.users)
     const navigate=useNavigate()
+    const dispatch =useDispatch()
     const checkLog =()=>{
       if(all.some((ch)=>ch.email=== email)){
-        setAvalible(true)
+        const search = all.find((f)=>f.email === email)
+        if(search.password === pass){  
+          setAvalible(true)
+            dispatch(SingleData(search))
+        }else{
+            alert("Wrong Password")
+        }
 
       }
       else{
         navigate("/signUp")
       }
     }
-    const requestCollection = collection(db, "Requests")
-const createRequest = async()=>{
-  await addDoc(requestCollection,{name:name, email:mail,title:title, address:addresss, Url:photo,Url2:secPhoto,Url3:third,Url4:fourth,Url5:fifth,price:price, description:desc, display:true})
 
+    const [files,setFiles]=useState([])
+    const uplload=()=>{
+      if(files.length <= 0) return;
+      files.forEach((file)=>{const imageRed = ref(storage,`Images/${title}/${file.name}`) 
+      uploadBytes(imageRed,file).then(()=>alert("image ploaded"))})
+    }
+
+    const requestCollection = collection(db, "AskRequest")
+     const createRequest = async()=>{
+    await addDoc(requestCollection,{name:name, email:email,title:title,Url1:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
+      navigate('/user')
 }
+
   return (
     <>
       <div className="container-fluid">
@@ -166,7 +161,7 @@ const createRequest = async()=>{
                     <div className='container'>
                     <div >
                       <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                      <input type="email" className="form-control" name='mail' value={email} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                      <input type="email" className="form-control" name='mail' value={email}  id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
@@ -181,12 +176,18 @@ const createRequest = async()=>{
                       <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label"> 5 photos</label>
-                      <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
+                      <label htmlFor="exampleInputEmail1" className="form-label"> photos of place</label>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <button className="btn btn-outline-info me-auto" onClick={uplload}>upload</button>
+                      {/* <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo2' value={secPhoto} onChange={(e)=>changes(e)} id="link2" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo3' value={third} onChange={(e)=>changes(e)} id="link3" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo4' value={fourth} onChange={(e)=>changes(e)} id="link4" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/> */}
                     </div>
             
                     <div class="mb-1">
