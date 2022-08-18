@@ -23,6 +23,9 @@ import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import {Icon} from 'leaflet';
 
+import { where, onSnapshot, QuerySnapshot } from 'firebase/firestore';
+
+
 
 function LocationMarker() {
     const [position, setPosition] = useState(null)
@@ -37,7 +40,8 @@ function LocationMarker() {
     })
   
     return position === null ? null : (
-        <Marker position={position} removable editable icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+        <Marker position={position} removable editable 
+        icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
             <Popup>You are here</Popup>
         </Marker>
     )
@@ -45,8 +49,6 @@ function LocationMarker() {
 export default function SearchPage() {
    
     const data = useSelector((state)=>state.allRequests.requests);
-
-   
 
   return (
     <React.Fragment>
@@ -144,12 +146,12 @@ export default function SearchPage() {
             </Card.Body>
             </Link>
           </Card>
-
 )}
-</Grid>
-<Grid item xs={6}>
-<Box sx={{display:'flex', justifyContent:'center', width:'100%', zIndex:1, position:'fixed',}}>
-        <MapContainer center={[52.520008, 13.404954]} zoom={4} scrollWheelZoom={false}>
+  </Grid>
+
+     <Grid item xs={6}>
+        <Box sx={{display:'flex', justifyContent:'center', width:'100%', zIndex:1, position:'fixed',}}>
+        <MapContainer center={[40.520008, 45.404954]} zoom={4} scrollWheelZoom={false}>
            <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
