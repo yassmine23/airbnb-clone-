@@ -95,7 +95,7 @@ const [price,setPrice]= useState("")
 
     const requestCollection = collection(db, "AskRequest")
      const createRequest = async()=>{
-    await addDoc(requestCollection,{name:name, email:email,title:title,Url1:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
+    await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
       navigate('/user')
 }
 
