@@ -188,6 +188,9 @@ const choices = [
   const signUp =()=>{
     navigate('/signUp')
   }
+  const favourit = ()=>{
+    navigate("/wish-list")
+  }
   
   return (
     <Box
@@ -381,9 +384,12 @@ const choices = [
         <MenuItem onClick={log}>
         {t("login")}
         </MenuItem></Box>
-        :<MenuItem onClick={profile}>
+        :<Box><MenuItem onClick={profile}>
         {t("Profile")}
-        </MenuItem>}
+        </MenuItem>
+        <MenuItem onClick={favourit}>
+        {t("WishList")}
+        </MenuItem></Box>}
         <Divider />
         <MenuItem>
         {t("hostyourhome")}

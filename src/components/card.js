@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import React , {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -10,23 +10,51 @@ import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import { useSelector } from 'react-redux';
 import "../components/cardStyle.css"
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from "../firebaseConfig";
+import { async } from "@firebase/util";
 
 export default function MainCard() {
   const { t } = useTranslation();
  
   const data = useSelector((state)=>state.allRequests.requests)
 
+  const userInfo = useSelector((state)=>state.userData.info)
+  const favArr = userInfo.favorit
+
+  const [fav,setfav]= useState(favArr)
+  const prof = useSelector((state)=>state.userData.info)
+  const navigate = useNavigate()
+
+  const uplod = async()=>{
+    const dos = doc(db , "users" , prof.id)
+        const newDat = {favorit : fav}
+         await updateDoc(dos,newDat)
+        
+  }
+  const addWishList =(dat)=>{
+    setfav(fav.concat(dat))
+    console.log(fav);
+    if(Object.keys(prof).length > 0){
+      uplod()    
+    }else{
+      navigate('/signUp')
+
+    }
+  }
   return (
     <>
    
       <div className="container d-flex">
         <div className="row ">
 
-         {data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
-          <IconButton   size="large" sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
-            <FavoriteBorderIcon  fontSize="inherit" style={{color:'white'}}/>
-          </IconButton>
-         <Carousel
+
+{data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
+          <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
+  <FavoriteBorderIcon  className="text-danger" fontSize="inherit" style={{color:'white'}}/>
+</IconButton>
+            <Carousel
+
               interval={50000}
             >
               <Carousel.Item>

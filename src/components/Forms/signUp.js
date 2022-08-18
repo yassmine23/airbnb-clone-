@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { SingleData } from "../../Redux/Actions/AllActions";
 import { useDispatch } from 'react-redux';
+import Joi from "joi";
 
 const SignUp = () => {
   const [user, AddUsers] = useState({
@@ -15,34 +16,28 @@ const SignUp = () => {
     userAge: "",
     userName: "",
   });
-  const [err, AddError] = useState({
+  const [errr, setError] = useState({
     errorEmail: null,
     errorPassword: null,
-    name: null,
+    errorName: null,
+    errorAge:null,
   });
+
   const inputChange = (e) => {
-    const regex = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
-    const passRegex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$");
+   
 
     if (e.target.name === "email") {
       AddUsers({
         ...user,
         userEmail: e.target.value,
       });
-      AddError({
-        ...err,
-        errorEmail: regex.test(e.target.value) ? "" : "invalid email",
-      });
+
     } else if (e.target.name === "password") {
       AddUsers({
         ...user,
         userPassword: e.target.value,
       });
-      AddError({
-        ...err,
-        errorPassword: passRegex.test(e.target.value)? ""
-          : "so small password",
-      });
+
     } else if (e.target.name === "age") {
       AddUsers({
         ...user,
@@ -56,14 +51,52 @@ const SignUp = () => {
       });
     }
   };
+
+
+
   const sing = useSelector((state)=>state.userData.info)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const requestCollection = collection(db, "users")
-const createRequest = async()=>{
-  await addDoc(requestCollection,{name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge})
+  const [errList,setErrList]=useState([])
+const createRequest = async(e)=>{
+  e.preventDefault()
   const x ={name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge}
+
+let schema = Joi.object({
+  name: Joi.string().alphanum().min(10).required(),
+  email:Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+  password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/).required(),
+  age:Joi.number().min(18).max(60).required()
+})
+
+const res = schema.validate(x ,{abortEarly: false})
+if(res.error){
+
+  setErrList(res.error.details)
+console.log(errList);
+  errList.map((d)=>{
+    if (d.context.label =="name") {
+      setError({...errr, errorName:"length of full name at least 10 characters"}) 
+    }
+    else if (d.context.label =="email"){
+      setError({...errr, errorEmail:"invalid email"})     }
+    else if (d.context.label =="password"){
+      setError({...errr,errorPassword:"* between 8 and 15 charcters ,must have at least one of small and capital and special character and one number"})
+      }else if (d.context.label =="age"){
+      setError({...errr, errorAge:"* Your age must be between 18 and 60"})
+    }
+    return errr
+  })
+
+
+}else{
+
+  await addDoc(requestCollection,{name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge})
   dispatch(SingleData(x))
+}
+
+  
 }
 useEffect(()=>{
   if(Object.keys(sing).length > 0){
@@ -74,7 +107,8 @@ useEffect(()=>{
   return (
     <>
     <Header/>
-      <div className="container mt-5">
+      <form onSubmit={createRequest} className="container mt-5">
+
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
@@ -87,9 +121,9 @@ useEffect(()=>{
             onChange={(e) => inputChange(e)}
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            required
+            
           />
-                              <small className="text-danger">{err.errorEmail}</small>
+                              <small className="text-danger">{errr.errorEmail}</small>
 
         </div>
 
@@ -105,8 +139,8 @@ useEffect(()=>{
             onChange={(e) => inputChange(e)}
             id="exampleInputName"
             aria-describedby="emailHelp"
-            required
           />
+          <small className="text-danger">{errr.errorName}</small>
         </div>
 
         <div className="mb-3">
@@ -120,9 +154,9 @@ useEffect(()=>{
             value={user.userPassword}
             onChange={(e) => inputChange(e)}
             id="exampleInputPassword"
-            required
+            
           />
-                    {/* <small className="text-danger">{err.errorPassword}</small> */}
+                     <small className="text-danger">{errr.errorPassword}</small> 
         </div>
 
         <div className="mb-3">
@@ -136,13 +170,13 @@ useEffect(()=>{
             value={user.confPassword}
             onChange={(e) => inputChange(e)}
             id="exampleInputAge"
-            required
           />
+          <small className="text-danger">{errr.errorAge}</small> 
         </div>
-        <button className="btn btn-primary" onClick={createRequest}>
+        <button className="btn btn-primary">
           Creat Account
         </button>
-      </div>
+      </form>
       {/* <Footer  /> */}
     </>
   );
