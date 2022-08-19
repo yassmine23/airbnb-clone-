@@ -14,10 +14,12 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import "../components/cardStyle.css"
+import { RequestInfo } from './../Redux/Actions/AllActions';
 export default function MainCard() {
   const { t } = useTranslation();
+  
   // const [index, setIndex] = useState(0);
 
   // const handleSelect = (selectedIndex, e) => {
@@ -79,7 +81,7 @@ export default function MainCard() {
               </Carousel.Item>
             </Carousel>
           
-          <Link to={'/details'} style={{textDecoration:'none'}}>
+          <Link to={`/details/${dat.id}`} key={dat.id} style={{textDecoration:'none'}}>
             <Card.Body className="text-muted">
              <div className='d-flex flex-row justify-content-between text-black'>
                <Card.Title >{dat.address}</Card.Title>

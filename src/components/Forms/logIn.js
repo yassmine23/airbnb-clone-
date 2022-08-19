@@ -30,6 +30,7 @@ export default function LogIn() {
         navigate('/user')
       }
     },[sing])
+    
     const checkLog =()=>{
        if (all.some((check)=>check.email === mail)){
         const search = all.find((f)=>f.email === mail)

@@ -2,23 +2,20 @@ import React from "react";
 import "./Request .css";
 import { useTranslation } from "react-i18next";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import { Link } from "react-router-dom";
 import FooterChangeLang from "./footerchangelang";
 import PaypalC from "./paypal";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import LogInPaypal from "./loginpaypal";
+import Test, { Testtwo } from "./test";
 
 function Requestsuser() {
-  // const enddate= useSelector((state)=>state.language.lang);
-  // const startDate=  useSelector((state)=>state.language.slang);
-  const guest=  useSelector((state)=>state.guests.guests);
-// console.log(startDate)
+  const guest = useSelector((state) => state.guests.guests);
+
   const { t } = useTranslation();
-  // const { test } =UnderHome()
   return (
     <>
-      {/* <h1>{enddate.toLocaleDateString()}</h1> */}
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link to={"/"}>
@@ -43,7 +40,6 @@ function Requestsuser() {
 
       <div className="container d-flex flex-row">
         <div className="col-lg-12">
-          {/*  */}
           <div className=" col-12 d-flex flex-row  justify-content-start flex align-items-center col-lg-6">
             <div>
               <Link to={"/details"}>
@@ -54,33 +50,36 @@ function Requestsuser() {
             </div>
             <h2>{t("paytitle")}</h2>
           </div>
-          <div className="row col-12 justify-content-between mt-5">
-            {/* <div className="border border-1 rounded-4 col-lg-6 p-4 mt-5 mb-3">
-              <h5>{t("notetitle")}</h5>
-              <p>{t("note")}</p>
-            </div> */}
 
+          <div className="row col-12 justify-content-between mt-5">
             <div className=" col-md-6 mb-3 me-5">
               <h4>{t("trap")}</h4>
               <div>
                 <div className="my-4 ">
                   <h5 className="text-start">{t("dates")}</h5>
-                  <h5 className="">{t("Edit")}</h5>
-                  <span className="text-start" >{guest[4].toLocaleDateString()} _ {guest[5].toLocaleDateString()} </span>
-                  {/* <span className="text-start">ED : {enddate.toLocaleDateString()}</span> */}
+                  <h5 className="">{t("Edit")} <Testtwo/></h5>
+                  {/* <span className="text-start">{guest[4].toLocaleDateString()} _ {guest[5].toLocaleDateString()} </span> */}
+                  <h1 id="reddit-input2" defaultValue="Add date">aa</h1>
 
                 </div>
                 <div>
                   <h5 className="text-start">{t("GUESTS")}</h5>
-                  <h5 className="">{t("Edit")}</h5>
-                  <span className="text-start">{guest[0]}{t("GUEST")},{guest[1]} children {guest[2]}Infants,{guest[3]}</span>
+                  <span className="text-start" id="GuestsNo">
+                    {guest[0]}
+                    {t("GUEST")},{guest[1]} children {guest[2]}Infants,
+                    {guest[3]}
+                  </span>
+                  <a>
+                    {" "}
+                    <Test />
+                  </a>
                 </div>
                 <hr />
               </div>
               <div>
                 <h4>{t("Pay with")}</h4>
                 {/* <PaypalC /> */}
-                <LogInPaypal/>
+                <LogInPaypal />
                 <hr />
               </div>
               <form className="row g-3">
@@ -127,7 +126,7 @@ function Requestsuser() {
                   >
                     {t("buttonLearn")}
                   </small>
-                  <hr/>
+                  <hr />
                 </div>
                 {/* <!-- Modal --> */}
                 <div
@@ -161,15 +160,15 @@ function Requestsuser() {
 
                 <div className="row">
                   <div className="col-1">
-                  <PendingActionsIcon style={{color:"#FF385C",fontSize:"30"}}/>
+                    <PendingActionsIcon
+                      style={{ color: "#FF385C", fontSize: "30" }}
+                    />
                   </div>
                   <div className="col-11">
-                    <p className="h6">
-                      {t("accepts")}
-                    </p>
-                  <p>{t("charged")}</p>
+                    <p className="h6">{t("accepts")}</p>
+                    <p>{t("charged")}</p>
                   </div>
-                  <hr/>
+                  <hr />
                 </div>
                 <div className="col-12">
                   <button
@@ -184,7 +183,6 @@ function Requestsuser() {
             </div>
             <div className="col-md-5 ms-4 my-5">
               <div className=" border position-sticky top-0 rounded-4 d-flex  flex-column p-4">
-
                 <div className="card mb-3 border-0" style={{ maxWidth: "140" }}>
                   <div className="row g-0">
                     <div className="col-md-4">

@@ -8,6 +8,8 @@ import Header from '../Header';
 import PayPalC from './paypal';
 
 export default function LogInPaypal() {
+    const checked=useSelector((state)=>state.userData.info)
+    console.log(checked.email)
     const [mail,setMail]=useState("")
     const [pass,setPass]=useState("")
     const changes=(e)=>{
@@ -25,15 +27,12 @@ export default function LogInPaypal() {
     const dispatch = useDispatch()
     const sing = useSelector((state)=>state.userData.info)
 
-    const [checkout, setCheckOut] = useState(false);
 
     const checkLog =()=>{
        if (all.some((check)=>check.email === mail)){
         const search = all.find((f)=>f.email === mail)
         if(search.password === pass){  
             dispatch(SingleData(search))
-            setCheckOut(true)
-            console.log(checkout)
 
         }else{
             alert("Wrong Password")
@@ -48,7 +47,7 @@ export default function LogInPaypal() {
 
 
   return <>
-        {checkout ?(<PayPalC/>):
+        {checked.email ?(<PayPalC/>):
         
         
   <div className='container'>

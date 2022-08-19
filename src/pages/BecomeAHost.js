@@ -17,6 +17,7 @@ import { collection, addDoc } from 'firebase/firestore';
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  
   const { t } = useTranslation();
 
   const [value, setValue] = React.useState({});

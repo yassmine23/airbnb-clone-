@@ -83,7 +83,7 @@ function App() {
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
-        <Route path="/details" exact element={<HostingDetails/>} />
+        <Route path="/details/:id" exact element={<HostingDetails/>} />
 
         <Route path="/map" exact element={<MapPage />} />
         <Route path="/logIn" exact element={<LogIn/>} />
