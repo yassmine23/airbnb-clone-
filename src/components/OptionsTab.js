@@ -88,7 +88,7 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: 2,
   boxShadow: 24,
-  p: 4,
+  px: 4,
   overflowY: "scroll",
   overflowX: "hidden",
   height: "75vh",
@@ -181,9 +181,17 @@ const OptionsTab = () => {
           }}
         >
           <Fade in={open}>
-            <Box sx={style}>
+             <Box sx={style}> 
+             <Box sx={{p:3, backgroundColor:'white', position:'sticky', top:0, zIndex:50}}>
+             <Typography
+                variant="h3"
+                component="h2"
+                style={{ fontWeight: "bold", fontSize: 20, textAlign:'center' }}
+              >  Filters    </Typography>
+              </Box>            
+            
+            <Box >
               <Typography
-                id="transition-modal-title"
                 variant="h3"
                 component="h2"
                 style={{ fontWeight: "bold", fontSize: 24 }}
@@ -674,6 +682,15 @@ const OptionsTab = () => {
               </Box>
 
             </Box>
+            <Box sx={{p:3, backgroundColor:'white', position:'sticky', bottom:0, zIndex:50, display: 'flex', flexDirection: 'row', justifyContent:'space-between' }}>
+            <Button  variant="plain" sx={{textDecoration:'underline',fontSize: "16px", p:1}}>Clear all</Button>
+            <Button sx={{backgroundColor: "black",
+  color: "white",
+  borderRadius: 2,
+  fontSize: "16px", p:1}}>show 989 stays</Button>
+             
+              </Box> 
+          </Box> 
           </Fade>
         </Modal>
       </Box>
