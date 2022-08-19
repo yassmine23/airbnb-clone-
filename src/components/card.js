@@ -8,11 +8,12 @@ import { useTranslation } from "react-i18next";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import "../components/cardStyle.css"
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebaseConfig";
 import { async } from "@firebase/util";
+import { RequestInfo } from "../Redux/Actions/AllActions";
 
 export default function MainCard() {
   const { t } = useTranslation();
@@ -41,6 +42,12 @@ export default function MainCard() {
       navigate('/signUp')
 
     }
+  }
+  const dispatch = useDispatch()
+  const toDetail = (dat)=>{
+    dispatch(RequestInfo(dat))
+    // navigate("/")
+
   }
   return (
     <>
@@ -98,7 +105,7 @@ export default function MainCard() {
           <Link to={`/details`}  style={{textDecoration:'none'}}>
             <Card.Body className="text-muted">
              <div className='d-flex flex-row justify-content-between text-black'>
-               <Card.Title >{dat.address}</Card.Title>
+               <Card.Title onClick={()=>toDetail(dat)} >{dat.address}</Card.Title>
                <div> <StarIcon fontSize="inherit"/> 5.0</div>
                </div>
               <div >3.200 kilometers away</div>

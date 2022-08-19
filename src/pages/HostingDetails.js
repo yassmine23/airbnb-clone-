@@ -13,7 +13,8 @@ import { useSelector } from 'react-redux';
 
 
 export default function HostingDetails() {
-  console.log(useSelector((state)=>state.allHosters.hosters));
+  var dataDetails = useSelector((state)=>state.requestDetail.details);
+  
   return (
     <>
       <Header />
