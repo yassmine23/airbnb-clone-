@@ -7,11 +7,6 @@ import Footer from "../components/Footer";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 
-
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { FaSearch, FaRegHeart, FaRegUserCircle } from 'react-icons/fa';
-
 import Fab from '@mui/material/Fab';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import { Link } from "react-router-dom";

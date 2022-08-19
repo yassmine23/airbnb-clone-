@@ -34,7 +34,6 @@ export default function LogIn() {
        if (all.some((check)=>check.email === mail)){
         const search = all.find((f)=>f.email === mail)
         if(search.password === pass){  
-           
             dispatch(SingleData(search))
             
         }else{

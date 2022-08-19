@@ -12,10 +12,17 @@ import Slider from './pagehost/slider';
 
 =======
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { db } from './../firebaseConfig';
+import { useSelector, useDispatch } from 'react-redux';
+import { db, storage } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
+<<<<<<< HEAD
 >>>>>>> 9df80f695df12a149d3694a38d5be8c3eea5f841
+=======
+import { Link } from "react-router-dom";
+import { ref, uploadBytes } from "firebase/storage";
+import { SingleData } from "../Redux/Actions/AllActions";
+
+>>>>>>> ca84967e5fe7e85bda1da61a953217d7cefd2cae
 
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -34,42 +41,19 @@ export default function BecomeAHost() {
       }
     }
     const [avalible,setAvalible] = useState(false)
-  const [mail,setMail]= useState("")
 const [name,setName]= useState("")
 const [addresss,setAddress]= useState("")
-const [photo,setPhoto]= useState("")
-const [secPhoto,setSecPhoto]= useState("")
-const [third,setThird]= useState("")
-const [fourth,setFourth]= useState("")
-const [fifth,setFifth]= useState("")
 const [desc,setDesc]= useState("")
 const [title,setTitle]= useState("")
 const [price,setPrice]= useState("")
 
 
     const changes=(e)=>{
-      if(e.target.name === "mail"){
-        setMail(e.target.value)
-      }else if(e.target.name === "name"){
+      if(e.target.name === "name"){
         setName(e.target.value)
       
       }else if(e.target.name === "address"){
         setAddress(e.target.value)
-      }
-      else if(e.target.name === "photo1"){
-        setPhoto(e.target.value)
-      }
-      else if(e.target.name === "photo2"){
-        setSecPhoto(e.target.value)
-      }
-      else if(e.target.name === "photo3"){
-        setThird(e.target.value)
-      }
-      else if(e.target.name === "photo4"){
-        setFourth(e.target.value)
-      }
-      else if(e.target.name === "photo5"){
-        setFifth(e.target.value)
       }
       else if(e.target.name === "description"){
         setDesc(e.target.value)
@@ -93,27 +77,43 @@ const [price,setPrice]= useState("")
 
   const all = useSelector((state)=>state.allUsers.users)
     const navigate=useNavigate()
+    const dispatch =useDispatch()
     const checkLog =()=>{
       if(all.some((ch)=>ch.email=== email)){
-        setAvalible(true)
+        const search = all.find((f)=>f.email === email)
+        if(search.password === pass){  
+          setAvalible(true)
+            dispatch(SingleData(search))
+        }else{
+            alert("Wrong Password")
+        }
 
       }
       else{
         navigate("/signUp")
       }
     }
-    const requestCollection = collection(db, "Requests")
-const createRequest = async()=>{
-  await addDoc(requestCollection,{name:name, email:mail,title:title, address:addresss, Url:photo,Url2:secPhoto,Url3:third,Url4:fourth,Url5:fifth,price:price, description:desc, display:true})
 
+    const [files,setFiles]=useState([])
+    const uplload=()=>{
+      if(files.length <= 0) return;
+      files.forEach((file)=>{const imageRed = ref(storage,`Images/${title}/${file.name}`) 
+      uploadBytes(imageRed,file).then(()=>alert("image ploaded"))})
+    }
+
+    const requestCollection = collection(db, "AskRequest")
+     const createRequest = async()=>{
+    await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
+      navigate('/user')
 }
+
   return (
     <>
       <div className="container-fluid">
         <div className="d-flex">
           <nav className="navbar fixed-top">
             <div className="container-fluid">
-              <a className="navbar-brand" href="#">
+              <Link to='/' className="navbar-brand" >
                 <svg
                   viewBox="0 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ const createRequest = async()=>{
                 >
                   <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.96 3.396l.01.415.001.228c0 4.062-2.877 6.478-6.357 6.478-2.224 0-4.556-1.258-6.709-3.386l-.257-.26-.172-.179h-.011l-.176.185c-2.044 2.1-4.267 3.42-6.414 3.615l-.28.019-.267.006C5.377 31 2.5 28.584 2.5 24.522l.005-.469c.026-.928.23-1.768.83-3.244l.216-.524c.966-2.298 6.083-12.989 7.707-16.034C12.537 1.963 13.992 1 16 1zm0 2c-1.239 0-2.053.539-2.987 2.21l-.523 1.008c-1.926 3.776-6.06 12.43-7.031 14.692l-.345.836c-.427 1.071-.573 1.655-.605 2.24l-.009.33v.206C4.5 27.395 6.411 29 8.857 29c1.773 0 3.87-1.236 5.831-3.354-2.295-2.938-3.855-6.45-3.855-8.91 0-2.913 1.933-5.386 5.178-5.42 3.223.034 5.156 2.507 5.156 5.42 0 2.456-1.555 5.96-3.855 8.907C19.277 27.766 21.37 29 23.142 29c2.447 0 4.358-1.605 4.358-4.478l-.004-.411c-.019-.672-.17-1.296-.714-2.62l-.248-.6c-1.065-2.478-5.993-12.768-7.538-15.664C18.053 3.539 17.24 3 16 3zm.01 10.316c-2.01.021-3.177 1.514-3.177 3.42 0 1.797 1.18 4.58 2.955 7.044l.21.287.174-.234c1.73-2.385 2.898-5.066 2.989-6.875l.006-.221c0-1.906-1.167-3.4-3.156-3.421h-.001z"></path>
                 </svg>
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
@@ -169,7 +169,7 @@ const createRequest = async()=>{
                     <div className='container'>
                     <div >
                       <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                      <input type="email" className="form-control" name='mail' value={email} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                      <input type="email" className="form-control" name='mail' value={email}  id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
@@ -184,12 +184,18 @@ const createRequest = async()=>{
                       <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label"> 5 photos</label>
-                      <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
+                      <label htmlFor="exampleInputEmail1" className="form-label"> photos of place</label>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
+                      <button className="btn btn-outline-info me-auto" onClick={uplload}>upload</button>
+                      {/* <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo2' value={secPhoto} onChange={(e)=>changes(e)} id="link2" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo3' value={third} onChange={(e)=>changes(e)} id="link3" aria-describedby="emailHelp"/>
                       <input type="text" className="form-control" name='photo4' value={fourth} onChange={(e)=>changes(e)} id="link4" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/>
+                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/> */}
                     </div>
             
                     <div class="mb-1">

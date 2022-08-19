@@ -1,5 +1,6 @@
 import {initializeApp}from 'firebase/app'
 import {getFirestore} from '@firebase/firestore'
+import {getStorage} from 'firebase/storage'
 const firebaseConfig={
     apiKey: "AIzaSyDc4pQ7M49mqJ4m9fa_EdCH_uUDSl00jVI",
     authDomain: "airbnb-f88a9.firebaseapp.com",
@@ -10,3 +11,4 @@ const firebaseConfig={
 }
 const app =initializeApp(firebaseConfig)
 export const db = getFirestore(app)
+export const storage = getStorage(app)
