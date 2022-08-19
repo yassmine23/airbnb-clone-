@@ -12,6 +12,7 @@ import Test, { Testtwo } from "./test";
 
 function Requestsuser() {
   const guest = useSelector((state) => state.guests.guests);
+  const dates = useSelector((state) => state.guests.dates);
 
   const { t } = useTranslation();
   return (
@@ -57,17 +58,17 @@ function Requestsuser() {
               <div>
                 <div className="my-4 ">
                   <h5 className="text-start">{t("dates")}</h5>
-                  <h5 className="">{t("Edit")} <Testtwo/></h5>
-                  {/* <span className="text-start">{guest[4].toLocaleDateString()} _ {guest[5].toLocaleDateString()} </span> */}
+                  <h5 className=""><Testtwo/></h5>
+                  <span className="text-start">{dates["endDate"].toLocaleDateString()} _ {dates["startDate"].toLocaleDateString()} </span>
                   <h1 id="reddit-input2" defaultValue="Add date">aa</h1>
 
                 </div>
                 <div>
                   <h5 className="text-start">{t("GUESTS")}</h5>
                   <span className="text-start" id="GuestsNo">
-                    {guest[0]}
-                    {t("GUEST")},{guest[1]} children {guest[2]}Infants,
-                    {guest[3]}
+                    {guest["count1"]}
+                    {t("GUEST")},{guest["count2"]} children {guest["count3"]}Infants,
+                    {guest["count4"]} Pets
                   </span>
                   <a>
                     {" "}

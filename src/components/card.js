@@ -81,7 +81,7 @@ export default function MainCard() {
               </Carousel.Item>
             </Carousel>
           
-          <Link to={`/details/${dat.id}`} key={dat.id} style={{textDecoration:'none'}}>
+          <Link to={`/details`} key={dat.id} style={{textDecoration:'none'}}>
             <Card.Body className="text-muted">
              <div className='d-flex flex-row justify-content-between text-black'>
                <Card.Title >{dat.address}</Card.Title>

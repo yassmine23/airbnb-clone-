@@ -38,3 +38,10 @@ export function changeGuests(data){
     }
 
 }
+export function changeGuests2(data){
+    return{
+        type:"SET_GUEST",
+        data,
+    }
+
+}

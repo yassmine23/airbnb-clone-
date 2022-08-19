@@ -24,6 +24,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeGuests } from "../../Redux/Actions/AllActions";
 import { useTranslation } from "react-i18next";
 import { DateRange, DateRangePicker } from "react-date-range";
+import { changeGuests2 } from './../../Redux/Actions/AllActions';
 
 export default function Test() {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ export default function Test() {
   const dispatchg = useDispatch();
 
   // + & - 1
-  const [count1, setCount1] = useState(guest[0]);
+  const [count1, setCount1] = useState(guest["count1"]);
 
   const IncNum1 = () => {
     setCount1(count1 + 1);
@@ -47,7 +48,7 @@ export default function Test() {
   };
 
   // + & - 2
-  const [count2, setCount2] = useState(guest[1]);
+  const [count2, setCount2] = useState(guest["count2"]);
   const IncNum2 = () => {
     setCount2(count2 + 1);
   };
@@ -60,7 +61,7 @@ export default function Test() {
     }
   };
   // + & - 3
-  const [count3, setCount3] = useState(guest[2]);
+  const [count3, setCount3] = useState(guest["count3"]);
   const IncNum3 = () => {
     setCount3(count3 + 1);
   };
@@ -72,7 +73,7 @@ export default function Test() {
     }
   };
   // + & - 4
-  const [count4, setCount4] = useState(guest[3]);
+  const [count4, setCount4] = useState(guest["count4"]);
   const IncNum4 = () => {
     setCount4(count4 + 1);
   };
@@ -88,8 +89,9 @@ export default function Test() {
   const addGuests = () => {
     if (count1 !== 0 || count2 !== 0 || count3 !== 0 || count4 !== 0) {
       const c4 = [count1, count2, count3, count4];
-      console.log(c4);
-      dispatchg(changeGuests(c4));
+      const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
+      console.log(x4);
+      dispatchg(changeGuests(x4));
     }
   };
 
@@ -339,12 +341,20 @@ const useStyles = makeStyles((theme) => ({
 export function Testtwo() {
   const { t } = useTranslation();
 
-  const guest = useSelector((state) => state.guests.guests);
+  const guest = useSelector((state) => state.guests.dates);
   const dispatchg = useDispatch();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
+  
+  const addDate = () => {
+    if (startDate !== 0 || endDate !== 0 ) {
+      const Date={"endDate":endDate,"startDate":startDate}
+      // console.log(Date);
+      dispatchg(changeGuests2(Date));
+    }
+  };
   function handelSelect(ranges) {
     var x1 = setStartDate(ranges.selection.startDate);
     var x2 = setEndDate(ranges.selection.endDate);
@@ -390,13 +400,13 @@ export function Testtwo() {
     key: "selection",
   };
 
-  const addGuests2 = () => {
-    if (startDate !== "") {
-      const c4 = [startDate, endDate];
-      console.log(c4);
-      dispatchg(changeGuests(c4));
-    }
-  };
+  // const addGuests2 = () => {
+  //   if (startDate !== "") {
+  //     const c4 = [startDate, endDate];
+  //     console.log(c4);
+  //     dispatchg(changeGuests(c4));
+  //   }
+  // };
   const clear = () => {
     setStartDate("");
     setEndDate("");
@@ -434,20 +444,11 @@ export function Testtwo() {
             <div>
               <Button
                 style={{
-                  borderRadius: "5px",
-                  marginLeft: "25px",
-                  marginTop: "15px",
-                  fontSize: "20px",
-                  paddingLeft: "75px",
-                  paddingRight: "75px",
-                  textAlign: "center",
-                  backgroundColor: "red",
-                  color: "white",
+                 
                 }}
-                variant="contained"
+                variant=""
                 {...bindTrigger(popupState)}
-              >
-                Check Availability
+              >{t("Edit")}
               </Button>
 
               <Popover
@@ -472,12 +473,11 @@ export function Testtwo() {
                         </p>
                       </Box>
                     </Grid>
-                    {/* <button type="button" onClick={addGuests2}>
-                      save
-                    </button> */}
+                  
                   </Grid>
 
                   <div>
+                    
                     <DateRangePicker
                       ranges={[SelectionRange]}
                       onChange={handelSelect}
@@ -494,6 +494,20 @@ export function Testtwo() {
                   >
                     CLEAR DATES
                   </Button>
+                  <button
+                      type="Submit"
+                      value="Submit"
+                      style={{
+                        color: "white",
+                        backgroundColor: "black",
+                        borderRadius: "10px",
+                        position: "absolute",
+                        right: "7%",
+                      }}
+                      onClick={addDate}
+                    >
+                      save
+                    </button>
                 </Typography>
               </Popover>
             </div>
@@ -502,12 +516,7 @@ export function Testtwo() {
 
         {/* under check availability */}
         <Grid container style={{ borderBottom: "1px solid lightgray" }}>
-          <Grid item xs={9} s>
-            <Box p={2}>
-              <p id="NightsNo"> </p>
-              <p id="ServiceFee"> </p>
-            </Box>
-          </Grid>
+         
           <Grid item xs={3} s>
             <Box p={2}>
               <p id="NightsPrice"></p>
@@ -517,6 +526,7 @@ export function Testtwo() {
         </Grid>
 
         <Grid container>
+       
           <Grid item xs={9} s>
             <Box p={2}>
               <p
