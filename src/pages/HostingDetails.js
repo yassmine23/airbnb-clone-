@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 
 export default function HostingDetails() {
   var dataDetails = useSelector((state)=>state.requestDetail.details);
+  
   return (
     <>
       <Header />
