@@ -47,7 +47,7 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeLanguage } from "../../Redux/Actions/AllActions";
+import { changeGuests2, changeLanguage } from "../../Redux/Actions/AllActions";
 import { changeGuests } from "./../../Redux/Actions/AllActions";
 const useStylesReddit = makeStyles((theme) => ({
   root: {
@@ -211,6 +211,8 @@ const UnderHome = () => {
   };
 
   const addGuests = (ev) => {
+
+    
     if (count1 !== 0 || count2 !== 0 || count3 !== 0 || count4 !== 0) {
       document.getElementById(
         "GuestsNo"
@@ -219,10 +221,13 @@ const UnderHome = () => {
     //    ev.target.Popover('hiden')
   };
 
-  const xn = [count1, count2, count3, count4, startDate, endDate];
   const dispatchg = useDispatch();
-  dispatchg(changeGuests(xn));
-  console.log(xn);
+    const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
+    console.log(x4);
+    dispatchg(changeGuests(x4));
+    const Dates={"endDate":endDate,"startDate":startDate}
+    // console.log(Date);
+    dispatchg(changeGuests2(Dates));
 
   //check availability
   const classes = useStyles();
