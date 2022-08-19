@@ -79,11 +79,12 @@ console.log(errList);
     if (d.context.label =="name") {
       setError({...errr, errorName:"length of full name at least 10 characters"}) 
     }
-    else if (d.context.label =="email"){
+     if (d.context.label =="email"){
       setError({...errr, errorEmail:"invalid email"})     }
-    else if (d.context.label =="password"){
+     if (d.context.label =="password"){
       setError({...errr,errorPassword:"* between 8 and 15 charcters ,must have at least one of small and capital and special character and one number"})
-      }else if (d.context.label =="age"){
+      }
+       if (d.context.label =="age"){
       setError({...errr, errorAge:"* Your age must be between 18 and 60"})
     }
     return errr
