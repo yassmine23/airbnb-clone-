@@ -1,10 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
- 
+import { Link } from "react-router-dom";
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import GppGoodIcon from '@mui/icons-material/GppGood';
  import EventBusyIcon from '@mui/icons-material/EventBusy';
@@ -35,7 +36,7 @@ import TextField from '@material-ui/core/TextField';
 import { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Alert from '@mui/material/Alert';
 // import Stack from '@mui/material/Stack';
 // import BasicAlerts from './components/underHome/alert'
@@ -44,6 +45,7 @@ import Dialog from '@mui/material/Dialog';
 // import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import { changeGuests, changeGuests2 } from './../../Redux/Actions/AllActions';
 
 //check availbility
  const useStylesReddit = makeStyles((theme) => ({
@@ -82,6 +84,8 @@ import DialogContentText from '@mui/material/DialogContentText';
   
 // the begning of function
 const UnderHome = () => {
+  const datareq=useSelector((state)=>state.requestDetail.details)
+
       //date and pickers
       const [startDate, setStartDate]=useState(new Date());
       const [endDate, setEndDate]=useState(new Date());
@@ -213,6 +217,17 @@ const UnderHome = () => {
         //data from database
         var dataDetails = useSelector((state)=>state.requestDetail.details);
 
+        // page requst
+        var Difference_In_Time = endDate.getTime() - startDate.getTime();
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        let service  = parseInt(eval((dataDetails.price * Difference_In_Days)*0.14).toFixed(0));
+        let total =service+(dataDetails.price * Difference_In_Days);
+        const dispatchg = useDispatch();
+        const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
+        dispatchg(changeGuests(x4));
+        const Dates={"endDate":endDate,"startDate":startDate,"Difference_In_Days":Difference_In_Days,"service":service,"total":total}
+        dispatchg(changeGuests2(Dates));
      return <>
        
         <Grid container my={4}>
@@ -246,11 +261,11 @@ const UnderHome = () => {
                             <Box style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <img  width='150wv' height='40hv'  alt='ss' src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg'/>
                                 <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
-                                <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</Link>
+                                <a style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</a>
                             </Box>
                             <Box style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <p>Head north in Norway and experience our tiny-hotel on a remote island. The Arctic Hideaway is an architecturally playful and stunning collection of 11 individual buildings, where fours are sleeping cabins. The shared areas are the iconic Tower House, kitchen house, studio building, bathhouse, crab trap and sauna. In limited periods, we will offer single cabins for rent on Airbnb. Included in the stay is all food (se details for concept) and daily use of the sauna...</p>
-                                <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</Link>
+                                <a style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</a>
                             </Box>
                             <Box   style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <h2>Where you'll sleep</h2>
@@ -561,9 +576,11 @@ const UnderHome = () => {
                                 </Box>  
                             </Grid>
                     </Grid>
+                    <Link to={"/details/book"}>
                     <Button style={{borderRadius:'5px',marginLeft:'95px' ,marginTop:'15px',fontSize:'20px', paddingLeft:'75px', paddingRight:'75px',textAlign:'center', backgroundColor:'gray', color:'white'}} >
                                     Reserve  
                     </Button>
+                    </Link>
                 </Box> 
             </Box>
         </Grid>             
