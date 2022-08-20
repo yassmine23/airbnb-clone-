@@ -13,6 +13,9 @@ import Test, { Testtwo } from "./test";
 function Requestsuser() {
   const guest = useSelector((state) => state.guests.guests);
   const dates = useSelector((state) => state.guests.dates);
+const datareq=useSelector((state)=>state.requestDetail.details)
+
+const total=datareq.price*dates.Difference_In_Days.toFixed(0)
 
   const { t } = useTranslation();
   return (
@@ -58,10 +61,8 @@ function Requestsuser() {
               <div>
                 <div className="my-4 ">
                   <h5 className="text-start">{t("dates")}</h5>
-                  <h5 className=""><Testtwo/></h5>
                   <span className="text-start">{dates["endDate"].toLocaleDateString()} _ {dates["startDate"].toLocaleDateString()} </span>
-                  <h1 id="reddit-input2" defaultValue="Add date">aa</h1>
-
+                  <h5 className=""><Testtwo/></h5>
                 </div>
                 <div>
                   <h5 className="text-start">{t("GUESTS")}</h5>
@@ -69,13 +70,9 @@ function Requestsuser() {
                     {guest["count1"]}
                     {t("GUEST")},{guest["count2"]} children {guest["count3"]}Infants,
                     {guest["count4"]} Pets
-                  </span>
-                  <a>
-                    {" "}
-                    <Test />
-                  </a>
+                  </span><h5 className=""><Test /></h5>
                 </div>
-                <hr />
+                <hr/>
               </div>
               <div>
                 <h4>{t("Pay with")}</h4>
@@ -94,15 +91,15 @@ function Requestsuser() {
                     <div className="row g-0">
                       <div className="col-1 me-3">
                         <img
-                          src="/assets/images/slid1.jpg"
+                          src={datareq.Url}
                           className="img-fluid rounded-circle"
                           alt="..."
                         />
                       </div>
                       <div className="col-10">
                         <div className="card-body">
-                          <h5 className="card-title">The Arctic Hideaway</h5>
-                          <small className="card-text">{t("joined")}2020</small>
+                          <h5 className="card-title">{datareq.title}</h5>
+                          {/* <small className="card-text">{t("joined")}2020</small> */}
                         </div>
                       </div>
                     </div>
@@ -188,7 +185,7 @@ function Requestsuser() {
                   <div className="row g-0">
                     <div className="col-md-4">
                       <img
-                        src="/assets/images/slid1.jpg"
+                        src={datareq.Url}
                         className="rounded-3 img-fluid rounded-start"
                         alt="..."
                       />
@@ -196,16 +193,15 @@ function Requestsuser() {
                     <div className="col-md-8">
                       <div className="card-body">
                         <small className="text-muted">
-                          Private room in island{" "}
+                        {datareq.title}{" "}
                         </small>
                         <p className="card-text">
-                          The Arctic Hideaway - Lower fat pod -1 double bed
+                        {datareq.address}
                         </p>
                         <p className="card-text">
                           <small className="text-muted">
                             4.86(14 {t("reviews")} )
                           </small>
-                          <small className="text-muted"> Superhost</small>
                         </p>
                       </div>
                     </div>
@@ -226,14 +222,16 @@ function Requestsuser() {
                 <h5>{t("pricedetails")}</h5>
                 <div className="row">
                   <div className="col-9">
-                    <p>$221.04 x 5 {t("nights")}</p>
+                    <p> $ <span>{t(datareq.price)} x </span>
+                    <span> {dates.Difference_In_Days}</span>
+                    {t("nights")}</p>
                     <p>{t("servicefee")}</p>
-                    <p>{t("taxes")}</p>
+                    {/* <p>{t("taxes")}</p> */}
                   </div>
                   <div className="col-3">
-                    <p>$1,105.20</p>
-                    <p>$156.03</p>
-                    <p>$132.62</p>
+                    <p>$ {total}</p>
+                    <p>$ {dates.service}</p>
+                    {/* <p>$132.62</p> */}
                   </div>
                 </div>
 
@@ -243,7 +241,7 @@ function Requestsuser() {
                     <h6>{t("totalp")} (USD)</h6>
                   </div>
                   <div className="col-3">
-                    <p>$1,393.85</p>
+                    <p>$ {dates.total}</p>
                   </div>
                 </div>
               </div>

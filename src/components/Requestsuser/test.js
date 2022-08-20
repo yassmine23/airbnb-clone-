@@ -88,51 +88,27 @@ export default function Test() {
 
   const addGuests = () => {
     if (count1 !== 0 || count2 !== 0 || count3 !== 0 || count4 !== 0) {
-      const c4 = [count1, count2, count3, count4];
       const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
       console.log(x4);
       dispatchg(changeGuests(x4));
     }
   };
 
-  //check availability
-  // const classes = useStyles();
-
-  //calender
-  // const [value, setValue] = React.useState([null, null]);
-
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-
-  // const xn = [count1, count2, count3, count4,startDate,endDate];
-  // const dispatchg = useDispatch();
-  // dispatchg(changeGuests(xn));
-  // console.log(xn);
-
+ 
   return (
     <>
       <Grid item xs={6}>
-        <Box p={2}></Box>
-        <Box p={2}>
+        {/* <Box p={2}></Box> */}
+        <Box>
           <PopupState
-            variant="popover"
-            popupId="demo-popup-popover"
-            // style={{ position: "relative" }}
+            // variant="popover"
+            // popupId="demo-popup-popover"
           >
             {(popupState) => (
               <div>
-                <Button {...bindTrigger(popupState)}>{t("Edit")}</Button>
+                <Button {...bindTrigger(popupState)} className="fs-6" >{t("Edit")}</Button>
                 <Popover
-                  {...bindPopover(popupState)}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "center",
-                  }}
-                >
+                  {...bindPopover(popupState)}  >
                   <Typography sx={{ p: 2 }}>
                     <Grid container>
                       <Grid item xs={7} s>
@@ -146,18 +122,16 @@ export default function Test() {
                           <h4>Pets</h4>
                           <p
                             style={{
-                              textDecoration: "underLine",
-                              fontSize: "15px",
-                            }}
-                          >
-                            Bringing a service animal?
+                              textDecoration:"underLine",
+                              fontSize:"12px",
+                            }}>Bringing a service animal?
                           </p>
                         </Box>
                       </Grid>
-                      <Grid item xs={5} s>
+                      <Grid item xs={5}>
                         <Box p={2}>
                           <Grid container style={{ marginBottom: "50px" }}>
-                            <Grid item xs={5} s>
+                            <Grid item xs={5}>
                               <Box>
                                 <Button onClick={IncNum1}>
                                   <AddIcon size="small" />
@@ -283,16 +257,13 @@ export default function Test() {
                       type="Submit"
                       value="Submit"
                       style={{
-                        color: "white",
-                        backgroundColor: "black",
-                        borderRadius: "10px",
-                        position: "absolute",
+                        color:"white",
+                        backgroundColor:"black",
+                        borderRadius:"7px",
                         right: "7%",
                       }}
                       onClick={addGuests}
-                    >
-                      save
-                    </button>
+                    >{t("save")}</button>
                   </Typography>
                 </Popover>
               </div>
@@ -333,25 +304,30 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
   },
-  margin: {
-    margin: theme.spacing(1),
-  },
+  // margin: {
+  //   margin: theme.spacing(0),
+  // },
 }));
 // edit dates
 export function Testtwo() {
   const { t } = useTranslation();
-
+  const datareq=useSelector((state)=>state.requestDetail.details)
+  const dates = useSelector((state) => state.guests.dates);
   const guest = useSelector((state) => state.guests.dates);
   const dispatchg = useDispatch();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
+  var Difference_In_Time = dates.endDate.getTime() - dates.startDate.getTime();
+  
+    // To calculate the no. of days between two dates
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    let service  = parseInt(eval((datareq.price * Difference_In_Days)*0.14).toFixed(0));
+    let total =service+(datareq.price * Difference_In_Days);
   
   const addDate = () => {
     if (startDate !== 0 || endDate !== 0 ) {
-      const Date={"endDate":endDate,"startDate":startDate}
-      // console.log(Date);
+      const Date={"endDate":endDate,"startDate":startDate,"Difference_In_Days":Difference_In_Days,"service":service,"total":total}
       dispatchg(changeGuests2(Date));
     }
   };
@@ -362,36 +338,7 @@ export function Testtwo() {
     document.getElementById(
       "selecteddates"
     ).innerText = `start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`;
-    // document.getElementById(
-    //   "reddit-input1"
-    // ).value = `${ranges.selection.startDate.toDateString()}`;
-    // document.getElementById(
-    //   "reddit-input2"
-    // ).value = `${ranges.selection.endDate.toDateString()}`;
-
-    var date1 = new Date(ranges.selection.startDate);
-    var date2 = new Date(ranges.selection.endDate);
-    // To calculate the time difference of two dates
-    // var Difference_In_Time = date2.getTime() - date1.getTime();
-    // To calculate the no. of days between two dates
-    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-    // document.getElementById(
-    //   "NightsNo"
-    // ).innerText = `$149 x ${Difference_In_Days} nights`;
-    // document.getElementById("ServiceFee").innerText = `Service Fee`;
-    // document.getElementById("NightsPrice").innerText = `$ ${eval(
-    //   149 * Difference_In_Days
-    // )}`;
-
-    // let y = parseInt(eval(149 * Difference_In_Days));
-    // document.getElementById("FeePrice").innerText = `$ ${eval(0.14 * y).toFixed(
-    //   0
-    // )}`;
-    // let z = parseInt(eval(0.14 * y).toFixed(0));
-    // document.getElementById("totalPrice").innerText = `Total before taxes`;
-    // let x = y + z;
-    // document.getElementById("actualPrice").innerText = `$ ${x}`;
+  
   }
 
   const SelectionRange = {
@@ -400,67 +347,33 @@ export function Testtwo() {
     key: "selection",
   };
 
-  // const addGuests2 = () => {
-  //   if (startDate !== "") {
-  //     const c4 = [startDate, endDate];
-  //     console.log(c4);
-  //     dispatchg(changeGuests(c4));
-  //   }
-  // };
   const clear = () => {
     setStartDate("");
     setEndDate("");
     document.getElementById("selecteddates").innerText = "";
-    // document.getElementById("fixedP").innerText =
-    //   "Add your travel dates for exact pricing";
-    // document.getElementById("reddit-input1").value = "add date";
-    // document.getElementById("reddit-input2").value = "add date";
-    // reserve
-    // document.getElementById("NightsNo").innerText = "";
-    // document.getElementById("ServiceFee").innerText = "";
-    // document.getElementById("NightsPrice").innerText = "";
-    // document.getElementById("FeePrice").innerText = "";
-    // document.getElementById("totalPrice").innerText = "";
-    // document.getElementById("actualPrice").innerText = "";
+   
   };
-  //calender
-  // const [value, setValue] = React.useState([null, null]);
-
+ 
   return (
     <>
-      {/* <RedditTextField
-                        defaultValue="Add date"
-                        id="reddit-input1"
-                      />
-
-<RedditTextField
-          defaultValue="Add date"
-          id="reddit-input2"
-        /> */}
+     
 
       <Box>
         <PopupState variant="popover" popupId="demo-popup-popover">
           {(popupState) => (
             <div>
               <Button
-                style={{
+              className="fs-6" 
+                // style={{
                  
-                }}
-                variant=""
+                // }}
                 {...bindTrigger(popupState)}
               >{t("Edit")}
               </Button>
 
               <Popover
                 {...bindPopover(popupState)}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "center",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
+             
               >
                 <Typography sx={{ p: 2 }}>
                   <Grid container>
@@ -486,7 +399,7 @@ export function Testtwo() {
                   <Button
                     onClick={clear}
                     style={{
-                      position: "absolute",
+                      position:"absolute",
                       right: "30px",
                       color: "black",
                       textDecoration: "underLine",
@@ -497,56 +410,23 @@ export function Testtwo() {
                   <button
                       type="Submit"
                       value="Submit"
+                      className="btn"
                       style={{
                         color: "white",
                         backgroundColor: "black",
                         borderRadius: "10px",
-                        position: "absolute",
                         right: "7%",
                       }}
                       onClick={addDate}
                     >
-                      save
+                      {t("save")}
                     </button>
                 </Typography>
               </Popover>
             </div>
           )}
         </PopupState>
-
-        {/* under check availability */}
-        <Grid container style={{ borderBottom: "1px solid lightgray" }}>
-         
-          <Grid item xs={3} s>
-            <Box p={2}>
-              <p id="NightsPrice"></p>
-              <p id="FeePrice"> </p>
-            </Box>
-          </Grid>
-        </Grid>
-
-        <Grid container>
-       
-          <Grid item xs={9} s>
-            <Box p={2}>
-              <p
-                id="totalPrice"
-                style={{ fontWeight: "bold", fontSize: "20px" }}
-              ></p>
-            </Box>
-          </Grid>
-          <Grid item xs={3} s>
-            <Box p={2}>
-              <p
-                id="actualPrice"
-                style={{ fontWeight: "bold", fontSize: "20px" }}
-              >
-                {" "}
-              </p>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
+           </Box>
     </>
   );
 }

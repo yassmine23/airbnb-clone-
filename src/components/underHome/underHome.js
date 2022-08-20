@@ -86,6 +86,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UnderHome = () => {
+  const datareq=useSelector((state)=>state.requestDetail.details)
+console.log(datareq.title)
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -221,12 +223,15 @@ const UnderHome = () => {
     //    ev.target.Popover('hiden')
   };
 
-  const dispatchg = useDispatch();
+  var Difference_In_Time = endDate.getTime() - startDate.getTime();
+    // To calculate the no. of days between two dates
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    let service  = parseInt(eval((datareq.price * Difference_In_Days)*0.14).toFixed(0));
+    let total =service+(datareq.price * Difference_In_Days);
+    const dispatchg = useDispatch();
     const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
-    console.log(x4);
     dispatchg(changeGuests(x4));
-    const Dates={"endDate":endDate,"startDate":startDate}
-    // console.log(Date);
+    const Dates={"endDate":endDate,"startDate":startDate,"Difference_In_Days":Difference_In_Days,"service":service,"total":total}
     dispatchg(changeGuests2(Dates));
 
   //check availability
@@ -294,7 +299,6 @@ const UnderHome = () => {
               Every booking includes free protection from Host cancellations,
               listing inaccuracies, and other issues like trouble checking in.
             </p>
-            {/* <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</Link> */}
           </Box>
           <Box style={{ borderBottom: "1px solid lightgray" }} p={2}>
             <p>
