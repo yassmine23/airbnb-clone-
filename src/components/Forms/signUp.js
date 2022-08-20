@@ -8,8 +8,10 @@ import { useSelector } from 'react-redux';
 import { SingleData } from "../../Redux/Actions/AllActions";
 import { useDispatch } from 'react-redux';
 import Joi from "joi";
+import { useTranslation } from 'react-i18next';
 
 const SignUp = () => {
+  const {t}=useTranslation();
   const [user, AddUsers] = useState({
     userEmail: "",
     userPassword: "",
@@ -112,7 +114,7 @@ useEffect(()=>{
 
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
+          {t("Emailaddress")}
           </label>
           <input
             type="text"
@@ -130,7 +132,7 @@ useEffect(()=>{
 
         <div className="mb-3">
           <label htmlFor="exampleInputName" className="form-label">
-            Name
+           {t("Name")} 
           </label>
           <input
             type="text"
@@ -146,7 +148,7 @@ useEffect(()=>{
 
         <div className="mb-3">
           <label htmlFor="exampleInputPassword" className="form-label">
-            Password
+          {t("Password")}
           </label>
           <input
             type="password"
@@ -162,7 +164,8 @@ useEffect(()=>{
 
         <div className="mb-3">
           <label htmlFor="exampleInputAge" className="form-label">
-            age
+          {t("age")} 
+
           </label>
           <input
             type="number"
@@ -175,7 +178,7 @@ useEffect(()=>{
           <small className="text-danger">{errr.errorAge}</small> 
         </div>
         <button className="btn btn-primary">
-          Creat Account
+         {t("CreateAccount")}
         </button>
       </form>
       {/* <Footer  /> */}
