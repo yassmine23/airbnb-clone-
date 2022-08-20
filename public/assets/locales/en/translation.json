@@ -48,7 +48,7 @@
 "anyweek":"Any week",
 "addguest":" Add guests",
 
-"total":" night",
+"total":"night",
 
 "support":"Support",
 "helpc":"Help Center",
@@ -121,7 +121,7 @@
 
 
 
-"Privacy":"Privacy",
+    "Privacy":"Privacy",
     "Terms":"Terms",
     "Sitemap":"Sitemap",
     "Destinations":"Destinations",
@@ -137,7 +137,7 @@
 
     "where":"where",
     "Searchdestinations":"Search destinations ",
-    "Search by region ":"Search by region ",
+    "Searchbyregion":"Search by region ",
 
     "Checkin":"Check in",
     "Adddate":"Add dates",
@@ -151,10 +151,10 @@
     "Infants":"Infants",
     "Under2":"Under 2",
     "Pets":"Pets",
-    "Bringingaserviceanimal?":"Bringing a service animal?",
+    "Bringingaserviceanimal":"Bringing a service animal?",
     "Search":"Search",
 
-    "Emailaddress":"Email address",
+   "Emailaddress":"Email address",
     "Name":"Name",
     "Password":"Password",
     "age":"Age",
@@ -162,7 +162,18 @@
     "Login":"Log In",
 
     "Profile":"Profile",
-    "wishlist":"wishlist"
+    "wishlist":"wishlist",
+    "explore":"Explore",
+
+    "placetitle":"place Title",
+    "placeaddress":"place address",
+    "nofilechosen":"No file chosen",
+    "description":"description",
+    "Pricepernight":"Price Per Night",
+    "upload":"upload",
+    "submit":"Submit",
+    "photosofplace":"photos of place"
+    
 
 
 }

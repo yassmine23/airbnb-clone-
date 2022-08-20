@@ -120,7 +120,7 @@ export default function MainCard() {
                </div>
               <div >3.200 kilometers away</div>
               <div >Aug 29-sep 3</div>
-              <div >${dat.price} night</div>
+              <div >${dat.price} {t("total")}</div>
             </Card.Body>
             </Link>
           </Card>

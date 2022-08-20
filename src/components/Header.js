@@ -44,11 +44,14 @@ const Header = () => {
 const { t } = useTranslation();
 let where=t("anywhere");
 let week=t("anyweek");
-let addg=t("addguest");
+let addg=t("Stays");
+let Stays=t("anywhere");
+let Experiences=t("Experiences");
+let onlineexperiences=t("Onlineexperiences");
 const choices = [
-  { id: 1, text: where, altText: "Stays" },
-  { id: 2, text: week, altText: "Experiences" },
-  { id: 3, text: addg, withIcon: true, altText: "Online Experiences" },
+  { id: 1, text: where },
+  { id: 2, text: week, altText:Experiences},
+  { id: 3, text: addg, withIcon: true, altText:onlineexperiences },
 ];
   // serch
   const [isOpen, setIsOpen] = useState(false);
@@ -304,13 +307,13 @@ const choices = [
             
               <Nav >
                 <Nav.Item>
-                  <Nav.Link className="fw-bold p-3">Stays</Nav.Link>
+                  <Nav.Link className="fw-bold p-3">{t("Stays")}</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className="fw-bold p-3">Experiences</Nav.Link>
+                  <Nav.Link className="fw-bold p-3">{t("Experiences")}</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className="fw-bold p-3">Online experiences</Nav.Link>
+                  <Nav.Link className="fw-bold p-3">{t("Onlineexperiences")}</Nav.Link>
                 </Nav.Item>
               </Nav>
             
@@ -435,15 +438,15 @@ const choices = [
     divider={<Divider orientation="vertical" flexItem />}
   >
     <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
-     <TextField id="search" label="where" variant="outlined" placeholder='search destination'/>
+     <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")}/>
 
      </Button>
-    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check In <div className='text-muted '>add dates</div></Button>
-    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>Check Out <div className='text-muted '>add dates</div></Button>
-    <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >Who  
+    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkin")}<div className='text-muted '>{t("Adddate")}</div></Button>
+    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkout")}<div className='text-muted '>{t("Adddate")}</div></Button>
+    <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >{t("who")}  
      <Link to={'/search'}> <Button variant="contained" color='secondary' 
      style={{borderRadius:20, marginInline:'10px', padding:'10px',fontWeight:'bold' }} endIcon={< SearchOutlinedIcon /> }>
-       search
+       {t("Search")}
       </Button> </Link>
       </Button>
 
@@ -476,17 +479,17 @@ const choices = [
               <Grid container>
                 <Grid item xs={7} s>
                   <Box>
-                    <h4>Adults</h4>
-                    <p>Age 13+</p>
-                    <h4>Children</h4>
-                    <p>Age 2-12</p>
-                    <h4>Infants</h4>
-                    <p>Under 2</p>
-                    <h4>Pets</h4>
+                    <h4>{t("Adults")}</h4>
+                    <p>{t("Ages13orabove")}</p>
+                    <h4>{t("Children")}</h4>
+                    <p>{t("Ages2–12")}</p>
+                    <h4>{t("Infants")}</h4>
+                    <p>{t("Under2")}</p>
+                    <h4>{t("Pets")}</h4>
                     <p
                       style={{ textDecoration: "underLine", fontSize: "15px" }}
                     >
-                      Bringing a service animal?
+                      {t("Bringingaserviceanimal")}
                     </p>
                   </Box>
                 </Grid>

@@ -18,8 +18,10 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import {Icon} from 'leaflet';
 
 import { useState} from "react";
+import { useTranslation } from 'react-i18next';
 
 function LocationMarker() {
+  const {t}=useTranslation();
   const [position, setPosition] = useState(null)
   const map = useMapEvents({
       click() {
@@ -33,14 +35,15 @@ function LocationMarker() {
 
   return position === null ? null : (
       <Marker position={position} removable editable icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-          <Popup>You are here</Popup>
+          <Popup>{t("youarehere")}</Popup>
       </Marker>
   )
 }
 
 
 export default function MapPage() {
-  
+  const {t}=useTranslation();
+
  return (
     
     <React.Fragment>
@@ -100,7 +103,7 @@ export default function MapPage() {
             >
           <Link to={"/"}>  <Fab variant="extended" style={{backgroundColor:'#222222', color:'white', zIndex:50, position:'fixed', bottom:'20%', right:'48%',}}>
         <FormatListBulletedOutlinedIcon sx={{ mr: 1  }} />
-        show lists
+        {t("showlist")}
       </Fab> </Link>
               </Box>          
         </Box>

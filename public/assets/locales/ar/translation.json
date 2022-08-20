@@ -125,7 +125,7 @@
 
     "showmap":"عرض الخريطه",
     "showlist":"إظهار القائمة",
-
+"youarehere":"You are here",
     "Stays":"الإقامات",
     "Experiences":"تجارب سفر ",
     "Onlineexperiences":"تجارب سفر تعقد عبر الإنترنت    ",
@@ -133,7 +133,7 @@
 
     "where":"المكان",
     "Searchdestinations":"البحث عن وجهات ",
-    "Search by region ":"البحث حثب المنطقة  ",
+    "Searchbyregion ":"البحث حثب المنطقة  ",
 
     
     "Checkin":"تاريخ الوصول",
@@ -148,7 +148,7 @@
     "Infants":"رضّع",
     "Under2":"أقل من 2    ",
     "Pets":"الحيوانات الأليفة    ",
-    "Bringingaserviceanimal?":"هل ستحضر حيوان خدمة؟",
+    "Bringingaserviceanimal":"هل ستحضر حيوان خدمة؟",
     "Search":"بحث",
 
 
@@ -159,7 +159,18 @@
     "CreateAccount":"إنشاء حساب",
     "Login":"دخول",
     "Profile":"الملف الشخصي",
-    "wishlist":"قائمة الرغبات"
+    "wishlist":"قائمة الرغبات",
+
+
+"placetitle":"  عنوان المكان الرئيسي",
+"placeaddress":"عنوان المكان",
+"nofilechosen":"لم يتم اختيار ملف",
+"description":"وصف",
+"Pricepernight":"سعر الليلة الواحدة",
+"upload":"رفع",
+"submit":"إرسال ",
+"photosofplace":"صور المكان"
+
 
     
  }

@@ -27,15 +27,16 @@ import {
 import Langs from "./lang/languages";
 import { useTranslation } from "react-i18next";
 import Footerhostormore from './../pages/pagehost/footerhostormore';
-const footerLinks = [
-  { id: 1, text: "Privacy", url: "#" },
-  { id: 2, text: "Terms", url: "#" },
-  { id: 3, text: "Sitemap", url: "#" },
-  { id: 4, text: "Destinations", url: "#" },
-];
+
 
 const Footer = () => {
   const { t } = useTranslation();
+  const footerLinks = [
+    { id: 1, text:t("Privacy"), url: "#" },
+    { id: 2, text:t("Terms"), url: "#" },
+    { id: 3, text:t("Sitemap"), url: "#" },
+    { id: 4, text:t("Destinations"), url: "#" },
+  ];
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
@@ -77,7 +78,7 @@ const Footer = () => {
               </Button>
               <Button> $USD </Button>
               <Button onClick={() => setIsDrawerOpen(true)}>
-                Support & Resources
+                {t("Supportresources")}
                 <Box sx={{ ...justifyCenter, ml: 1 }}>
                   <IoChevronUpOutline size={24} />
                 </Box>
