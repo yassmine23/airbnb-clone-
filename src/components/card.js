@@ -10,17 +10,15 @@ import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import { useSelector, useDispatch } from 'react-redux';
 import "../components/cardStyle.css"
-<<<<<<< HEAD
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebaseConfig";
 import { async } from "@firebase/util";
 import { RequestInfo } from "../Redux/Actions/AllActions";
 
-export default function MainCard() {
-  const { t } = useTranslation();
+// export default function MainCard() {
+  // const { t } = useTranslation();
  
-=======
-import { RequestInfo } from './../Redux/Actions/AllActions';
+// import { RequestInfo } from './../Redux/Actions/AllActions';
 export default function MainCard() {
   const { t } = useTranslation();
   
@@ -30,7 +28,6 @@ export default function MainCard() {
   //   setIndex(selectedIndex);
   // };
 
->>>>>>> amira
   const data = useSelector((state)=>state.allRequests.requests)
 
   const userInfo = useSelector((state)=>state.userData.info)
@@ -115,11 +112,7 @@ export default function MainCard() {
               
             </Carousel>
           
-<<<<<<< HEAD
-          <Link to={`/details`}  style={{textDecoration:'none'}}>
-=======
           <Link to={`/details`} key={dat.id} style={{textDecoration:'none'}}>
->>>>>>> amira
             <Card.Body className="text-muted">
              <div className='d-flex flex-row justify-content-between text-black'>
                <Card.Title onClick={()=>toDetail(dat)} >{dat.address}</Card.Title>

@@ -8,21 +8,13 @@ import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
 import Slider from './pagehost/slider';
-<<<<<<< HEAD
-
-=======
->>>>>>> amira
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { db, storage } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
-
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { ref, uploadBytes } from "firebase/storage";
 import { SingleData } from "../Redux/Actions/AllActions";
-=======
->>>>>>> amira
 
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
