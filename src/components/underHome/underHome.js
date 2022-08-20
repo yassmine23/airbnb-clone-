@@ -47,6 +47,7 @@ import {
         // import "./index.css";
 // import { ResetIcon } from './../../node_modules/@docsearch/react/dist/esm/icons/ResetIcon';
 // import { rippleEffect } from './../../node_modules/@syncfusion/ej2-base/src/animation';
+import { useSelector } from 'react-redux';
 
  //check availbility
 

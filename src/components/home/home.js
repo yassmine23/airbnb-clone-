@@ -59,15 +59,15 @@ export default function Home() {
                 }}
               >
                 {/* <Item sx={{ gridColumn: '1', gridRow: '1 / 3' }}><img width='500px' height='380px' src='https://a0.muscache.com/im/pictures/4d268e76-949f-4de7-a10b-b4b48ea3355d.jpg?im_w=720'/></Item> */}
-                <Item sx={{ gridColumn: '1', gridRow: '1 / 3' }}><img width='500px' height='380px' src={dataDetails.url}/></Item>
+                <Item sx={{ gridColumn: '1', gridRow: '1 / 3' }}><img width='500px' height='380px' src={dataDetails.Url}/></Item>
                 {/* <Item><img width='300px' height='180px' src='https://a0.muscache.com/im/pictures/4f4e82b1-3270-4c5a-9628-83ab64ae8f58.jpg?im_w=720'/></Item> */}
-                <Item><img width='300px' height='180px' src={dataDetails.url2}/></Item>
+                <Item><img width='300px' height='180px' src={dataDetails.Url2}/></Item>
                 {/* <Item><img width='300px' height='180px' src='https://a0.muscache.com/im/pictures/ca4e39b3-ab0f-4a0e-b10f-7297bd4db5da.jpg?im_w=720'/></Item> */}
-                <Item><img width='300px' height='180px' src={dataDetails.url3}/></Item>
+                <Item><img width='300px' height='180px' src={dataDetails.Url3}/></Item>
                 {/* <Item><img  width='300px' height='180px' src='https://a0.muscache.com/im/pictures/fe2a079c-e2b3-4832-b814-5295abf411ea.jpg?im_w=720'/></Item> */}
-                <Item><img  width='300px' height='180px' src={dataDetails.url4}/></Item>
+                <Item><img  width='300px' height='180px' src={dataDetails.Url4}/></Item>
                 {/* <Item><img width='300px' height='180px' src='https://a0.muscache.com/im/pictures/75607a14-a5ce-474a-a316-15ecaed1fbe9.jpg?im_w=720'/></Item> */}
-                <Item><img width='300px' height='180px' src={dataDetails.url5}/></Item>
+                <Item><img width='300px' height='180px' src={dataDetails.Url5}/></Item>
               </Box>
             </div>
       
