@@ -7,22 +7,16 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
-<<<<<<< HEAD
 import Slider from './pagehost/slider';
 
-=======
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { db, storage } from './../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
-<<<<<<< HEAD
->>>>>>> 9df80f695df12a149d3694a38d5be8c3eea5f841
-=======
+
 import { Link } from "react-router-dom";
 import { ref, uploadBytes } from "firebase/storage";
 import { SingleData } from "../Redux/Actions/AllActions";
-
->>>>>>> ca84967e5fe7e85bda1da61a953217d7cefd2cae
 
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";

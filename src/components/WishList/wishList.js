@@ -23,7 +23,10 @@ import '../cardStyle.css'
 export default function WishList() {
     const data = useSelector((state)=>state.userData.info)
     const wshList = data.favorit
-    
+    // where addWishList fun
+    const addWishList =(dat)=>{
+   
+    }
   return <>
   <Header />
   <div className="container d-flex">

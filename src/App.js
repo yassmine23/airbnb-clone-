@@ -45,13 +45,10 @@ function App() {
     document.body.dir = currentLanguage.dir || "ltr";
     document.title = t("app_title");
 
-<<<<<<< HEAD
-=======
-    //
+
 
     
 
->>>>>>> ca84967e5fe7e85bda1da61a953217d7cefd2cae
     const getUsers = async()=>{
       const data = await getDocs(userCollect);
      setUsers(data.docs.map( (doc) => ( {...doc.data(), id: doc.id} ) ))
@@ -74,15 +71,13 @@ function App() {
   
     <Router>
      
-<<<<<<< HEAD
     <Box
      style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
      >
           
         </Box>
 
-=======
->>>>>>> ca84967e5fe7e85bda1da61a953217d7cefd2cae
+
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
