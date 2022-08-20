@@ -24,7 +24,7 @@ const currentLanguageCode = cookies.get("i18next") || "en";
 const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
 
 export default function Langs() {
-  const { t } = useTranslation();
+  
   return (
     <>
       <div className="dropdown">
@@ -65,7 +65,7 @@ export default function Langs() {
   );
 }
 export function LangIcone() {
-  const { t } = useTranslation();
+
   return (
     <>
       <div className="dropdown">
@@ -76,10 +76,7 @@ export function LangIcone() {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          {/* <i class="bi bi-globe fs-4"></i> */}
-          {/* <i className="fa fa-light fa-globe fs-4"></i> */}
-          {/* <i class=" fa-light fa-globe"></i> */}
-
+      
           <BsGlobe size={24} />
           {/* Dropdown button */}
         </button>

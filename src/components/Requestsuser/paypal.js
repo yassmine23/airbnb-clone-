@@ -9,7 +9,6 @@ import {
 const amount = "100";
 const currency = "USD";
 const style = {"color":"white"};
-
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
@@ -60,12 +59,11 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         </>
     );
 }
-
 export default function PayPalC() {
     const [checkout, setCheckOut] = useState(false);
 
 	return <>
-        {checkout ? (
+        {/* {checkout ? ( */}
             <div style={{ maxWidth: "615px", minHeight: "200px" }}>
             <PayPalScriptProvider
                 options={{
@@ -79,73 +77,17 @@ export default function PayPalC() {
                     showSpinner={true}
                 />
 			</PayPalScriptProvider>
-		</div>          ) : (
+		</div>        
+          {/* ) : (
             <button
               onClick={() => {
                 setCheckOut(true);
               }}
             >
               Checkout
-            </button>
-          )}
+            </button> */}
+          {/* )} */}
 		</>
 
+
 }
-
-// test
-// import React, { useEffect ,useRef,useState} from "react";
-
-//  function Paypalcheckout (){
-//     const paypal = useRef();
-
-//     useEffect(() => {
-//       window.paypal
-//         .Buttons({
-//           createOrder: (data, actions, err) => {
-//             return actions.order.create({
-//               intent: "CAPTURE",
-//               purchase_units: [
-//                 {
-//                   description: "Cool looking table",
-//                   amount: {
-//                     currency_code: "USD",
-//                     value: 6500,
-//                   },
-//                 },
-//               ],
-//             });
-//           },
-//           onApprove: async (data, actions) => {
-//             const order = await actions.order.capture();
-//             console.log(order);
-//           },
-//           onError: (err) => {
-//             console.log(err);
-//           },
-//         })
-//         .render(paypal.current);
-//     }, []);
-  
-//     return (
-//       <div>
-//         <div ref={paypal}></div>
-//       </div>
-//     );
-// }
-
-// export default function PayPalC () {
-//     const [checkout, setCheckOut] = useState(false);
-//     return <>
-//       {checkout ? (
-//         <Paypalcheckout />
-//       ) : (
-//         <button
-//           onClick={() => {
-//             setCheckOut(true);
-//           }}
-//         >
-//           Checkout
-//         </button>
-//       )}
-//     </>
-// }

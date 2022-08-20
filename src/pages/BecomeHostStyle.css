@@ -59,3 +59,10 @@ a:hover{
     text-decoration: underline !important;
     color: #000!important;
 }
+.modals{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: index 100000;
+
+}

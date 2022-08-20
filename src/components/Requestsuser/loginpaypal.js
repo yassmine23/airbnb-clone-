@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { SingleData } from '../../Redux/Actions/AllActions';
 import Header from '../Header';
+import PayPalC from './paypal';
 
-export default function LogIn() {
+export default function LogInPaypal() {
+    const checked=useSelector((state)=>state.userData.info)
+    console.log(checked.email)
     const [mail,setMail]=useState("")
     const [pass,setPass]=useState("")
     const changes=(e)=>{
@@ -24,19 +27,13 @@ export default function LogIn() {
     const dispatch = useDispatch()
     const sing = useSelector((state)=>state.userData.info)
 
-    useEffect(()=>{
-      if(Object.keys(sing).length > 0){
-        
-        navigate('/user')
-      }
-    },[sing])
-    
+
     const checkLog =()=>{
        if (all.some((check)=>check.email === mail)){
         const search = all.find((f)=>f.email === mail)
         if(search.password === pass){  
             dispatch(SingleData(search))
-            
+
         }else{
             alert("Wrong Password")
         }
@@ -48,22 +45,27 @@ export default function LogIn() {
     }
     
 
-    
+
   return <>
-  <Header/>
+        {checked.email ?(<PayPalC/>):
+        
+        
   <div className='container'>
-    <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-        <input type="email" className="form-control" name='mail' value={mail} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    </div>
-    <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">Password</label>
-        <input type="email" className="form-control" name='password' value={pass} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    </div>
-
-    <button className="btn btn-primary" onClick={checkLog}>Log In</button>
-
+  <div className="mb-3">
+      <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+      <input type="email" className="form-control" name='mail' value={mail} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
   </div>
-  
+  <div className="mb-3">
+      <label htmlFor="exampleInputEmail1" className="form-label">Password</label>
+      <input type="email" className="form-control" name='password' value={pass} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+  </div>
+
+  <button className="btn btn-primary" onClick={checkLog}>Log In</button>
+
+</div>
+
+        
+        }
+
   </>
 }
