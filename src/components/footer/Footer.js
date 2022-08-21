@@ -60,39 +60,6 @@ export default function  Footer() {
             </Grid>       
         </Grid> 
 
-
-{/* 
-        <Grid container style={{backgroundColor: 'lightgray'}} >
-         
-            <Grid item xs={4}>
-             <Box > 
-                <p>&#169; 2022 Airbnb, INC, . Privacy . Terms . Sitemap</p>
-              </Box>
-            </Grid>
-            <Grid item xs={4}>
-                <Box >
-                 
-                </Box>
-            </Grid>       
-            <Grid item xs={4}>
-                <Box >
-                 <p><LanguageRoundedIcon/><span style={{marginBottom:'40px'}}> English(US)</span> <span style={{marginLeft:'30px'}}>$ USD</span>
-                 <span style={{marginLeft:'40px'}}>
-                 <FacebookRoundedIcon/>
-                 </span>
-                 <span style={{marginLeft:'20px'}}>
-                 <TwitterIcon/>
-                 </span>
-                 <span style={{marginLeft:'20px'}}>
-                 <InstagramIcon/>
-                 </span>
-                 </p>
-                </Box>
-            </Grid>       
-                
-        </Grid>  */}
-
-
             </>
   )
 }

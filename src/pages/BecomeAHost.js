@@ -7,6 +7,7 @@ import cookies from "js-cookie";
 import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
+import Slider from './pagehost/slider';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { db, storage } from './../firebaseConfig';
@@ -15,10 +16,10 @@ import { Link } from "react-router-dom";
 import { ref, uploadBytes } from "firebase/storage";
 import { SingleData } from "../Redux/Actions/AllActions";
 
-
 export default function BecomeAHost() {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  
   const { t } = useTranslation();
 
   const [value, setValue] = React.useState({});
@@ -160,69 +161,65 @@ const [price,setPrice]= useState("")
                     {(avalible)?
                     <div className='container'>
                     <div >
-                      <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("Emailaddress")}</label>
                       <input type="email" className="form-control" name='mail' value={email}  id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("Name")}</label>
                       <input type="text" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">place Title</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("placetitle")}</label>
                       <input type="text" className="form-control" name='title' value={title} onChange={(e)=>changes(e)} id="title" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">place address</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("placeaddress")}</label>
                       <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label"> photos of place</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("photosofplace")}</label>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <button className="btn btn-outline-info me-auto" onClick={uplload}>upload</button>
-                      {/* <input type="text" className="form-control" name='photo1' value={photo} onChange={(e)=>changes(e)} id="link" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo2' value={secPhoto} onChange={(e)=>changes(e)} id="link2" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo3' value={third} onChange={(e)=>changes(e)} id="link3" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo4' value={fourth} onChange={(e)=>changes(e)} id="link4" aria-describedby="emailHelp"/>
-                      <input type="text" className="form-control" name='photo5' value={fifth} onChange={(e)=>changes(e)} id="link5" aria-describedby="emailHelp"/> */}
+                   
                     </div>
             
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">descriptions</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("descriptions")}</label>
                       <input type="text" className="form-control" name='description' value={desc} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
 
                     <div class="mb-1">
-                      <label htmlFor="exampleInputEmail1" className="form-label">Price Per Night</label>
+                      <label htmlFor="exampleInputEmail1" className="form-label">{t("Pricepernight")}</label>
                       <input type="text" className="form-control" name='price' value={price} onChange={(e)=>changes(e)} id="price" aria-describedby="emailHelp"/>
                     </div>
             
             
-                    <button className="btn btn-primary" onClick={createRequest} >Submit</button>
+                    <button className="btn btn-primary" onClick={createRequest} >{t("submit")}</button>
                   </div>:
                     <div className='container'>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                        <label htmlFor="exampleInputEmail1" className="form-label">{t("Emailaddress")}</label>
                         <input type="email" className="form-control" name='email' value={email} onChange={(e)=>inputChanges(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Password</label>
+                        <label htmlFor="exampleInputEmail1" className="form-label">{t("Password")}</label>
                         <input type="email" className="form-control" name='password' value={pass} onChange={(e)=>inputChanges(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                 
-                    <button className="btn btn-primary" onClick={checkLog}>Log In</button>
+                    <button className="btn btnhost" onClick={checkLog}>{t("Login")}</button>
                 
                   </div>}
                   
                   </div>
-                  <div className="modal-footer">
+                  {/* <div className="modal-footer">
                     <button type="button" className="btn btnhost">
-                      Continue
+                      
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -236,6 +233,14 @@ const [price,setPrice]= useState("")
           </div>
         </div>
         {/* section two */}
+        <div className="my-5 d-flex justify-content-center flex-column align-items-center">
+          <div className=" ms-5 ps-5 " style={{}}>
+        </div>
+        <h1 className="pt-5 mt-5 text-center" style={{fontSize:"4.4em",width:"10em"}}>{t("youcanhost")}</h1> 
+
+        <Slider/>
+        </div>
+     
         {/* section three */}
         {/* three section */}
         <div className="container">

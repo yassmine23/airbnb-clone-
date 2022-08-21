@@ -15,9 +15,19 @@ import { db } from "../firebaseConfig";
 import { async } from "@firebase/util";
 import { RequestInfo } from "../Redux/Actions/AllActions";
 
+// export default function MainCard() {
+  // const { t } = useTranslation();
+ 
+// import { RequestInfo } from './../Redux/Actions/AllActions';
 export default function MainCard() {
   const { t } = useTranslation();
- 
+  
+  // const [index, setIndex] = useState(0);
+
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  // };
+
   const data = useSelector((state)=>state.allRequests.requests)
 
   const userInfo = useSelector((state)=>state.userData.info)
@@ -100,7 +110,7 @@ export default function MainCard() {
               
             </Carousel>
           
-          <Link to={`/details`}  style={{textDecoration:'none'}}>
+          <Link to={`/details`} key={dat.id} style={{textDecoration:'none'}}>
             <Card.Body className="text-muted">
              <div className='d-flex flex-row justify-content-between text-black'>
                <Card.Title onClick={()=>toDetail(dat)} >{dat.address}</Card.Title>
@@ -108,7 +118,7 @@ export default function MainCard() {
                </div>
               <div >3.200 kilometers away</div>
               <div >Aug 29-sep 3</div>
-              <div >${dat.price} night</div>
+              <div >${dat.price} {t("total")}</div>
             </Card.Body>
             </Link>
           </Card>

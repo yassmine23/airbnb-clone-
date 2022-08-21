@@ -24,23 +24,28 @@ import IconButton from '@mui/material/IconButton';
 // import { FaSearch } from 'react-icons/fa';
 import { VscSettings } from 'react-icons/vsc';
 import Paper from "@mui/material/Paper";
+import { useTranslation } from 'react-i18next';
 
 
 
 
 
-//footerMenu
-const footerMenu = [
-  { id: 1, text: 'Explore', icon: <FaSearch size={18} /> },
-  { id: 2, text: 'Wishlist', icon: <FaRegHeart size={18} /> },
-  { id: 3, text: 'Login', icon: <FaRegUserCircle size={18} /> },
-];
+
 
 //show&hide header
 
 
 export default function HomePage() {
-  const [isOpen, setIsOpen] = useState(false);
+
+  const {t}=useTranslation();
+//footerMenu
+const footerMenu = [
+  { id: 1, text:t("explore"), icon: <FaSearch size={18} /> },
+  { id: 2, text:t("wishlist"), icon: <FaRegHeart size={18} /> },
+  { id: 3, text:t("Login"), icon: <FaRegUserCircle size={18} /> },
+];
+
+const [isOpen, setIsOpen] = useState(false);
 const [anchorEl, setAnchorEl] = React.useState(null);
 
 const handleClose = () => {
@@ -123,24 +128,10 @@ useEffect(() => {
           </Box>
           </Container>
 
-            {/* <div className='container d-flex'> 
-            <div className='row '> */}
 
               <MainCard />
 
-              {/* <MainCard className='col-md-3  col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3  col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard  className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3  col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/>
-              <MainCard className='col-md-3 col-sm-1'/> */}
-              {/* </div>
-            </div> */}
+        
 
             
  
@@ -149,8 +140,7 @@ useEffect(() => {
               <Link to={"/map"}>
             <Fab variant="extended" style={{backgroundColor:'#222222', color:'white', zIndex:50, position:'fixed', bottom:'20%', right:'48%'}}>
         <MapOutlinedIcon sx={{ mr: 1  }} />
-        show map
-      </Fab>  </Link>
+{t("showmap")}      </Fab>  </Link>
               </Box>          
           </Container>
         </Box>

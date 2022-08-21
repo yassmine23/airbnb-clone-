@@ -1,23 +1,23 @@
 import React, { useEffect,useState } from "react";
 import Box from "@mui/material/Box";
-
-
 import "./App.css";
 
 import Header from "./components/Header";
 import OptionsTab from "./components/OptionsTab";
 
 import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from "react-router-dom";
+
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import HomePage from './pages/HomePage';
 import HostingDetails from './pages/HostingDetails';
 import BecomeAHost from './pages/BecomeAHost';
 import MapPage from "./pages/MapPage";
 
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import { languages } from './components/lang/languages';
+import Requestsuser from './components/Requestsuser/Requestsuser ';
 import { useDispatch, useSelector } from "react-redux";
 import { collection, doc, getDocs, where } from 'firebase/firestore';
 import { db, storage } from './firebaseConfig';
@@ -31,6 +31,7 @@ import WishList from "./components/WishList/wishList";
 import { listAll, ref } from "firebase/storage";
 
 function App() {
+
   function TestingRoute(props){
     const isLoged = useSelector((state)=>state.userData.info)
 
@@ -43,20 +44,10 @@ function App() {
     }
   }
 
-
-
-
-
-
-
-
-
-
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  //
   const dispatch = useDispatch()
   const allUser = useSelector((state)=>state.allUsers.users)
   const[use,setUsers]= useState(allUser)
@@ -67,13 +58,13 @@ function App() {
   const[requests,setRequests]= useState(allRequests)
   const requestCollect = collection(db, "Requests")
 
-  //
+  
   useEffect(() => {
    
     document.body.dir = currentLanguage.dir || "ltr";
     document.title = t("app_title");
 
-    //
+
 
     
 
@@ -89,34 +80,42 @@ function App() {
    };
    getUsers()
    getRequests()
-   //
+   
   }, [currentLanguage, t]);
   dispatch(UsersAccounts(use))
    dispatch(RequstsData(requests))
 
   return (
     <>
-    {/* <BecomeAHost></BecomeAHost> */}
-
+  
     <Router>
      
+    <Box
+     style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
+     >
+          
+        </Box>
+
+
         <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/host" exact element={<BecomeAHost/>} />
         <Route path="/details" exact element={<HostingDetails/>} />
+
         <Route path="/map" exact element={<MapPage />} />
-        <Route path="/logIn" exact element={<LogIn />} />
+        <Route path="/logIn" exact element={<LogIn/>} />
         <Route path="/signUp" exact element={<SignUp />} />
         <Route path="/user" exact element={<TestingRoute><UserProfile /></TestingRoute>} />
         {/* <Route path="/hoster" exact element={<HosterProfile />} /> */}
         <Route path="/search" exact element={<SearchPage/>} />
         <Route path="/wish-list" exact element={<TestingRoute><WishList/></TestingRoute>} />
 
+        <Route path="/details/book" exact element={<Requestsuser/>} />
 
 
         </Routes>
     </Router>
-   
+    
     </>
    
 
