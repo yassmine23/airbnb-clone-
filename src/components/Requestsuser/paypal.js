@@ -12,9 +12,16 @@ const currency = "USD";
 const style = {"color":"white"};
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
+const [paidFor, setPaidFor] = useState(false);
 
-    const dates = useSelector((state) => state.guests.dates);
-    amount = dates.total.toFixed(0)
+
+    const handleApprove = (orderId) => {
+
+        setPaidFor(true)
+
+    }
+    // const dates = useSelector((state) => state.guests.dates);
+    // amount = dates.total.toFixed(0)
 
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
@@ -30,7 +37,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         });
     }, [currency, showSpinner]);
 
-
+if(paidFor){alert("ok")}
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons
@@ -55,10 +62,12 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                             return orderId;
                         });
                 }}
-                onApprove={function (data, actions) {
-                    return actions.order.capture().then(function () {
-                        // Your code here after capture the order
-                    });
+               
+                onApprove={async (data, actions) => {
+
+                    const order = await actions.order.capture();
+                    handleApprove(data.orderID);
+
                 }}
             />
         </>

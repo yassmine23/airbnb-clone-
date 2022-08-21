@@ -257,18 +257,16 @@ const UnderHome = () => {
   // page requst
   var Difference_In_Time = endDate.getTime() - startDate.getTime();
   // To calculate the no. of days between two dates
-  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-  let service = parseInt(
-    eval(dataDetails.price * Difference_In_Days * 0.14).toFixed(0)
-  );
-  let total = service + dataDetails.price * Difference_In_Days;
+  var DifferenceInDays = Difference_In_Time / (1000 * 3600 * 24);
+  let service = (dataDetails.price * DifferenceInDays * 0.14).toFixed(0);
+  let total = service + dataDetails.price * DifferenceInDays;
   const dispatchg = useDispatch();
   const x4 = { count1: count1, count2: count2, count3: count3, count4: count4 };
   dispatchg(changeGuests(x4));
   const Dates = {
     endDate: endDate,
     startDate: startDate,
-    Difference_In_Days: Difference_In_Days,
+    Difference_In_Days: DifferenceInDays,
     service: service,
     total: total,
   };
@@ -839,7 +837,7 @@ const UnderHome = () => {
             </Grid>
             {/* click */}
             <Box>
-              {Difference_In_Days ? (
+              {startDate ? (
                 <Link to={"/details/book"}>
                   <Button
                     style={{

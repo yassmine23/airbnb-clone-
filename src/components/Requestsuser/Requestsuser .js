@@ -5,7 +5,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import { Link } from "react-router-dom";
 import FooterChangeLang from "./footerchangelang";
-import PaypalC from "./paypal";
+import PayPalC from "./paypal";
 import { useSelector } from "react-redux";
 import LogInPaypal from "./loginpaypal";
 import Test, { Testtwo } from "./test";
@@ -77,7 +77,8 @@ const total=datareq.price*dates.Difference_In_Days.toFixed(0)
               <div>
                 <h4>{t("Pay with")}</h4>
                 {/* <PaypalC /> */}
-                <LogInPaypal />
+                <PayPalC/>
+                {/* <LogInPaypal /> */}
                 <hr />
               </div>
               <form className="row g-3">
@@ -168,6 +169,7 @@ const total=datareq.price*dates.Difference_In_Days.toFixed(0)
                   </div>
                   <hr />
                 </div>
+                {/* button req user */}
                 <div className="col-12">
                   <button
                     type="btn button"
