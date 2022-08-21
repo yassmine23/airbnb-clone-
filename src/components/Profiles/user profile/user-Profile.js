@@ -40,6 +40,7 @@ export default function UserProfile() {
    getReject()
    getReview()
   },[])
+  function toDetail(){}
   return (<>
   <Header />
   <div className='container'>
