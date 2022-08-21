@@ -34,6 +34,7 @@ export default function MainCard() {
   const favArr = userInfo.favorit
 
   const [fav,setfav]= useState(favArr)
+
   const prof = useSelector((state)=>state.userData.info)
   const navigate = useNavigate()
 
@@ -45,7 +46,6 @@ export default function MainCard() {
   }
   const addWishList =(dat)=>{
     setfav(fav.concat(dat))
-    console.log(fav);
     if(Object.keys(prof).length > 0){
       uplod()    
     }else{
@@ -64,8 +64,6 @@ export default function MainCard() {
    
       <div className="container d-flex">
         <div className="row ">
-
-
 {data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
           <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  className="text-danger" fontSize="inherit" style={{color:'white'}}/>
@@ -126,7 +124,6 @@ export default function MainCard() {
           </Card>
 
 )}
-          
         </div>
       </div>
     </>
