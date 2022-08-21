@@ -110,7 +110,7 @@ function App() {
         <Route path="/search" exact element={<SearchPage/>} />
         <Route path="/wish-list" exact element={<TestingRoute><WishList/></TestingRoute>} />
 
-        <Route path="/details/book" exact element={<Requestsuser/>} />
+        <Route path="/details/book" exact element={<TestingRoute><Requestsuser/></TestingRoute>} />
 
 
         </Routes>
