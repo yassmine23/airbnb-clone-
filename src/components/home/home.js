@@ -80,10 +80,10 @@ export default function Home() {
                 }}
               >
                  <Item sx={{ gridColumn: '1', gridRow: '1 / 3' }}><img width='500px' height='380px' src={dataDetails.Url}/></Item>
-                 <Item><img width='300px' height='180px' src={dataDetails.Url2}/></Item>
-                 <Item><img width='300px' height='180px' src={dataDetails.Url3}/></Item>
-                 <Item><img  width='300px' height='180px' src={dataDetails.Url4}/></Item>
-                 <Item><img width='300px' height='180px' src={dataDetails.Url5}/></Item>
+                 <Item><img width='300px' height='180px' alt='image' src={dataDetails.Url2}/></Item>
+                 <Item><img width='300px' height='180px' alt='image' src={dataDetails.Url3}/></Item>
+                 <Item><img  width='300px' height='180px' alt='image' src={dataDetails.Url4}/></Item>
+                 <Item><img width='300px' height='180px' alt='image' src={dataDetails.Url5}/></Item>
               </Box>
             </div>
       
