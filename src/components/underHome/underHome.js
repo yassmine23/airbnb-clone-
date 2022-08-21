@@ -99,8 +99,8 @@ const UnderHome = () => {
           document.getElementById('totalPrice').innerText=`Total before taxes`
           let x=(y+z) 
           document.getElementById('actualPrice').innerText=`$${x}`;
+          document.getElementById('noNights').innerText=`${Difference_In_Days} nights in `;
         };
-        
         const SelectionRange={
             startDate: startDate,
             endDate: endDate,
@@ -273,9 +273,9 @@ const UnderHome = () => {
                                 </Grid>
                              </Box>
                             <Box p={2}  style={{position:'relative'}}>
-                                <h3>5 nights in Gildeskal</h3>
-                                {/* <p id='outerSelectp'></p> */}
-                                <p id='outerSelected'></p>
+                                <span style={{fontWeight:'bold', fontSize: '25px'}} id="noNights"></span>
+                                <span style={{fontWeight:'bold', fontSize: '25px'}}>{dataDetails.address}</span>
+                                <p id='outerSelected' style={{fontWeight:'bold'}}></p>
                                 <div>
                                  <DateRangePicker
                                         ranges={[SelectionRange]}
