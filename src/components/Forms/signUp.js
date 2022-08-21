@@ -93,7 +93,7 @@ console.log(errList);
 
 }else{
 
-  await addDoc(requestCollection,{name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge})
+  await addDoc(requestCollection,{name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge,favorit:[],inProgress:[],Accepted:[],Rejected:[]})
   dispatch(SingleData(x))
 }
 
