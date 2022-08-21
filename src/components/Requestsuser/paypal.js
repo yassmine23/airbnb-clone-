@@ -37,7 +37,7 @@ const [paidFor, setPaidFor] = useState(false);
         });
     }, [currency, showSpinner]);
 
-if(paidFor){alert("ok")}
+if(paidFor){alert("Your reservation won’t be confirmed until the Host accepts your request (within 24 hours).You won’t be charged until then")}
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons

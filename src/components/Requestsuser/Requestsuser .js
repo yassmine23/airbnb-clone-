@@ -15,7 +15,7 @@ function Requestsuser() {
   const dates = useSelector((state) => state.guests.dates);
 const datareq=useSelector((state)=>state.requestDetail.details)
 
-const total=datareq.price*dates.Difference_In_Days.toFixed(0)
+const total=parseInt(datareq.price*dates.Difference_In_Days)
 
   const { t } = useTranslation();
   return (

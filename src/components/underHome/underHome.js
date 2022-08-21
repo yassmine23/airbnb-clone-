@@ -248,9 +248,9 @@ const UnderHome = () => {
     var date2 = new Date(endDate.getTime());
    var Difference_In_Time = date2 - date1 ;
   // To calculate the no. of days between two dates
-  var DifferenceInDays = Difference_In_Time / (1000 * 3600 * 24);
-  let service = (dataDetails.price * DifferenceInDays * 0.14).toFixed(0);
-  let total = service + dataDetails.price * DifferenceInDays;
+  var DifferenceInDays =parseInt(Difference_In_Time / (1000 * 3600 * 24));
+  let service =parseInt((dataDetails.price * DifferenceInDays * 0.14));
+  let total =parseInt( service + (dataDetails.price * DifferenceInDays));
   const dispatchg = useDispatch();
   const x4 = { count1: count1, count2: count2, count3: count3, count4: count4 };
   dispatchg(changeGuests(x4));
