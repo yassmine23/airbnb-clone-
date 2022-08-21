@@ -1,8 +1,14 @@
 import React, { useEffect,useState } from "react";
 import Box from "@mui/material/Box";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link, Routes } from "react-router-dom";
+
+import Header from "./components/Header";
+import OptionsTab from "./components/OptionsTab";
+
+import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from "react-router-dom";
+
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import HomePage from './pages/HomePage';
 import HostingDetails from './pages/HostingDetails';
 import BecomeAHost from './pages/BecomeAHost';
@@ -25,7 +31,19 @@ import WishList from "./components/WishList/wishList";
 import { listAll, ref } from "firebase/storage";
 
 function App() {
-  
+
+  function TestingRoute(props){
+    const isLoged = useSelector((state)=>state.userData.info)
+
+    if(Object.keys(isLoged).length > 0){
+      return props.children
+
+    }else{
+      return <Navigate to={'/Login'}/>
+
+    }
+  }
+
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
@@ -87,10 +105,10 @@ function App() {
         <Route path="/map" exact element={<MapPage />} />
         <Route path="/logIn" exact element={<LogIn/>} />
         <Route path="/signUp" exact element={<SignUp />} />
-        <Route path="/user" exact element={<UserProfile />} />
-        <Route path="/hoster" exact element={<HosterProfile />} />
+        <Route path="/user" exact element={<TestingRoute><UserProfile /></TestingRoute>} />
+        {/* <Route path="/hoster" exact element={<HosterProfile />} /> */}
         <Route path="/search" exact element={<SearchPage/>} />
-        <Route path="/wish-list" exact element={<WishList/>} />
+        <Route path="/wish-list" exact element={<TestingRoute><WishList/></TestingRoute>} />
 
         <Route path="/details/book" exact element={<Requestsuser/>} />
 
