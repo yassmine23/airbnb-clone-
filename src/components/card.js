@@ -4,7 +4,6 @@ import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTranslation } from "react-i18next";
-
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
@@ -12,8 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import "../components/cardStyle.css"
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebaseConfig";
-import { async } from "@firebase/util";
-import { RequestInfo } from "../Redux/Actions/AllActions";
+import { RequestInfo, WishListData } from "../Redux/Actions/AllActions";
 
 // export default function MainCard() {
   // const { t } = useTranslation();
@@ -33,7 +31,10 @@ export default function MainCard() {
   const userInfo = useSelector((state)=>state.userData.info)
   const favArr = userInfo.favorit
 
-  const [fav,setfav]= useState(favArr)
+
+
+  const newArr = useSelector((state)=>state.favoritData.wishArr)
+  const [fav,setfav]= useState(newArr)
 
   const prof = useSelector((state)=>state.userData.info)
   const navigate = useNavigate()
@@ -45,11 +46,16 @@ export default function MainCard() {
         
   }
   const addWishList =(dat)=>{
-    setfav(fav.concat(dat))
+    
     if(Object.keys(prof).length > 0){
+      if(fav.some(f=>f.title === dat.title)){
+        setfav(fav.filter(f=> f.title != dat.title))
+      }else{
+        setfav(fav.concat(dat))
+      }
       uplod()    
     }else{
-      navigate('/signUp')
+      navigate('/Login')
 
     }
   }
@@ -59,17 +65,20 @@ export default function MainCard() {
     // navigate("/")
 
   }
+console.log(fav);
+dispatch(WishListData(fav))
+
   return (
     <>
    
       <div className="container d-flex">
         <div className="row ">
 {data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
-          <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
+          {/* <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  className="text-danger" fontSize="inherit" style={{color:'white'}}/>
-</IconButton>
+</IconButton> */}
             <Carousel
-
+            className="parent"
               interval={50000}
             >
               <Carousel.Item>
@@ -107,7 +116,7 @@ export default function MainCard() {
 
                 />
               </Carousel.Item>
-              
+              <i className={`fa-solid fa-heart ${fav.some(f=>f.title === dat.title)? 'text-danger': 'text-light'}  fa-xl child` }onClick={()=>addWishList(dat)}></i>
             </Carousel>
           
           <Link to={`/details`} key={dat.id} style={{textDecoration:'none'}}>
