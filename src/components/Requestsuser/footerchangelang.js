@@ -10,7 +10,7 @@ export default function FooterChangeLang(){
         className="col-12 py-3 border-top"
         style={{ backgroundColor: "#F7F7F7" }}
       >
-        <div className="container d-md-flex flex-warp flex-row lh-lg d-none ">
+        <div className="container d-lg-flex flex-warp flex-row lh-lg d-none ">
           <div className="col-7">
             <p>{t("copy")}</p>
           </div>

@@ -69,7 +69,7 @@ export default function Home() {
 
 
 
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%' }} >
               <Box
                 sx={{
                   display: 'grid',
