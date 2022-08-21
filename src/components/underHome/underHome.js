@@ -1,11 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { Link } from "react-router-dom";
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-// import Link from '@mui/material/Link';
+import Link from '@mui/material/Link';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import GppGoodIcon from '@mui/icons-material/GppGood';
  import EventBusyIcon from '@mui/icons-material/EventBusy';
@@ -21,9 +19,6 @@ import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
-import { LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
 import StarIcon from '@mui/icons-material/Star';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
@@ -36,16 +31,8 @@ import TextField from '@material-ui/core/TextField';
 import { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { useSelector, useDispatch } from 'react-redux';
-import Alert from '@mui/material/Alert';
-// import Stack from '@mui/material/Stack';
-// import BasicAlerts from './components/underHome/alert'
-
-import Dialog from '@mui/material/Dialog';
-// import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import { changeGuests, changeGuests2 } from './../../Redux/Actions/AllActions';
+import { useSelector } from 'react-redux';
+ 
 
 //check availbility
  const useStylesReddit = makeStyles((theme) => ({
@@ -84,17 +71,16 @@ import { changeGuests, changeGuests2 } from './../../Redux/Actions/AllActions';
   
 // the begning of function
 const UnderHome = () => {
-  const datareq=useSelector((state)=>state.requestDetail.details)
-
       //date and pickers
       const [startDate, setStartDate]=useState(new Date());
       const [endDate, setEndDate]=useState(new Date());
 
       function handelSelect(ranges){    
-          var x1=  setStartDate(ranges.selection.startDate);
-          var x2= setEndDate(ranges.selection.endDate);
-          document.getElementById('fixedP').innerText= ''
+         setStartDate(ranges.selection.startDate);
+         setEndDate(ranges.selection.endDate);
+          document.getElementById('fixedP').innerHTML= ' ';
           document.getElementById('selecteddates').innerText=`start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`
+          document.getElementById('outerSelected').innerText=`From ${ranges.selection.startDate.toDateString()}  To  ${ranges.selection.endDate.toDateString()}`
           document.getElementById('reddit-input1').value=`${ranges.selection.startDate.toDateString()}`
           document.getElementById('reddit-input2').value=`${ranges.selection.endDate.toDateString()}`
           var date1 = new Date(ranges.selection.startDate);
@@ -134,6 +120,7 @@ const UnderHome = () => {
             document.getElementById('FeePrice').innerText=''
             document.getElementById('totalPrice').innerText=''
             document.getElementById('actualPrice').innerText=''
+            document.getElementById('outerSelected').innerText=''
         }
         //increment and decrement
 
@@ -217,27 +204,13 @@ const UnderHome = () => {
         //data from database
         var dataDetails = useSelector((state)=>state.requestDetail.details);
 
-        // page requst
-        var Difference_In_Time = endDate.getTime() - startDate.getTime();
-        // To calculate the no. of days between two dates
-        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-        let service  = parseInt(eval((dataDetails.price * Difference_In_Days)*0.14).toFixed(0));
-        let total =service+(dataDetails.price * Difference_In_Days);
-        const dispatchg = useDispatch();
-        const x4={"count1":count1,"count2":count2,"count3":count3,"count4":count4}
-        dispatchg(changeGuests(x4));
-        const Dates={"endDate":endDate,"startDate":startDate,"Difference_In_Days":Difference_In_Days,"service":service,"total":total}
-        dispatchg(changeGuests2(Dates));
      return <>
        
         <Grid container my={4}>
                  {/* left side */}
-            <Grid item xs={7}>
+            <Grid item xs={7} style={{position: 'relative'}}>
                             <Box  style={{position: 'relative',borderBottom:'1px solid lightgray',marginLeft:'5%'}} p={2}>
-                                {/* <h2>Lighthouse hosted by Neven</h2>
-                                <p>8 guests . 1 bedroom . 1 bed . 1 bath</p>
-                            <Avatar style={{position: 'absolute',top: 50, right: '2%'}}  src="https://a0.muscache.com/im/pictures/user/d4a7051c-d7e9-46cc-bcbc-6389a7a4509b.jpg?im_w=240"/> */}
-                                        <Grid container>
+                                         <Grid container>
                                             <Grid item xs={11}>
                                                 <Box  p={2}> 
                                                  <h2>Lighthouse hosted by Mark</h2> 
@@ -261,11 +234,11 @@ const UnderHome = () => {
                             <Box style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <img  width='150wv' height='40hv'  alt='ss' src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg'/>
                                 <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
-                                <a style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</a>
+                                <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Learn more</Link>
                             </Box>
                             <Box style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <p>Head north in Norway and experience our tiny-hotel on a remote island. The Arctic Hideaway is an architecturally playful and stunning collection of 11 individual buildings, where fours are sleeping cabins. The shared areas are the iconic Tower House, kitchen house, studio building, bathhouse, crab trap and sauna. In limited periods, we will offer single cabins for rent on Airbnb. Included in the stay is all food (se details for concept) and daily use of the sauna...</p>
-                                <a style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</a>
+                                <Link style={{color:'black',textDecoration:'underLine',fontWeight:'bold'}} href="#">Show more</Link>
                             </Box>
                             <Box   style={{ borderBottom:'1px solid lightgray'}} p={2}>
                                 <h2>Where you'll sleep</h2>
@@ -299,29 +272,19 @@ const UnderHome = () => {
                                         <p style={{fontWeight:'bold', fontSize: 15, border:'1px solid black', padding:10, borderRadius:10, marginLeft:20}}>Show all 38 amentities</p>
                                 </Grid>
                              </Box>
-                            <Box p={2}>
+                            <Box p={2}  style={{position:'relative'}}>
                                 <h3>5 nights in Gildeskal</h3>
-                                <p>Sep 20, 2020 - Sep 25, 2022</p>
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                    <StaticDateRangePicker
-                                        style={{position:'relative'}}
-                                            displayStaticWrapperAs="desktop"
-                                            value={value}
-                                            onChange={(newValue) => {
-                                            setValue(newValue);
-                                            }}
-                                        renderInput={(startProps, endProps) => (
-                                        <React.Fragment>
-                                            <TextField {...startProps} />
-                                            <Box sx={{ mx: 2 }}> to </Box>
-                                            <TextField {...endProps} />
-                                        </React.Fragment>
-                                        )}
-                                    />
-                                    <Button onClick={()=>clear()} style={{position:'absolute', left:'45%', color:'black', textDecoration:'underLine', }}>CLEAR DATES</Button>
-                                </LocalizationProvider>
+                                {/* <p id='outerSelectp'></p> */}
+                                <p id='outerSelected'></p>
+                                <div>
+                                 <DateRangePicker
+                                        ranges={[SelectionRange]}
+                                        onChange={handelSelect}
+                                 />
+                               </div>
+                              <Button onClick={clear} style={{position:'absolute', top:'95%',right:'8%', color:'black', textDecoration:'underLine', }}>CLEAR DATES</Button>
                             </Box>
-             </Grid>
+                     </Grid>
 
   {/* Right side */}
     <Grid item xs={5} style={{position:'relative', marginTop:'50px'}}>
@@ -399,34 +362,32 @@ const UnderHome = () => {
                                                     <h4>Infants</h4>
                                                     <p>Under 2</p>
                                                     <h4>Pets</h4>
-                                                    <p style={{textDecoration:'underLine', fontSize:'15px'}}>Bringing a service animal?</p>
-                                                </Box>
+                                                 </Box>
                                            </Grid>
                                            <Grid item xs={5} s>
                                             <Box p={2}> 
-                                               <Grid container style={{marginBottom:'50px'}}>
+                                               <Grid container style={{marginBottom:'35px'}}>
                                                    <Grid item xs={5} s>
                                                       <Box> 
                                                             <Button  onClick={IncNum1}>
-                                                                <AddIcon size="small" />
+                                                                <AddIcon size="small"/>
                                                             </Button>
                                                        </Box>
                                                    </Grid>
                                                     <Grid item xs={2} s>
                                                         <Box style={{position:'relative'}} p={2}> 
-                                                        <p style={{position:'absolute',right:'10%', top:'-20%'}}>{count1}</p>
+                                                        <p style={{position:'absolute',right:'15%', top:'0%'}}>{count1}</p>
                                                         </Box>
                                                     </Grid>
                                                     <Grid item xs={5} s>
                                                         <Box> 
-                                                            <Button   onClick={DecNum1}>
-                                                            {/* <Alert id='alert' severity="warning"></Alert> */}
+                                                            <Button  onClick={DecNum1}>
                                                               <RemoveIcon size="small"/>
                                                             </Button>
                                                         </Box>
                                                     </Grid>
                                                </Grid>
-                                               <Grid container style={{marginBottom:'50px'}}>
+                                               <Grid container style={{marginBottom:'40px'}}>
                                                     <Grid item xs={5} s>
                                                         <Box> 
                                                             <Button  onClick={IncNum2}>
@@ -436,7 +397,7 @@ const UnderHome = () => {
                                                     </Grid>
                                                     <Grid item xs={2} s>
                                                         <Box style={{position:'relative'}} p={2}> 
-                                                            <p style={{position:'absolute',right:'10%', top:'-20%'}}>{count2}</p>
+                                                            <p style={{position:'absolute',right:'15%', top:'0%'}}>{count2}</p>
                                                         </Box>
                                                     </Grid>
                                                     <Grid item xs={5} s>
@@ -448,9 +409,9 @@ const UnderHome = () => {
                                                     </Grid>
                                               </Grid>
 
-                                            <Grid container style={{marginBottom:'50px'}}>
+                                            <Grid container style={{marginBottom:'40px'}}>
                                                 <Grid item xs={5} s>
-                                                    <Box  > 
+                                                    <Box > 
                                                         <Button  onClick={IncNum3}>
                                                             <AddIcon size="small" />
                                                         </Button>
@@ -458,7 +419,7 @@ const UnderHome = () => {
                                                 </Grid>
                                                 <Grid item xs={2} s>
                                                     <Box style={{position:'relative'}} p={2}> 
-                                                      <p style={{position:'absolute',right:'10%', top:'-20%'}}>{count3}</p>
+                                                      <p style={{position:'absolute',right:'15%', top:'0%'}}>{count3}</p>
                                                     </Box>
                                                 </Grid>
                                                 <Grid item xs={5} s>
@@ -481,7 +442,7 @@ const UnderHome = () => {
                                                 </Grid>
                                                 <Grid item xs={2} s>
                                                     <Box style={{position:'relative'}} p={2}> 
-                                                      <p style={{position:'absolute',right:'10%', top:'-20%'}}>{count4}</p>
+                                                      <p style={{position:'absolute',right:'15%', top:'0%'}}>{count4}</p>
                                                     </Box>
                                                 </Grid>
                                                 <Grid item xs={5} s>
@@ -495,7 +456,7 @@ const UnderHome = () => {
                                         </Box>
                                     </Grid>
                             </Grid>           
-                        <button type='Submit' value='Submit' style={{color:'white', backgroundColor:'blue',borderRadius:'10px',position:'absolute', right:'7%'}} onClick={addGuests(Event)}>ok</button>
+                        <button className='btn btn-primary' type='Submit' value='Submit' style={{color:'white', borderRadius:'10px',position:'absolute', right:'7%'}} onClick={addGuests(Event)}>ok</button>
                     </Typography>                          
                     </Popover>                       
                 </div>
@@ -513,7 +474,7 @@ const UnderHome = () => {
                                     <Button style={{borderRadius:'5px',marginLeft:'13%' ,marginTop:'15px',fontSize:'20px', paddingLeft:'75px', paddingRight:'75px',textAlign:'center', backgroundColor:'red', color:'white'}} variant="contained" {...bindTrigger(popupState)}>
                                         Check Availability
                                     </Button>
-                                    <Popover
+                                    <Popover 
                                             {...bindPopover(popupState)}
                                             anchorOrigin={{
                                             vertical: 'bottom',
@@ -576,11 +537,9 @@ const UnderHome = () => {
                                 </Box>  
                             </Grid>
                     </Grid>
-                    <Link to={"/details/book"}>
                     <Button style={{borderRadius:'5px',marginLeft:'95px' ,marginTop:'15px',fontSize:'20px', paddingLeft:'75px', paddingRight:'75px',textAlign:'center', backgroundColor:'gray', color:'white'}} >
                                     Reserve  
                     </Button>
-                    </Link>
                 </Box> 
             </Box>
         </Grid>             
