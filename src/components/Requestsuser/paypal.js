@@ -1,4 +1,5 @@
 import React,{ useEffect ,useState} from "react";
+import { useSelector } from 'react-redux';
 import {
     PayPalScriptProvider,
     PayPalButtons,
@@ -6,11 +7,15 @@ import {
 } from "@paypal/react-paypal-js";
 
 // This values are the props in the UI
-const amount = "100";
+var amount = "100";
 const currency = "USD";
 const style = {"color":"white"};
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
+
+    const dates = useSelector((state) => state.guests.dates);
+    amount = dates.total.toFixed(0)
+
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -32,7 +37,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 style={style}
                 disabled={false}
                 forceReRender={[amount, currency, style]}
-                fundingSource={undefined}
+                fundingSource="paypal"
                 createOrder={(data, actions) => {
                     return actions.order
                         .create({
@@ -78,15 +83,7 @@ export default function PayPalC() {
                 />
 			</PayPalScriptProvider>
 		</div>        
-          {/* ) : (
-            <button
-              onClick={() => {
-                setCheckOut(true);
-              }}
-            >
-              Checkout
-            </button> */}
-          {/* )} */}
+     
 		</>
 
 

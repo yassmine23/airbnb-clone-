@@ -1,10 +1,7 @@
 import React, { useEffect , useState} from "react";
 import "./BecomeHostStyle.css";
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
-import classNames from "classnames";
 import Footerhostormore from "./pagehost/footerhostormore";
 import { languages } from './../components/lang/languages';
 import Slider from './pagehost/slider';
@@ -22,7 +19,6 @@ export default function BecomeAHost() {
   
   const { t } = useTranslation();
 
-  const [value, setValue] = React.useState({});
   const [email,setEmail]=useState("")
   const [pass,setPass]=useState("")
   const inputChanges=(e)=>{
@@ -58,9 +54,6 @@ const [price,setPrice]= useState("")
         setPrice(e.target.value)
       }
     }
-  // const releaseDate = new Date("2021-03-07");
-  // const timeDifference = new Date() - releaseDate;
-  // const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   useEffect(() => {
     console.log("Setting page stuff");
@@ -99,6 +92,33 @@ const [price,setPrice]= useState("")
     await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
       navigate('/user')
 }
+const room = [
+  { id: 1, text:t("entireplace") },
+  { id: 2, text:t("sharedroom")},
+  { id: 3, text:t("privateroom") },
+];
+const guestcount= [
+  { id: 1, text: t("guest" )},
+  { id: 2, text: t("guests" )},
+  { id: 4, text: t("guests" ) },
+  { id: 5, text: t("guests" ) },
+  { id: 6, text: t("guests" ) },
+  { id: 7, text: t("guests" ) },
+  { id: 8, text: t("guests" ) },
+  { id: 9, text: t("guests" ) },
+  { id: 10, text: t("guests" ) },
+  { id: 11, text: t("guests" ) },
+  { id: 12, text: t("guests" ) },
+  { id: 13, text: t("guests" ) },
+  { id: 14, text: t("guests" ) },
+  { id: 15, text: t("guests" ) },
+  { id: 16, text: t("guests" ) },
+
+];
+const choices = [
+  { id: 1, text: t("Alexandria") },
+  { id: 2, text: t("cairo")},
+];
 
   return (
     <>
@@ -127,7 +147,6 @@ const [price,setPrice]= useState("")
         <div className="row bgdark">
           <div className="col-lg-6 col-12 d-flex flex-column align-items-center justify-content-center">
             <h1 className="text-white text-center my-5 titles p-2">
-              {/* Open your door to hosting */}
               {t("welcome_message")}
             </h1>
             <button
@@ -215,11 +234,7 @@ const [price,setPrice]= useState("")
                   </div>}
                   
                   </div>
-                  {/* <div className="modal-footer">
-                    <button type="button" className="btn btnhost">
-                      
-                    </button>
-                  </div> */}
+                  
                 </div>
               </div>
             </div>
@@ -229,7 +244,7 @@ const [price,setPrice]= useState("")
           </div>
 
           <div className="col-lg-6 col-12">
-            <img src="assets/images/headers.jpg" className="images"></img>
+            <img src="assets/images/headers.jpg" className="images" alt="..."/>
           </div>
         </div>
         {/* section two */}
@@ -247,85 +262,55 @@ const [price,setPrice]= useState("")
           <div className="row  p-5 my-5">
             
             <h1 className="profits text-center">
-              Host your
+             {t("Hostyour")}
               <select
                 className="text-decoration-underline border-0"
                 aria-label="Default select example"
-              >
+              >{room.map((choice) => {
+                return ( <>
                 <option
                   value={"enterplace"}
                   className="text-decoration-underline optionss fs-1 "
                 >
-                  enter place
-                </option>
-                <option
-                  selected
-                  value={"privateroom"}
-                  className="text-decoration-underline fs-1  optionss"
-                >
-                  private room
-                </option>
-                <option
-                  value={"sharedroom"}
-                  className="text-decoration-underline fs-1  optionss"
-                >
-                  shared room
-                </option>
+                 {choice.text}
+                </option></>);
+          })}
+               
               </select>
-              for
+             {t ("for")}
+              <select
+                className="text-decoration-underline border-0"
+                aria-label="Default select example"
+              >{guestcount.map((choice) => {
+                return ( <>
+                <option
+                  value={"enterplace"}
+                  className="text-decoration-underline optionss fs-1 "
+                >
+                 {choice.id} {choice.text}
+                </option></>);
+          })}
+            
+              </select>
+              <br />
+              {t("in")}
               <select
                 className="text-decoration-underline border-0"
                 aria-label="Default select example"
               >
-                <option className="text-decoration-underline fs-1 px-5 optionss">
-                  1 guests
-                </option>
+                {choices.map((choice) => {
+                return ( <>
                 <option
-                  value="1"
-                  className="text-decoration-underline  fs-1 mx-5 optionss"
+                  value={"enterplace"}
+                  className="text-decoration-underline optionss fs-1 "
                 >
-                  2 guests
-                </option>
-                <option
-                  value="2"
-                  className="text-decoration-underline fs-1 mx-5 optionss"
-                >
-                  3 guests
-                </option>
-                <option
-                  value="3"
-                  selected
-                  className="text-decoration-underline fs-1 mx-5 optionss"
-                >
-                  4 guests
-                </option>
+                 {choice.text}
+                </option></>);
+          })}
+             
               </select>
               <br />
-              in
-              <select
-                className="text-decoration-underline border-0"
-                aria-label="Default select example"
-              >
-                <option className="text-decoration-underline border-0 fs-1 optionss">
-                  Alexandria
-                </option>
-                <option
-                  selected
-                  value="1"
-                  className="text-decoration-underline border-0 fs-1 optionss "
-                >
-                  Alexandria
-                </option>
-                <option
-                  value="2"
-                  className="text-decoration-underline border-0 fs-1 optionss"
-                >
-                  Alexandria
-                </option>
-              </select>
-              <br />
-              and earn up to ${390}/month
-            </h1>
+{t("andearnuptomonth")}            </h1>
             {/* modal */}
             {/* <!-- Button trigger modal --> */}
             <button
@@ -345,7 +330,7 @@ const [price,setPrice]= useState("")
               aria-labelledby="exampleModalLabel2"
               aria-hidden="true"
             >
-              <div className="modal-dialog">
+              <div className="modal-dialog modal-lg">
                 <div className="modal-content">
                   <div className="modal-header">
                     <button
