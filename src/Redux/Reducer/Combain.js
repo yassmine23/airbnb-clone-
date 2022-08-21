@@ -5,6 +5,7 @@ import requestsInfo from './requestReducer';
 import singleInfo from './singleReducer';
 import requestDetails from './reqInfoReducer';
 import guestsReducer from "./guests";
+import wishData from './wishListData';
 
 export default combineReducers({
     allUsers:usersAcc,
@@ -13,4 +14,6 @@ export default combineReducers({
     userData: singleInfo,
     requestDetail:requestDetails,
     guests:guestsReducer,
+    favoritData : wishData
+
 })
