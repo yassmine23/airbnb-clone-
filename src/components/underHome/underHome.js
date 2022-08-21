@@ -104,6 +104,8 @@ const UnderHome = () => {
     document.getElementById(
       "selecteddates"
     ).innerText = `start date: ${ranges.selection.startDate.toDateString()} end date: ${ranges.selection.endDate.toDateString()}`;
+    document.getElementById('outerSelected').innerText=`From ${ranges.selection.startDate.toDateString()}  To  ${ranges.selection.endDate.toDateString()}`
+
     document.getElementById(
       "reddit-input1"
     ).value = `${ranges.selection.startDate.toDateString()}`;
@@ -116,7 +118,7 @@ const UnderHome = () => {
     var Difference_In_Time = date2.getTime() - date1.getTime();
     // To calculate the no. of days between two dates
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    //console.log(Difference_In_Days)
+   
     document.getElementById(
       "NightsNo"
     ).innerText = `$${dataDetails.price} x ${Difference_In_Days} nights`;
@@ -132,6 +134,8 @@ const UnderHome = () => {
     document.getElementById("totalPrice").innerText = `Total before taxes`;
     let x = y + z;
     document.getElementById("actualPrice").innerText = `$${x}`;
+    document.getElementById('noNights').innerText=`${Difference_In_Days} nights in `;
+    document.getElementById('cancelationDate').innerText=`${ranges.selection.startDate.toDateString()}`;
   }
 
   const SelectionRange = {
@@ -139,24 +143,7 @@ const UnderHome = () => {
     endDate: endDate,
     key: "selection",
   };
-
-  // const clear= () => {
-  //     setStartDate('');
-  //     setEndDate('');
-  //     document.getElementById('selecteddates').innerText=''
-  //     document.getElementById('fixedP').innerText= 'Add your travel dates for exact pricing'
-  //     document.getElementById('reddit-input1').value= "add date"
-  //     document.getElementById('reddit-input2').value= "add date"
-  //     document.getElementById('NightsNo').innerText=''
-  //     document.getElementById('ServiceFee').innerText=''
-  //     document.getElementById('NightsPrice').innerText=''
-  //     document.getElementById('FeePrice').innerText=''
-  //     document.getElementById('totalPrice').innerText=''
-  //     document.getElementById('actualPrice').innerText=''
-  //     document.getElementById('outerSelected').innerText=''
-  // }
   //increment and decrement
-
   // 1
   const clear = () => {
     setStartDate("");
@@ -172,6 +159,8 @@ const UnderHome = () => {
     document.getElementById("FeePrice").innerText = "";
     document.getElementById("totalPrice").innerText = "";
     document.getElementById("actualPrice").innerText = "";
+    document.getElementById('outerSelected').innerText=''
+
   };
 
   const [count1, setCount1] = useState(0);
@@ -255,7 +244,9 @@ const UnderHome = () => {
   //data from database
   var dataDetails = useSelector((state) => state.requestDetail.details);
   // page requst
-  var Difference_In_Time = endDate.getTime() - startDate.getTime();
+    var date1 = new Date(startDate.getTime());
+    var date2 = new Date(endDate.getTime());
+   var Difference_In_Time = date2 - date1 ;
   // To calculate the no. of days between two dates
   var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
   let service = parseInt(
@@ -314,7 +305,7 @@ const UnderHome = () => {
             <p>Check yourself in with the lockbox.</p>
             <EventBusyIcon />{" "}
             <span style={{ fontWeight: "bold", fontSize: 22 }}>
-              Free cancellation befire Aug 7.
+              Free cancellation before  <span id='cancelationDate'></span>
             </span>
           </Box>
           <Box style={{ borderBottom: "1px solid lightgray" }} p={2}>
@@ -429,7 +420,7 @@ const UnderHome = () => {
                     <span
                       style={{ fontSize: 20, textDecoration: "line-through" }}
                     >
-                      Carbon momoxide alarm
+                      Carbon monoxide alarm
                     </span>
                   </p>
                 </Box>
@@ -449,7 +440,7 @@ const UnderHome = () => {
             </Grid>
           </Box>
           {/* change */}
-          <Box p={2} style={{ position: "relative" }}>
+          <Box p={2} xs={2} style={{ position: "relative" }}>
             <span
               style={{ fontWeight: "bold", fontSize: "25px" }}
               id="noNights"
@@ -458,7 +449,7 @@ const UnderHome = () => {
               {dataDetails.address}
             </span>
             <p id="outerSelected" style={{ fontWeight: "bold" }}></p>
-            <div>
+            <div style={{width:'50%'}}>
               <DateRangePicker
                 ranges={[SelectionRange]}
                 onChange={handelSelect}
