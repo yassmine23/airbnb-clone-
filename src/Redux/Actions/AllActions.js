@@ -48,3 +48,9 @@ export function changeGuests2(data){
     }
 
 }
+export function CatgoryAction(data){
+    return{
+        type:"Set-Cat",
+        payload:data
+    }
+}
