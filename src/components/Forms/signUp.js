@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import Header from './../Header';
 import Footer from './../Footer';
-import { db } from './../../firebaseConfig';
+import { db, storage } from './../../firebaseConfig';
 import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,8 @@ import { SingleData } from "../../Redux/Actions/AllActions";
 import { useDispatch } from 'react-redux';
 import Joi from "joi";
 import { useTranslation } from 'react-i18next';
+import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+
 
 const SignUp = () => {
   const {t}=useTranslation();
@@ -17,6 +19,9 @@ const SignUp = () => {
     userPassword: "",
     userAge: "",
     userName: "",
+    userfav:[],
+    path:"",
+    reser:[]
   });
   const [errr, setError] = useState({
     errorEmail: null,
@@ -64,9 +69,10 @@ const SignUp = () => {
 const createRequest = async(e)=>{
   e.preventDefault()
   const x ={name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge}
+  const y ={name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge, path:imgName,favorit:[],reservsion:[]}
 
 let schema = Joi.object({
-  name: Joi.string().alphanum().min(10).required(),
+  name: Joi.string().min(10).required(),
   email:Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/).required(),
   age:Joi.number().min(18).max(60).required()
@@ -94,12 +100,9 @@ console.log(errList);
 
 
 }else{
-
-  await addDoc(requestCollection,{name:user.userName, email:user.userEmail, password:user.userPassword,age:user.userAge,favorit:[],inProgress:[],Accepted:[],Rejected:[]})
-  dispatch(SingleData(x))
-}
-
-  
+  await addDoc(requestCollection,y)
+  dispatch(SingleData(y))
+} 
 }
 useEffect(()=>{
   if(Object.keys(sing).length > 0){
@@ -107,6 +110,17 @@ useEffect(()=>{
     navigate('/user')
   }
 },[sing])
+const [file,setFiles]=useState(null)
+const [imgName,setImageName]=useState("")
+const uplload = ()=>{
+if(file ===null)return;
+const imageRef = ref(storage,`profiles/${file.name}`)
+setImageName(`profiles/${file.name}`)
+uploadBytes(imageRef,file).then(()=>{
+  alert("Done")
+})}
+
+
   return (
     <>
     <Header/>
@@ -177,6 +191,10 @@ useEffect(()=>{
           />
           <small className="text-danger">{errr.errorAge}</small> 
         </div>
+        <div class="mb-1">
+                      <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(e.target.files[0])}/>
+                      <button className="btn btn-outline-info me-auto" onClick={uplload}>upload</button>
+                    </div>
         <button className="btn btn-primary">
          {t("CreateAccount")}
         </button>
