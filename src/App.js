@@ -90,12 +90,6 @@ function App() {
   
     <Router>
      
-    <Box
-     style={{position: "sticky",top:'0' , backgroundColor:'white', zIndex:20}}
-     >
-          
-        </Box>
-
 
         <Routes>
         <Route path="/" exact element={<HomePage />} />
