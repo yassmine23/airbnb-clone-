@@ -9,15 +9,31 @@ import PayPalC from "./paypal";
 import { useSelector } from "react-redux";
 import LogInPaypal from "./loginpaypal";
 import Test, { Testtwo } from "./test";
+import { db } from './../../firebaseConfig';
+import { doc, updateDoc } from 'firebase/firestore';
 
 function Requestsuser() {
   const guest = useSelector((state) => state.guests.guests);
   const dates = useSelector((state) => state.guests.dates);
 const datareq=useSelector((state)=>state.requestDetail.details)
+let usr = useSelector((state)=>state.userData.info)
 
 const total=parseInt(datareq.price*dates.Difference_In_Days)
 
   const { t } = useTranslation();
+
+  const uplod = async()=>{
+    const dos = doc(db , "users" , usr.id)
+        const newDat = {reservsion : usr.reservsion.concat(datareq)}
+         await updateDoc(dos,newDat)
+        
+  }
+  // const addReservData = (e)=>{
+
+
+  //   uplod()
+
+  // }
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -81,7 +97,7 @@ const total=parseInt(datareq.price*dates.Difference_In_Days)
                 {/* <LogInPaypal /> */}
                 <hr />
               </div>
-              <form className="row g-3">
+              <form className="row g-3" >
                 <div>
                   <h4>{t("required")}</h4>
                   <h6>{t("message")}</h6>
@@ -170,15 +186,17 @@ const total=parseInt(datareq.price*dates.Difference_In_Days)
                   <hr />
                 </div>
                 {/* button req user */}
-                <div className="col-12">
+                
+              </form>
+              <div className="col-12">
                   <button
                     type="btn button"
                     className="btn btnhost my-5 px-4 py-2"
+                    onClick={uplod}
                   >
                     {t("paytitle")}
                   </button>
                 </div>
-              </form>
               <div></div>
             </div>
             <div className="col-md-5 ms-4 my-5">

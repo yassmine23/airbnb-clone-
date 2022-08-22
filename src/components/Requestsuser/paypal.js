@@ -5,6 +5,7 @@ import {
     PayPalButtons,
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
+import { useNavigate } from 'react-router-dom';
 
 // This values are the props in the UI
 var amount = "100";
@@ -13,13 +14,17 @@ const style = {"color":"white"};
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
 const [paidFor, setPaidFor] = useState(false);
-
+const navigate = useNavigate()
+const [eror,setError]= useState(false)
 
     const handleApprove = (orderId) => {
 
         setPaidFor(true)
+        
 
     }
+    if(paidFor){alert("done, please click Request to book")}
+    if(eror){navigate('/details')}
     // const dates = useSelector((state) => state.guests.dates);
     // amount = dates.total.toFixed(0)
 
@@ -36,8 +41,9 @@ const [paidFor, setPaidFor] = useState(false);
             },
         });
     }, [currency, showSpinner]);
-
-if(paidFor){alert("Your reservation won’t be confirmed until the Host accepts your request (within 24 hours).You won’t be charged until then")}
+// if(paidFor){alert("done")}else{
+//     navigate('/details')
+// }
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons
@@ -69,6 +75,8 @@ if(paidFor){alert("Your reservation won’t be confirmed until the Host accepts 
                     handleApprove(data.orderID);
 
                 }}
+                onError={(err)=>{setError(true)}
+                }
             />
         </>
     );

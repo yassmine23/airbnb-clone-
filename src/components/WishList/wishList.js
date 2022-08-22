@@ -38,11 +38,11 @@ export default function WishList() {
     dispatch(WishListData(newFav))
     return <>
     <Header />
-    <div className="container d-flex">
+    <div className="container d-flex mt-3">
           <div className="row ">
     {(wshList.length ===0 && favourits.length ===0)?<h3 className="text-center mt-4">You didn't add anything to wishlist</h3>:
     (wshList.length >= favourits.length )?<>
-    {wshList.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
+    {wshList.map((dat,ky)=><Card className="col-lg-4 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
       <Carousel
         interval={50000}
   
