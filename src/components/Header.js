@@ -14,14 +14,9 @@ import Paper from "@mui/material/Paper";
 import { IoSearchCircleSharp } from "react-icons/io5";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-// import { BsGlobe } from 'react-icons/bs';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-// import InputBase from '@mui/material/InputBase';
-// import IconButton from '@mui/material/IconButton';
-// import { FaSearch } from 'react-icons/fa';
-// import { VscSettings } from 'react-icons/vsc';
 import { useTranslation } from "react-i18next";
 import { LangIcone } from './lang/languages';
 import Nav from "react-bootstrap/Nav";
@@ -470,7 +465,6 @@ const searchItems = (searchValue) => {
     
      {/* <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")} 
       onChange={(e) => {
-        // console.log(e.target.value);
         // window.localStorage.setItem("searchPlace", e.target.value);
       }}/> */}
 
