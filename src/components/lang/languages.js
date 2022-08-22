@@ -1,11 +1,9 @@
 import React from "react";
 import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { useTranslation } from "react-i18next";
+
 import classNames from "classnames";
 import cookies from "js-cookie";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
+
 import { BsGlobe } from "react-icons/bs";
 export const languages = [
   {

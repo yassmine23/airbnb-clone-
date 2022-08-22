@@ -55,7 +55,7 @@ export function CatgoryAction(data){
         payload:data
     }
 
-
+}
 export function search(data){
     return{
         type:"SET_SEARCH",

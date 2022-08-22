@@ -17,6 +17,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 
+import { LocalizationProvider } from "@mui/x-date-pickers-pro";
+import { AdapterDateFns } from "@mui/x-date-pickers-pro/AdapterDateFns";
+import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
 import { useTranslation } from "react-i18next";
 import { LangIcone } from './lang/languages';
 import Nav from "react-bootstrap/Nav";

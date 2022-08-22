@@ -1,13 +1,12 @@
 import React, { useEffect,useState } from "react";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import "./App.css";
 
-import Header from "./components/Header";
-import OptionsTab from "./components/OptionsTab";
+// import Header from "./components/Header";
+// import OptionsTab from "./components/OptionsTab";
 
-import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import HomePage from './pages/HomePage';
 import HostingDetails from './pages/HostingDetails';
@@ -25,10 +24,10 @@ import UsersAccounts, { HosterAccounts,RequstsData } from './Redux/Actions/AllAc
 import LogIn from './components/Forms/logIn';
 import SignUp from './components/Forms/signUp';
 import UserProfile from './components/Profiles/user profile/user-Profile';
-import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
+// import HosterProfile from './components/Profiles/hoster profile/hoster-Profile';
 import SearchPage from './pages/SearchPage';
 import WishList from "./components/WishList/wishList";
-import { listAll, ref } from "firebase/storage";
+// import { listAll, ref } from "firebase/storage";
 
 function App() {
 
@@ -82,6 +81,7 @@ function App() {
    getRequests()
    
   }, [currentLanguage, t]);
+  
   dispatch(UsersAccounts(use))
    dispatch(RequstsData(requests))
 

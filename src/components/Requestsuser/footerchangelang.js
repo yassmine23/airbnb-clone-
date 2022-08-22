@@ -20,9 +20,15 @@ export default function FooterChangeLang(){
               <a href={"/"}>$ USD</a>
             </div>
             <div className="fs-5 ">
-              <i className="mx-3 fa fa-facebook-f"></i>
-              <i className=" mx-3 fa fa-twitter"></i>
-              <i className="mx-3 fa fa-instagram"></i>
+            <a href="https://twitter.com/airbnb" target="_blank">
+            <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/airbnb/" target="_blank">
+            <i class="fa-brands fa-instagram mx-2"></i>
+            </a>
+            <a href="https://www.facebook.com/airbnbuk/?brand_redir=324826532457" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+            </a>
             </div>
           </div>
         </div>
