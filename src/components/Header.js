@@ -23,20 +23,65 @@ import Nav from "react-bootstrap/Nav";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Popover from "@mui/material/Popover";
 import Grid from "@mui/material/Grid";
-import { LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
 import TextField from '@mui/material/TextField';
 // + & -
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useSelector, useDispatch } from 'react-redux';
 import {  search } from '../Redux/Actions/AllActions';
+import { DateRangePicker } from "react-date-range";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 
-
+const useStylesReddit = makeStyles((theme) => ({
+  root: {
+    border: "1px solid #e2e2e1",
+    overflow: "hidden",
+    borderRadius: 4,
+    backgroundColor: "#fcfcfb",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    "&:hover": {
+      backgroundColor: "#fff",
+    },
+    "&$focused": {
+      backgroundColor: "#fff",
+      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+      borderColor: theme.palette.primary.main,
+    },
+  },
+  focused: {},
+}));
+function RedditTextField(props) {
+  const classes = useStylesReddit();
+  return (
+    <TextField InputProps={{ classes, disableUnderline: true }} {...props} />
+  );
+}
 
 
 const Header = () => {
+  
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  function handelSelect(ranges) {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+    document.getElementById("reddit-input1").value = `${ranges.selection.startDate.toDateString()}`;
+    document.getElementById("reddit-input2").value = `${ranges.selection.endDate.toDateString()}`;
+  }
+
+  const SelectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+  const clear = () => {
+    setStartDate("");
+    setEndDate("");
+    document.getElementById("reddit-input1").value = "add date";
+    document.getElementById("reddit-input2").value = "add date";
+  };
 const { t } = useTranslation();
 let where=t("anywhere");
 let week=t("anyweek");
@@ -469,8 +514,90 @@ const searchItems = (searchValue) => {
       }}/> */}
 
      </Button>
-    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkin")}<div className='text-muted '>{t("Adddate")}</div></Button>
-    <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkout")}<div className='text-muted '>{t("Adddate")}</div></Button>
+   <PopupState variant="popover" popupId="demo-popup-popover">
+                      {(popupState) => (
+                        <div>
+                          <button
+                            style={{
+                              width: "100%",
+                              borderRadius: "5px",
+                              
+                              marginTop: "-1.5%",
+                              fontSize: "120%",
+                              paddingTop: "2%",
+                              paddingBotton: "2%",
+                              textAlign: "center",
+                              backgroundColor: "transparent",
+                              color: "black",
+                              border: "none",
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                            variant="contained"
+                            {...bindTrigger(popupState)}
+                          >
+                            <form>
+                              <RedditTextField
+                                label="CHECK-IN"
+                                defaultValue="Add date"
+                                variant="filled"
+                                id="reddit-input1"
+                              />
+                            </form>
+                            <form>
+                              <RedditTextField
+                                label="CHECKOUT"
+                                defaultValue="Add date"
+                                variant="filled"
+                                id="reddit-input2"
+                              />
+                            </form>
+                          </button>
+                          <Popover
+                            {...bindPopover(popupState)}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "center",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "center",
+                            }}
+                          >
+                            <Typography sx={{ p: 2 }}>
+                              <Grid container>
+                                <Grid item xs={5} s>
+                                  <Box p={2}>
+                                    <h3>Select dates</h3>
+                                    <p id="selecteddates"></p>
+                                    <p id="fixedP">
+                                      Add your travel dates for exact pricing
+                                    </p>
+                                  </Box>
+                                </Grid>
+                              </Grid>
+                              <div>
+                                <DateRangePicker
+                                  ranges={[SelectionRange]}
+                                  onChange={handelSelect}
+                                />
+                              </div>
+                              <Button
+                                onClick={clear}
+                                style={{
+                                  position: "absolute",
+                                  right: "30px",
+                                  color: "black",
+                                  textDecoration: "underLine",
+                                }}
+                              >
+                                CLEAR DATES
+                              </Button>
+                            </Typography>
+                          </Popover>
+                        </div>
+                      )}
+                    </PopupState>
     <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >{t("who")}  
      <Link to={'/search'}> 
      <Button variant="contained" color='secondary' 
