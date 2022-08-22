@@ -135,7 +135,7 @@ export default function HomePage() {
                     color: "white",
                     zIndex: 50,
                     position: "fixed",
-                    bottom: "20%",
+                    bottom: "15%",
                     right: "48%",
                   }}
                 >

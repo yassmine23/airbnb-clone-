@@ -35,7 +35,7 @@ function LocationMarker() {
 
   return position === null ? null : (
       <Marker position={position} removable editable icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-          <Popup>{t("youarehere")}</Popup>
+          <Popup>{t("you are here")}</Popup>
       </Marker>
   )
 }
