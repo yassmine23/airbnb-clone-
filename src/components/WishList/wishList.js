@@ -1,8 +1,8 @@
 import React, {useState}  from "react";
 import { Link } from "react-router-dom";
-import IconButton from "@mui/material/IconButton";
+// import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
@@ -32,7 +32,7 @@ export default function WishList() {
     console.log(wshList);
     const [newFav, setNewFAv]=useState(favourits)
     const remov= (dat)=>{
-      setNewFAv(newFav.filter(f=>f.title != dat.title))
+      setNewFAv(newFav.filter(f=>f.title !== dat.title))
     }
     const dispatch = useDispatch()
     dispatch(WishListData(newFav))

@@ -14,14 +14,14 @@ import Paper from "@mui/material/Paper";
 import { IoSearchCircleSharp } from "react-icons/io5";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { BsGlobe } from 'react-icons/bs';
+// import { BsGlobe } from 'react-icons/bs';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import { FaSearch } from 'react-icons/fa';
-import { VscSettings } from 'react-icons/vsc';
+// import InputBase from '@mui/material/InputBase';
+// import IconButton from '@mui/material/IconButton';
+// import { FaSearch } from 'react-icons/fa';
+// import { VscSettings } from 'react-icons/vsc';
 import { useTranslation } from "react-i18next";
 import { LangIcone } from './lang/languages';
 import Nav from "react-bootstrap/Nav";
@@ -35,7 +35,8 @@ import TextField from '@mui/material/TextField';
 // + & -
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeGuests2, search } from '../Redux/Actions/AllActions';
 
 
 
@@ -45,7 +46,7 @@ const { t } = useTranslation();
 let where=t("anywhere");
 let week=t("anyweek");
 let addg=t("Stays");
-let Stays=t("anywhere");
+// let Stays=t("anywhere");
 let Experiences=t("Experiences");
 let onlineexperiences=t("Onlineexperiences");
 const choices = [
@@ -194,7 +195,37 @@ const choices = [
   const favourit = ()=>{
     navigate("/wish-list")
   }
+  // search
+
+const data = useSelector((state)=>state.allRequests.requests)
+const dispatchg = useDispatch();
+ // the value of the search field 
+const [searchInput, setSearchInput] = useState('');
+ // Now, we need a state where we can store the filtered data. So, let's create one.
+ const [filteredResults, setFilteredResults] = useState([]);
+
+// const searchItems  = (inputs) => {
+//   setSearchInput(inputs)
+// }
+// const filteredData = data.filter((item) => {
+//   return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+//   })
+//   console.log(filteredData)
+ 
+
+const searchItems = (searchValue) => {
+  setSearchInput(searchValue)
+  if (searchInput !== '') {
+      const filteredData = data.filter((item) => {
+          return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+      })
+   
+      setFilteredResults(filteredData)
+      dispatchg(search(filteredData))
+
+  }
   
+}
   return (
     <Box
       sx={{
@@ -437,17 +468,22 @@ const choices = [
     }}
     divider={<Divider orientation="vertical" flexItem />}
   >
+    {/* search */}
     <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
-     <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")}/>
+
+     <TextField id="search" label={t("where")} variant="outlined" value={searchInput}
+         placeholder={t("Searchdestinations")}  onChange={(e) => searchItems(e.target.value)}/>
 
      </Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkin")}<div className='text-muted '>{t("Adddate")}</div></Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkout")}<div className='text-muted '>{t("Adddate")}</div></Button>
     <Button style={{fontWeight:'bold', width:'150px'}} onClick={handleClickWho} >{t("who")}  
-     <Link to={'/search'}> <Button variant="contained" color='secondary' 
+     <Link to={'/search'}> 
+     <Button variant="contained" color='secondary' 
      style={{borderRadius:20, marginInline:'10px', padding:'10px',fontWeight:'bold' }} endIcon={< SearchOutlinedIcon /> }>
        {t("Search")}
-      </Button> </Link>
+      </Button>
+       </Link>
       </Button>
 
 
@@ -643,37 +679,37 @@ const choices = [
 
                   <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='All'>
-                      <img className=' border border-dark rounded'  width="122px" height="122px"   src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg"/>
+                      <img className=' border border-dark rounded'  width="122px" height="122px"   src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg" alt='...'/>
                      <span className="py-2">I'm flexible</span></button>
                     </div>
 
                     <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Europe'>
-                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2.jpg?im_w=320"/>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2.jpg?im_w=320" alt='...'/>
                      <span className="py-2">Europe</span></button>
                     </div>
 
                     <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Turkey'>
-                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/97d76097-22b3-4d87-9459-ad1b90b18d2f.jpg?im_w=320"/>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/97d76097-22b3-4d87-9459-ad1b90b18d2f.jpg?im_w=320" alt='...'/>
                      <span className="py-2">Turkey</span></button>
                     </div>
 
                     <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent'value='United states'>
-                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320"/>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320" alt='...'/>
                      <span className="py-2">United States</span></button>
                     </div>
 
                     <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Italy'>
-                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320"/>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320" alt='...'/>
                      <span className="py-2">Italy</span></button>
                     </div>
 
                     <div className='col-4 p-1'> 
                     <button role="radio" aria-checked="false" type="button" className=' border-0 bg-transparent' value='Africa'>
-                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7e9673a5-4164-4708-a047-8d281b5980e7.jpg?im_w=320"/>
+                      <img className=' border border-dark rounded' width="122px" height="122px"   src="https://a0.muscache.com/im/pictures/7e9673a5-4164-4708-a047-8d281b5980e7.jpg?im_w=320" alt='...'/>
                      <span className="py-2">Africa</span></button>
                     </div>
 

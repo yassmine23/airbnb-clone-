@@ -1,8 +1,8 @@
 import React , {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import IconButton from "@mui/material/IconButton";
+// import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTranslation } from "react-i18next";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
@@ -49,7 +49,7 @@ export default function MainCard() {
     
     if(Object.keys(prof).length > 0){
       if(fav.some(f=>f.title === dat.title)){
-        setfav(fav.filter(f=> f.title != dat.title))
+        setfav(fav.filter(f=> f.title !== dat.title))
       }else{
         setfav(fav.concat(dat))
       }

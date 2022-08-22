@@ -48,8 +48,8 @@ function LocationMarker() {
   }
 export default function SearchPage() {
    
-    const data = useSelector((state)=>state.allRequests.requests);
-
+    const data = useSelector((state)=>state.resultsearch.search);
+    const data2 = useSelector((state)=>state.resultsearch.search);
   return (
     <React.Fragment>
       <CssBaseline />

@@ -13,10 +13,10 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 // react icons
-import { BsGlobe } from "react-icons/bs";
+// import { BsGlobe } from "react-icons/bs";
 import { IoChevronUpOutline } from "react-icons/io5";
 
 import {
@@ -26,7 +26,7 @@ import {
 } from "../themes/commonStyles";
 import Langs from "./lang/languages";
 import { useTranslation } from "react-i18next";
-import Footerhostormore from './../pages/pagehost/footerhostormore';
+// import Footerhostormore from './../pages/pagehost/footerhostormore';
 
 
 const Footer = () => {

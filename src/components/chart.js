@@ -2,7 +2,7 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import {
   Chart,
-  Title,
+  // Title,
   ArgumentAxis,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';

@@ -20,8 +20,8 @@ const [paidFor, setPaidFor] = useState(false);
         setPaidFor(true)
 
     }
-    // const dates = useSelector((state) => state.guests.dates);
-    // amount = dates.total.toFixed(0)
+    const dates = useSelector((state) => state.guests.dates);
+    amount = dates.total
 
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
@@ -37,7 +37,7 @@ const [paidFor, setPaidFor] = useState(false);
         });
     }, [currency, showSpinner]);
 
-if(paidFor){alert("Your reservation won’t be confirmed until the Host accepts your request (within 24 hours).You won’t be charged until then")}
+if(paidFor){alert("ok") }
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons
