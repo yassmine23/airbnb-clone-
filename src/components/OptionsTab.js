@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Box from "@mui/material/Box";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -54,6 +54,8 @@ import {
 import { AiOutlineCoffee } from 'react-icons/ai';
 import { FaCampground, FaUmbrellaBeach, FaSwimmingPool } from 'react-icons/fa';
 import { RiEarthquakeFill } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
+import { CatgoryAction } from "../Redux/Actions/AllActions";
 
  const locationsTab = [
   { id: 1, label: 'Design', icon: <MdOutlineApartment size={24} /> },
@@ -123,6 +125,13 @@ const OptionsTab = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [disoCat,setDispCat]=useState("Design")
+  const dispatch = useDispatch()
+  const found = (d)=>{
+    setDispCat(d)
+  }
+  console.log(disoCat);
+  dispatch(CatgoryAction(disoCat))
 
   return (
     <Container maxWidth="xl">
@@ -148,7 +157,7 @@ const OptionsTab = () => {
           }}
         >
           {locationsTab.map((tab) => {
-            return <Tab key={tab.id} icon={tab.icon} label={tab.label} />;
+            return <Tab key={tab.id} icon={tab.icon} label={tab.label} onClick={()=>found(tab.label)} />;
           })}
         </Tabs>
         <Button

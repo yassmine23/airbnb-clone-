@@ -49,10 +49,18 @@ export function changeGuests2(data){
 
 }
 
+export function CatgoryAction(data){
+    return{
+        type:"Set-Cat",
+        payload:data
+    }
+
+
 export function search(data){
     return{
         type:"SET_SEARCH",
         data,
     }
+
 
 }

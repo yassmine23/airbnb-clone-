@@ -89,7 +89,7 @@ const [price,setPrice]= useState("")
 
     const requestCollection = collection(db, "AskRequest")
      const createRequest = async()=>{
-    await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, display:true})
+    await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, category:cat})
       navigate('/user')
 }
 const room = [
@@ -118,7 +118,11 @@ const guestcount= [
 const choices = [
   { id: 1, text: t("Alexandria") },
   { id: 2, text: t("cairo")},
-];
+]
+const [cat,setCat]=useState("")
+const cate =(e)=>{
+  setCat (e.target.value);
+}
 
   return (
     <>
@@ -183,19 +187,19 @@ const choices = [
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("Emailaddress")}</label>
                       <input type="email" className="form-control" name='mail' value={email}  id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("Name")}</label>
                       <input type="text" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("placetitle")}</label>
                       <input type="text" className="form-control" name='title' value={title} onChange={(e)=>changes(e)} id="title" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("placeaddress")}</label>
                       <input type="text" className="form-control" name='address' value={addresss} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("photosofplace")}</label>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
                       <input type ="file" className="form-control mb-2" onChange={(e)=>setFiles(files.concat(e.target.files[0]))}/>
@@ -206,14 +210,27 @@ const choices = [
                    
                     </div>
             
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("descriptions")}</label>
                       <input type="text" className="form-control" name='description' value={desc} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
 
-                    <div class="mb-1">
+                    <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("Pricepernight")}</label>
                       <input type="text" className="form-control" name='price' value={price} onChange={(e)=>changes(e)} id="price" aria-describedby="emailHelp"/>
+                    </div>
+                    <div className="my-2">
+                    <select className="form-select" onChange={(e)=>cate(e)}>
+                      <option selected disabled>Choise Category</option>
+                      <option value="Arctic">Arctic</option>
+                      <option value="Shared Homes">Shared Homes</option>
+                      <option value="LakeFront">LakeFront</option>
+                      <option value="National Parks">National Parks</option>
+                      <option value="Bed &amp; Breakfast">Bed &amp; Breakfast</option>
+                      <option value="OMG!">OMG!</option>
+                      <option value="Camping">Camping</option>
+                      <option value="A-frames">A-frames</option>
+                    </select>
                     </div>
             
             

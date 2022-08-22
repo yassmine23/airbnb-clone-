@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useState,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
@@ -65,15 +65,33 @@ export default function MainCard() {
     // navigate("/")
 
   }
-console.log(fav);
+  const findCategory = (c)=>{
+    setLast(data.filter((dt)=>dt.category === c))
+  }
+  const [lastDes,setLast]=useState([])
+  const categoryy = useSelector((state)=>state.categoryName.Cate)
+
+  useEffect(()=>{
+    if(categoryy === "Design"){
+      setLast(data)
+    }else{
+      findCategory(categoryy)
+    }
+
+  },[categoryy])
 dispatch(WishListData(fav))
+
+console.log(categoryy);
+
+
+
 
   return (
     <>
    
       <div className="container d-flex">
         <div className="row ">
-{data.map((dat,ky)=><Card className={`col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 `}  key={ky} >
+{lastDes.map((dat,ky)=><Card className={`col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 `}  key={ky} >
           <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
   <FavoriteBorderIcon  className={`${fav.some(f=>f.title === dat.title)? 'text-danger': 'text-light'}`} fontSize="inherit" style={{color:'white'}}/>
 </IconButton>
