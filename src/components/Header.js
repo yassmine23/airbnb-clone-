@@ -438,7 +438,11 @@ const choices = [
     divider={<Divider orientation="vertical" flexItem />}
   >
     <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
-     <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")}/>
+     <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")} 
+      onChange={(e) => {
+        console.log(e.target.value);
+        window.localStorage.setItem("searchPlace", e.target.value);
+      }}/>
 
      </Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkin")}<div className='text-muted '>{t("Adddate")}</div></Button>
