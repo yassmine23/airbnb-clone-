@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import MainCard from "../components/card";
 import Header from "../components/Header";
 import Box from "@mui/material/Box";
@@ -8,48 +8,81 @@ import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useState} from "react";
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
-
-
+// import { FaSearch, FaRegHeart, FaRegUserCircle  } from "react-icons/fa";
+// import { VscSettings } from "react-icons/vsc";
+// import Paper from "@mui/material/Paper";
+// import InputBase from "@mui/material/InputBase";
+// import Footer from "../components/Footer";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
-import { useSelector } from 'react-redux';
-import "../components/cardStyle.css"
+import { useSelector } from "react-redux";
+import "../components/cardStyle.css";
+import { useTranslation } from 'react-i18next';
+import Stack from "@mui/material/Stack";
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { displayOnDesktop } from "../themes/commonStyles";
 
-import { MapContainer, TileLayer, useMap, Marker, Popup,useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import {Icon} from 'leaflet';
+import { Icon } from "leaflet";
 
-import { where, onSnapshot, QuerySnapshot } from 'firebase/firestore';
+
+
 
 
 
 function LocationMarker() {
-    const [position, setPosition] = useState(null)
-    const map = useMapEvents({
-        click() {
-            map.locate()
-        },
-        locationfound(e) {
-            setPosition(e.latlng)
-            map.flyTo(e.latlng, map.getZoom())
-        },
-    })
+
+  const [position, setPosition] = useState(null);
+  const map = useMapEvents({
+    click() {
+      map.locate();
+    },
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
+  });
+
+
+
   
-    return position === null ? null : (
-        <Marker position={position} removable editable 
-        icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-            <Popup>You are here</Popup>
-        </Marker>
-    )
-  }
+
+  return position === null ? null : (
+    <Marker
+      position={position}
+      removable
+      editable
+      icon={
+        new Icon({
+          iconUrl: markerIconPng,
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+        })
+      }
+    >
+      <Popup>You are here</Popup>
+    </Marker>
+  );
+}
 export default function SearchPage() {
    
     const data = useSelector((state)=>state.resultsearch.search);
-    const data2 = useSelector((state)=>state.resultsearch.search);
+  // const data = useSelector((state) => state.allRequests.requests);
+
   return (
     <React.Fragment>
       <CssBaseline />

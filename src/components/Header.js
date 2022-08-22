@@ -36,7 +36,7 @@ import TextField from '@mui/material/TextField';
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGuests2, search } from '../Redux/Actions/AllActions';
+import {  search } from '../Redux/Actions/AllActions';
 
 
 
@@ -204,13 +204,7 @@ const [searchInput, setSearchInput] = useState('');
  // Now, we need a state where we can store the filtered data. So, let's create one.
  const [filteredResults, setFilteredResults] = useState([]);
 
-// const searchItems  = (inputs) => {
-//   setSearchInput(inputs)
-// }
-// const filteredData = data.filter((item) => {
-//   return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-//   })
-//   console.log(filteredData)
+
  
 
 const searchItems = (searchValue) => {
@@ -470,9 +464,15 @@ const searchItems = (searchValue) => {
   >
     {/* search */}
     <Button style={{fontWeight:'bold', width:'250px' , display:'flex', flexDirection:'column'}}onClick={handleClickWhere} >
-
+ 
      <TextField id="search" label={t("where")} variant="outlined" value={searchInput}
          placeholder={t("Searchdestinations")}  onChange={(e) => searchItems(e.target.value)}/>
+    
+     {/* <TextField id="search" label={t("where")} variant="outlined" placeholder={t("Searchdestinations")} 
+      onChange={(e) => {
+        // console.log(e.target.value);
+        // window.localStorage.setItem("searchPlace", e.target.value);
+      }}/> */}
 
      </Button>
     <Button style={{fontWeight:'bold',width:'100px', display:'flex', flexDirection:'column' }} onClick={handleClickCheckIn}>{t("Checkin")}<div className='text-muted '>{t("Adddate")}</div></Button>

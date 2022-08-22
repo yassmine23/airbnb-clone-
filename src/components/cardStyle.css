@@ -13,3 +13,13 @@
     text-decoration: none;
     z-index: 0;
 }
+/* .bt:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .bt{
+	box-shadow: none !important
+}
+.bt:hover{
+    border: none;
+} */

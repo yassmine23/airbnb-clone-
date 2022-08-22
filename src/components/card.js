@@ -1,8 +1,8 @@
 import React , {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import IconButton from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
-// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTranslation } from "react-i18next";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
@@ -49,7 +49,7 @@ export default function MainCard() {
     
     if(Object.keys(prof).length > 0){
       if(fav.some(f=>f.title === dat.title)){
-        setfav(fav.filter(f=> f.title !== dat.title))
+        setfav(fav.filter(f=> f.title != dat.title))
       }else{
         setfav(fav.concat(dat))
       }
@@ -73,10 +73,10 @@ dispatch(WishListData(fav))
    
       <div className="container d-flex">
         <div className="row ">
-{data.map((dat,ky)=><Card className="col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 "  key={ky} >
-          {/* <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
-  <FavoriteBorderIcon  className="text-danger" fontSize="inherit" style={{color:'white'}}/>
-</IconButton> */}
+{data.map((dat,ky)=><Card className={`col-lg-3 col-md-4 col-sm-6 col-xs-12 border-0 `}  key={ky} >
+          <IconButton   size="large" onClick={()=>addWishList(dat)}  sx={{width:40, position:'absolute', top:10, left:230,zIndex:5}}>
+  <FavoriteBorderIcon  className={`${fav.some(f=>f.title === dat.title)? 'text-danger': 'text-light'}`} fontSize="inherit" style={{color:'white'}}/>
+</IconButton>
             <Carousel
             className="parent"
               interval={50000}
@@ -116,7 +116,7 @@ dispatch(WishListData(fav))
 
                 />
               </Carousel.Item>
-              <i className={`fa-solid fa-heart ${fav.some(f=>f.title === dat.title)? 'text-danger': 'text-light'}  fa-xl child` }onClick={()=>addWishList(dat)}></i>
+              {/* <i className={`fa-solid fa-heart ${fav.some(f=>f.title === dat.title)? 'text-danger': 'text-light'}  fa-xl child` }onClick={()=>addWishList(dat)}></i> */}
             </Carousel>
           
           <Link to={`/details`} key={dat.id} style={{textDecoration:'none'}}>

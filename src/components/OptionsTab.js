@@ -589,7 +589,7 @@ const OptionsTab = () => {
                 id="transition-modal-title"
                 variant="h3"
                 component="h2"
-                style={{ fontWeight: "bold", fontSize: 18 }}
+                style={{ fontWeight: "bold", fontSize: 17, marginTop:30, marginBottom:10 }}
               >
                 Guest entrance and parking
               </Typography>
