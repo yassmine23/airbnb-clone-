@@ -21,7 +21,6 @@ import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
-
 import { LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { AdapterDateFns } from "@mui/x-date-pickers-pro/AdapterDateFns";
 import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
@@ -245,9 +244,9 @@ const UnderHome = () => {
   //data from database
   var dataDetails = useSelector((state) => state.requestDetail.details);
   // page requst
-   var date1 = new Date(startDate);
-    var date2 = new Date(endDate);
-   var Difference_In_Time = date2.getTime() - date1.getTime() ;
+    var date1 = new Date(startDate.getTime());
+    var date2 = new Date(endDate.getTime());
+   var Difference_In_Time = date2 - date1 ;
   // To calculate the no. of days between two dates
   var DifferenceInDays =parseInt(Difference_In_Time / (1000 * 3600 * 24));
   let service =parseInt((dataDetails.price * DifferenceInDays * 0.14));
