@@ -6,7 +6,11 @@ import singleInfo from './singleReducer';
 import requestDetails from './reqInfoReducer';
 import guestsReducer from "./guests";
 import wishData from './wishListData';
+
 import CategoryRed from "./categoryReducer";
+
+import searchReducer from "./searchReducer";
+
 
 export default combineReducers({
     allUsers:usersAcc,
@@ -16,6 +20,8 @@ export default combineReducers({
     requestDetail:requestDetails,
     guests:guestsReducer,
     favoritData : wishData,
-    categoryName:CategoryRed
+
+    categoryName:CategoryRed,
+    resultsearch:searchReducer
 
 })

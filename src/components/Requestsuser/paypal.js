@@ -23,6 +23,9 @@ const [eror,setError]= useState(false)
         
 
     }
+
+    const dates = useSelector((state) => state.guests.dates);
+    amount = dates.total
     if(paidFor){alert("done, please click Request to book")}
     if(eror){navigate('/details')}
     // const dates = useSelector((state) => state.guests.dates);
@@ -41,9 +44,13 @@ const [eror,setError]= useState(false)
             },
         });
     }, [currency, showSpinner]);
-// if(paidFor){alert("done")}else{
-//     navigate('/details')
-// }
+
+
+// if(paidFor){alert("ok") }
+
+if(paidFor){alert("done")}else{
+    navigate('/details')
+}
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons

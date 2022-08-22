@@ -39,18 +39,18 @@ import { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { useSelector, useDispatch } from "react-redux";
-import Alert from "@mui/material/Alert";
+// import Alert from "@mui/material/Alert";
 // import Stack from '@mui/material/Stack';
 // import BasicAlerts from './components/underHome/alert'
 
-import Dialog from "@mui/material/Dialog";
-// import DialogActions from '@mui/material/DialogActions';
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
+// import Dialog from "@mui/material/Dialog";
+// // import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
 import { changeGuests, changeGuests2 } from "./../../Redux/Actions/AllActions";
 import { t } from "i18next";
-import da from "date-fns/locale/da";
-import { classNames } from "classnames";
+// import da from "date-fns/locale/da";
+// import { classNames } from "classnames";
 
 //check availbility
 const useStylesReddit = makeStyles((theme) => ({
