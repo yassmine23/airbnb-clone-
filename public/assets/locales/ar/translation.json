@@ -180,8 +180,60 @@
 "Pricepernight":"سعر الليلة الواحدة",
 "upload":"رفع",
 "submit":"إرسال ",
-"photosofplace":"صور المكان"
+"photosofplace":"صور المكان",
+
+"Design":"تصميم",
+"Arctic":"القطب الشمالي",
+"SharedHomes":"إقامات مشتركه",
+"LakeFront":"على ضفة البيحيرة",
+"NationalParks":"المتنزهات الوطنية",
+"Bed_Breakfast":"مبيت وإفطار",
+"OMG":"جزر",
+"Camping":"التخييم",
+"Aframes":"مزارع",
+"Domes":"القباب",
+"TinyHomes":"بيوت صغيره",
+"Treehouses":"بيوت الشجرة",
+"Surfing":"قرب منحدر التزلج",
+"CountrySide":"الريف",
+"Caves":"كهوف",
+"Golfing":"رياضة الغولف",
+"Cabins":"الكبائن",
+"EarthHomes":"منازل الغابه",
+"Tropical":"الاستوائية",
+"AmazingPools":"مسابح رائعة",
 
 
-    
- }
+"Youdidnotwishlist":"لم تقم بإضافة أي شيء إلى قائمة الرغبات",
+
+"isaSuperhost":" من المضيفين المتميزين",
+"Superhostsareexperienced":"المضيفون المتميزون هم مضيفون ذو خبرة وتقييم عاليين، يلتزمون بتقديم إقامات رائعة للضيوف.",
+"Greatexperience":"تجربة تسجيل وصول رائعة",
+"checkinprocess ":"لقد قام 94% من الضيوف الذين حجزوا مؤخرًا بتقييم عملية تسجيل الوصول باعتبارها 5 نجوم.",
+"Freecancellationbefore":"إلغاء مجاني قبل",
+"BeachaccessBeachfront":"الوصول إلى الشاطئ - على شاطئ البحر",
+"Wifi":"واي فاي",
+"Freeparkingonpremises":"مواقف مجانية للسيارات في أماكن العمل",
+"Petsallowed":"مسموح بدخول الحيوانات الأليفة",
+"Dryer":"مجفف",
+"Kitchen":"مطبخ",
+"Dedicatedworkspace":"مساحة عمل مخصصة ",
+"sharedhottub":"حوض استحمام ساخن مشترك",
+"Washer":"غسالة",
+"Carbonmonoxidealarm":"إنذار أول أكسيد الكربون",
+"Showall38amentities":"إظهار كل الـ 38 من وسائل الراحة",
+"Clearness":"الوضوح",
+"Communication":"الاتصالات",
+"Accuracy":"الدقة",
+"Location":"الموقع",
+"Value":"القيمة",
+"CLEARDATES":" مسح التواريخ",
+"Addyourtravel":"أضف تواريخ السفر الخاصة بك للتسعير الدقيق"
+
+
+
+
+
+
+ 
+}

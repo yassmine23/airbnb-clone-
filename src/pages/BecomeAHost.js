@@ -14,8 +14,8 @@ import { ref, uploadBytes } from "firebase/storage";
 import { SingleData } from "../Redux/Actions/AllActions";
 
 export default function BecomeAHost() {
-  const currentLanguageCode = cookies.get("i18next") || "en";
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  // const currentLanguageCode = cookies.get("i18next") || "en";
+  // const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   
   const { t } = useTranslation();
 
@@ -55,11 +55,11 @@ const [price,setPrice]= useState("")
       }
     }
 
-  useEffect(() => {
-    console.log("Setting page stuff");
-    document.body.dir = currentLanguage.dir || "ltr";
-    document.title = t("app_title");
-  }, [currentLanguage, t]);
+  // useEffect(() => {
+  //   console.log("Setting page stuff");
+  //   document.body.dir = currentLanguage.dir || "ltr";
+  //   document.title = t("app_title");
+  // }, [currentLanguage, t]);
 
   const all = useSelector((state)=>state.allUsers.users)
     const navigate=useNavigate()
@@ -89,7 +89,7 @@ const [price,setPrice]= useState("")
 
     const requestCollection = collection(db, "AskRequest")
      const createRequest = async()=>{
-    await addDoc(requestCollection,{name:name, email:email,title:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, category:cat})
+    await addDoc(requestCollection,{name:name, email:email,title:title,titleA:title,Url:"",Url2:"",Url3:"",Url4:"",Url5:"", address:addresss,price:price, description:desc, category:cat})
       navigate('/user')
 }
 const room = [
@@ -189,7 +189,7 @@ const cate =(e)=>{
                     </div>
                     <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("Name")}</label>
-                      <input type="text" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                      <input type="password" className="form-control" name='name' value={name} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-1">
                       <label htmlFor="exampleInputEmail1" className="form-label">{t("placetitle")}</label>

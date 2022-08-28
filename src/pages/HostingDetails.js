@@ -21,7 +21,7 @@ export default function HostingDetails() {
       <Container>
         <Home />
         <UnderHome />
-        <UpperFooter />
+        {/* <UpperFooter /> */}
         {/* <FooterDet /> */}
       </Container>
       <Footerhostormore/>

@@ -57,29 +57,6 @@ import { RiEarthquakeFill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { CatgoryAction } from "../Redux/Actions/AllActions";
 
- const locationsTab = [
-  { id: 1, label: 'Design', icon: <MdOutlineApartment size={24} /> },
-  { id: 2, label: 'Arctic', icon: <BsSnow size={24} /> },
-  { id: 3, label: 'Shared Homes', icon: <MdHouseSiding size={24} /> },
-  { id: 4, label: 'LakeFront', icon: <MdOutlineWater size={24} /> },
-  { id: 5, label: 'National Parks', icon: <GiKidSlide size={24} /> },
-  { id: 6, label: 'Bed & Breakfast ', icon: <AiOutlineCoffee size={24} /> },
-  { id: 7, label: 'OMG!', icon: <GiSpaceNeedle size={24} /> },
-  { id: 8, label: 'Camping', icon: <FaCampground size={24} /> },
-  { id: 9, label: 'A-frames', icon: <GiCampingTent size={24} /> },
-  { id: 10, label: 'Domes', icon: <GiLightningDome size={24} /> },
-  { id: 11, label: 'Tiny Homes', icon: <BiHomeAlt size={24} /> },
-  { id: 12, label: 'Treehouses', icon: <GiEvilTree size={24} /> },
-  { id: 13, label: 'Surfing', icon: <GiWaveSurfer size={24} /> },
-  { id: 14, label: 'CountrySide', icon: <GiMountainCave size={24} /> },
-  { id: 15, label: 'Caves', icon: <GiCaveEntrance size={24} /> },
-  { id: 16, label: 'Golfing', icon: <GiGolfFlag size={24} /> },
-  { id: 17, label: 'Cabins', icon: <MdCabin size={24} /> },
-  { id: 18, label: 'Earth Homes', icon: <RiEarthquakeFill size={24} /> },
-  { id: 19, label: 'Tropical', icon: <FaUmbrellaBeach size={24} /> },
-  { id: 20, label: 'Amazing Pools', icon: <FaSwimmingPool size={24} /> },
-];
-
 
 const style = {
   position: "absolute",
@@ -115,6 +92,30 @@ const buttonStyle = {
 
 const OptionsTab = () => {
   const { t } = useTranslation();
+
+  const locationsTab = [
+    { id: 1, label:t("Design"), icon: <MdOutlineApartment size={24} /> },
+    { id: 2, label:t('Arctic'), icon: <BsSnow size={24} /> },
+    { id: 3, label:t('SharedHomes'), icon: <MdHouseSiding size={24} /> },
+    { id: 4, label:t('LakeFront'), icon: <MdOutlineWater size={24} /> },
+    { id: 5, label:t("NationalParks"), icon: <GiKidSlide size={24} /> },
+    { id: 6, label:t("Bed_Breakfast"), icon: <AiOutlineCoffee size={24} /> },
+    { id: 7, label:t("OMG"), icon: <GiSpaceNeedle size={24} /> },
+    { id: 8, label:t("Camping"), icon: <FaCampground size={24} /> },
+    { id: 9, label:t("Aframes"), icon: <GiCampingTent size={24} /> },
+    { id: 10, label:t("Domes"), icon: <GiLightningDome size={24} /> },
+    { id: 11, label:t("TinyHomes"), icon: <BiHomeAlt size={24} /> },
+    { id: 12, label:t('Treehouses'), icon: <GiEvilTree size={24} /> },
+    { id: 13, label:t('Surfing'), icon: <GiWaveSurfer size={24} /> },
+    { id: 14, label:t('CountrySide'), icon: <GiMountainCave size={24} /> },
+    { id: 15, label:t('Caves'), icon: <GiCaveEntrance size={24} /> },
+    { id: 16, label:t('Golfing'), icon: <GiGolfFlag size={24} /> },
+    { id: 17, label:t('Cabins'), icon: <MdCabin size={24} /> },
+    { id: 18, label:t('EarthHomes'), icon: <RiEarthquakeFill size={24} /> },
+    { id: 19, label:t('Tropical'), icon: <FaUmbrellaBeach size={24} /> },
+    { id: 20, label:t('AmazingPools'), icon: <FaSwimmingPool size={24} /> },
+  ];
+  
 
   const [value, setValue] = React.useState(0);
 
@@ -237,7 +238,7 @@ const OptionsTab = () => {
                 </div>
               </div>
 
-              <Divider sx={{ py: 5 }} />
+            <Divider sx={{ py: 5 }} />
 
               <Box>
                 <Typography
