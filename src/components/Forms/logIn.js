@@ -60,7 +60,7 @@ export default function LogIn() {
     </div>
     <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">{t("Password")}</label>
-        <input type="email" className="form-control" name='password' value={pass} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+        <input type="password" className="form-control" name='password' value={pass} onChange={(e)=>changes(e)} id="exampleInputEmail1" aria-describedby="emailHelp"/>
     </div>
 
     <button className="btn btn-primary" onClick={checkLog}>{t("Login")}</button>

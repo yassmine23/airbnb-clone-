@@ -48,9 +48,7 @@ const [eror,setError]= useState(false)
 
 // if(paidFor){alert("ok") }
 
-if(paidFor){alert("done")}else{
-    navigate('/details')
-}
+if(paidFor){alert("done")}
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
             <PayPalButtons

@@ -796,7 +796,7 @@ const UnderHome = () => {
             </Grid>
             {/* click */}
             <Box>
-              {startDate ? (
+              {service ? (
                 <Link to={"/details/book"}>
                   <Button
                     style={{
